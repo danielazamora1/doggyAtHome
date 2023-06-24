@@ -4716,6 +4716,10 @@ body.IE .register-page-wrap .container {
         font-size: 1.4rem
     }
 
+    .alinear{
+        text-align: center;
+    }
+
     .main-container,
     .timeline ul li {
         padding-bottom: 0
