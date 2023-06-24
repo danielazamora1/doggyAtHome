@@ -228,107 +228,74 @@
 			<div class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
-						<div class="col-md-12 col-sm-12">
+						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Cards</h4>
+								<h2>Inventario</h2>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Cards</li>
+									<li class="breadcrumb-item"><a href="index.html">Articulos</a></li>
 								</ol>
 							</nav>
 						</div>
-					</div>
-				</div>
-				<div class="row clearfix">
-					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-						<div class="card card-box">
-							<img class="card-img-top" src="vendors/images/img2.jpg" alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title weight-500">Card title</h5>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								<a href="#" class="btn btn-primary">Go somewhere</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-						<div class="card card-box">
-							<img class="card-img-top" src="vendors/images/img3.jpg" alt="Card image cap">
-							<div class="card-body">
-								<h5 class="card-title weight-500">Card title</h5>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							</div>
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">Cras justo odio</li>
-								<li class="list-group-item">Dapibus ac facilisis in</li>
-								<li class="list-group-item">Vestibulum at eros</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-						<div class="card card-box">
-							<div class="card-body">
-								<h5 class="card-title weight-500">Card title</h5>
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							</div>
-							<img class="card-img-top" src="vendors/images/img1.jpg" alt="Card image cap">
-							<div class="card-body">
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-								<a href="#" class="card-link text-primary">Card link</a>
-								<a href="#" class="card-link text-primary">Another link</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-						<div class="card card-box">
-							<img class="card-img-top" src="vendors/images/img4.jpg" alt="Card image cap">
-							<div class="card-body">
-								<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<div class="col-md-6 col-sm-12 text-right">
+							
+							<div class="dropdown">
+								<a class="btn btn-primary" href="entradas.html" role="button" data-toggle="">
+									Entradas Articulos
+								</a>
+								<a class="btn btn-primary" href="#" role="button" data-toggle="">
+									Salidas Articulos
+								</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row clearfix">
-					<div class="col-sm-12 col-md-4 mb-30">
-						<div class="card card-box">
-							<h5 class="card-header weight-500">Featured</h5>
-							<div class="card-body">
-								<h5 class="card-title">Special title treatment</h5>
-								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								<a href="#" class="btn btn-primary">Go somewhere</a>
-							</div>
-							<div class="card-footer text-muted">
-								2 days ago
-							</div>
-						</div>
+				<div class="card-box mb-30">
+					<div class="pd-20">
 					</div>
-					<div class="col-sm-12 col-md-4 mb-30">
-						<div class="card card-box">
-							<div class="card-header">
-								Quote
-							</div>
-							<div class="card-body">
-								<blockquote class="blockquote mb-0">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-									<footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-								</blockquote>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-4 mb-30">
-						<div class="card card-box">
-							<div class="card-header">
-								Featured
-							</div>
-							<div class="card-body">
-								<h5 class="card-title">Special title treatment</h5>
-								<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-								<a href="#" class="btn btn-primary">Go somewhere</a>
-							</div>
-						</div>
+					<div class="pb-20">
+						<table class="data-table table stripe hover nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">Id</th>
+									<th>Articulo</th>
+									<th>Descripcion</th>
+									<th>Referencia</th>
+									<th>Stock</th>
+									<th class="datatable-nosort">Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="table-plus">Gloria F. Mead</td>
+									<td>25</td>
+									<td>Sagittarius</td>
+									<td>2829 Trainer Avenue Peoria, IL 61602 </td>
+									<td>29-03-2018</td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="#"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Editar</a>
+												<a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> ELiminar</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
+<<<<<<< HEAD
 				<div class="row clearfix">
 					<div class="col-sm-12 col-md-12 col-lg-4 mb-30">
 						<div class="card card-box">
@@ -625,4 +592,25 @@
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
 </body>
+=======
+<!-- js -->
+<script src="vendors/scripts/core.js"></script>
+<script src="vendors/scripts/script.min.js"></script>
+<script src="vendors/scripts/process.js"></script>
+<script src="vendors/scripts/layout-settings.js"></script>
+<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<!-- buttons for Export datatable -->
+<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+<!-- Datatable Setting js -->
+<script src="vendors/scripts/datatable-setting.js"></script></body>
+>>>>>>> ab6eae3 (se modifico inventario)
 </html>
