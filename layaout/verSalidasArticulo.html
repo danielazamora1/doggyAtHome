@@ -447,90 +447,65 @@
 	</div>
 	<div class="mobile-menu-overlay"></div>
 
-	<div class="main-container">
+    <div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h2>Entradas</h2>
+								<h3>Ver Salida</h3>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="listaArticulos.html">Articulos</a></li>
+									<li class="breadcrumb-item"><a href="salidas.html">Articulos</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Salidas</li>
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-							
-							<div class="dropdown">
-								<a class="btn btn-primary" href="nuevoArticulo.html" role="button" data-toggle="">
-									Nuevo
-								</a>
+					</div>
+				</div>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Salida </h4><br>
+						</div>
+						
+					</div>
+					<form>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="">
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="card-box mb-30">
-					<div class="pd-20">
-					</div>
-					<div class="pb-20">
-						<table class="data-table table stripe hover nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">Id</th>
-									<th>Referencia</th>
-									<th>Cantidad</th>
-									<th>Fecha</th>
-									<th class="datatable-nosort">Acciones</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">Gloria F. Mead</td>
-									<td>25</td>
-									<td>Sagittarius</td>
-									<td>29-03-2018</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="/layaout/verArticulosEntradas.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="/layaout/editarEntradasArticulos.html"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="/layaout/eliminarEntradaArticulos.html"><i class="dw dw-delete-3"></i> ELiminar</a>
-												</div>
-												</div>
-											</div>
-										</div>
-									</td>
-								</tr>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-<!-- js -->
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
-<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-<!-- buttons for Export datatable -->
-<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-<!-- Datatable Setting js -->
-<script src="vendors/scripts/datatable-setting.js"></script></body>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="">
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="date" placeholder="08/10/2023">
+							</div>
+						</div>
+                            
+					</form>
+</form>
+				<!-- Input Validation End -->
+			</div>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+</body>
 </html>
