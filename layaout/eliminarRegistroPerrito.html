@@ -216,89 +216,73 @@
 					</li>
 				</ul>
 			</div>
+			
 		</div>
 	</div>
 	<div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
+		
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
+							
 							<div class="title">
-								<h4>Eliminar registro</h4>
+								<h4>Editar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Registro</li>
+									<li class="breadcrumb-item"><a href="/layaout/index.html">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="/layaout/mascota.html">Mascotas</a></li>
+
+									<li class="breadcrumb-item active" aria-current="page">Eliminar registro</li>
 								</ol>
 							</nav>
-						</div>
-					</div>
-				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Registra un nuevo perrito</h4><br>
+							<div class="box-body">
+                        <div class="row">
+                         <div class="col-md-12">
+                           <!--Contenido-->
+                           <div class="modal-dialog">
+                               <div class="modal-content">
+                                 <div class="modal-header">
+                                   <button type="button" class="close" data-dismiss="modal" 
+                                   aria-label="Close">
+                                   <span aria-hidden="true">×</span>
+                                 </button>
+                                 <h4 class="modal-title" style="text-align: left;">Inhabilitar mascota</h4>
+                               </div>
+                               <div class="modal-body">
+                                 <p style="text-align: center;">Confirme si desea inhabilitar esta mascota.</p>
+                               </div>
+                               <div class="modal-footer">
+                                 <a href="../adopciones/mascota.html">
+                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button></a>
+                                 <a href="../adopciones/mascota.html">
+                                 <button type="submit" class="btn btn-primary">Confirmar</button></a>
+                               </div>
+                             </div>
+                           </div>
+                    <!--Fin Contenido-->
+                  </div>
+                </div>
+
+              </div>
+							
 						</div>
 						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombre</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Lucas">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Caracteristicas</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Dorado">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Edad</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10 meses">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
+				</div>
+				<!-- Default Basic Forms Start -->
+
+	
+				  
 					
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sexo</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Hembra</option>
-									<option value="2">Macho</option>
-									
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Imagen</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="img" placeholder="png">
-							</div>
-						</div>
-                            
-					</form>
-<a href="/layaout/mascota.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="/layaout/mascota.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+
+
+</form>
+				<!-- Input Validation End -->
 
 
 </form>
