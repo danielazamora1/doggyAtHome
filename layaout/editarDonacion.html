@@ -4,14 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-<<<<<<< HEAD
-	<title>Editar</title>
-=======
-	<title>Editar registro perrito</title>
->>>>>>> 7c301a7 (Se agrega la categoria gestion de adoptantes, se realiza las interfaces de todo el CRUD para gestion de usuarios y de adoptantes, se aplica aside y header a las interfaces que hacian falta por modificar)
+	<title>Editar donación</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/mascota.png">
+	<link rel="website icon" href="vendors/images/listaDonaciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -234,13 +230,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Editar registro</h4>
+								<h4>Editar donación</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/mascota.html">Mascotas</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Editar mascota</li>
+									<li class="breadcrumb-item"><a href="listaDonaciones.html">Donaciones</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Editar donación</li>
 								</ol>
 							</nav>
 						</div>
@@ -250,50 +246,57 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Editar</h4><br>
+							<h4 class="text-blue h4">Editar una donación</h4><br>
 						</div>
 						
 					</div>
 					<form>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombre</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Tipo donación</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Lucas">
+								<select class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="1">Insumos</option>
+									<option value="2">Dinero</option>
+								</select>
 							</div>
 						</div>
-						
-						
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Donante</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="Dorado">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Articulo</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="10 meses">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="Criollo">
+							</div>
+						</div>
+					
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">cantidad</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="img" placeholder="png">
+							</div>
+						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
 							<div class="col-sm-12 col-md-10">
 								<input class="form-control" type="date" placeholder="08/10/2023">
 							</div>
 						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Golden">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Adoptante</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Juan Pablo">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Calle 7">
-							</div>
-						</div>
                             
 					</form>
-<a href="/layaout/listaAdopciones.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="/layaout/listaAdopciones.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
-
-
-</form>
+					<a href="listaDonaciones.html"><button class="btn btn-primary">Guardar</button></a>
+					<a href="listaDonaciones.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+				</form>
 				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
