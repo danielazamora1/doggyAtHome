@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Registrar articulo</title>
+	<title>Adoptantes</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listadoArticulos.png">
+	<link rel="website icon" href="vendors/images/adopcion.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -230,53 +230,78 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Agregar un nuevo articulo</h4>
+								<h4>Adoptantes</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="listaArticulos.html">Inventario</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Entradas</li>
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Adoptantes</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h3></h3><br>
-						</div>
-						
+				
+				<!-- Export Datatable start -->
+				<div class="card-box mb-30">
+					<div class="pd-20">
+						<h4 class="text-blue h4">Listado de adoptantes</h4><br>
+						<a href="registroAdoptante.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo adoptante </button></a><br>
+
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Lucas">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Golden">
-							</div>
-						</div>
-                        <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-					</form>
-<a href="/layaout/entradas.html"><button class="btn btn-primary">Agregar</button></a>
-
-
-</form>
-				<!-- Input Validation End -->
+					
+					<div class="pb-20">
+						<table class="table hover multiple-select-row data-table-export nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">id</th>
+									<th>Nombres</th>
+									<th>Apellidos</th>
+									<th>Tipo de documento</th>
+									<th>Documento</th>
+									<th>Celular</th>
+									<th>Dirección</th>
+									<th>Correo</th>
+									<th>Rol</th>
+									<th></th>
+									<th class="datatable-nosort">Acción</th>
+			
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="table-plus">1</td>
+									<td>Dakota</td>
+									<td>20/5/2022</td>
+									<td>Criollo</td>
+									<td>Juan Pablo</td>
+									<td>Carrera 6 sur</td>
+									<td>3124578200</td>
+									<td>Calle 40g sur</td>
+									<td>Administrador</td>
+									<td></td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="verInformaciónAdoptante.html"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="editarAdoptante.html"><i class="dw dw-edit2"></i>Editar</a>
+												<a class="dropdown-item" href="inhabilitarAdoptante.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- Export Datatable End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
-				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
 			</div>
 		</div>
 	</div>
@@ -285,5 +310,18 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-</body>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- buttons for Export datatable -->
+	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="vendors/scripts/datatable-setting.js"></script></body>
 </html>

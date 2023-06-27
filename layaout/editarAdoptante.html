@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Registrar articulo</title>
+	<title>Editar adoptante</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listadoArticulos.png">
+	<link rel="website icon" href="vendors/images/usuario.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -230,12 +230,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Agregar un nuevo articulo</h4>
+								<h4>Editar información de adoptante</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="listaArticulos.html">Inventario</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Entradas</li>
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="adoptantes.html">Adoptantes</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Editar adoptante</li>
 								</ol>
 							</nav>
 						</div>
@@ -245,34 +246,91 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h3></h3><br>
+							<h4 class="text-blue h4">Editar adoptante</h4><br>
 						</div>
 						
 					</div>
 					<form>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Lucas">
+								<input class="form-control" type="text" placeholder="Pedro">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Apellidos</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Golden">
+								<input class="form-control" type="text" placeholder="sarmiento">
 							</div>
 						</div>
-                        <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Tipo Documento</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
+								<select class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="1">CC</option>
+									<option value="2">TI</option>
+									<option value="3">CE</option>
+								</select>
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Documento</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="sarmiento">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="sarmiento">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Contraseña</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="password" placeholder="sarmiento">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Celular</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="10 meses">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Ciudad</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="Criollo">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="Criollo">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Correo</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="Criollo">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Rol</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="1">Administrador</option>
+									<option value="2">Veterinario</option>
+								</select>
+							</div>
+						</div>
+                            
 					</form>
-<a href="/layaout/entradas.html"><button class="btn btn-primary">Agregar</button></a>
-
-
-</form>
+				<a href="adoptantes.html"><button class="btn btn-primary">Guardar</button></a>
+				<a href="adoptantes.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+			</form>
 				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
