@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Adoptantes</title>
+	<title>Registrar solicitud</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/adopcion.png">
+	<link rel="website icon" href="vendors/images/listaSolicitud.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -230,71 +230,65 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Adoptantes</h4>
+								<h4>Nueva solicitud de adopción</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Adoptantes</li>
+									<li class="breadcrumb-item"><a href="listaSolicitudes.html">Solicitud de adopción</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Nueva solicitud de adopción</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				
-				<!-- Export Datatable start -->
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Listado de adoptantes</h4><br>
-						<a href="registroAdoptante.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo adoptante </button></a><br>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Registra una solicitud de adopción</h4><br>
+						</div>
+						
+					</div>
+					<form>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="1">En tramite</option>
+									<option value="2">Aceptada</option>
+									<option value="3">Rechazada</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="date" placeholder="08/10/2023">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Documentos</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="file" placeholder="Dorado">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="10 meses">
+							</div>
+						</div>
+						
+                            
+					</form>
+					<a href="listaSolicitudes.html"><button class="btn btn-primary">Guardar</button></a>
+					<a href="listaSolicitudes.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
-					</div>
-					
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">id</th>
-									<th>Nombres</th>
-									<th>Apellidos</th>
-									<th>Tipo de documento</th>
-									<th>Documento</th>
-									<th>Celular</th>
-									<th>Dirección</th>
-									<th>Correo</th>
-									<th class="datatable-nosort">Acción</th>
-			
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>Dakota</td>
-									<td>20/5/2022</td>
-									<td>Criollo</td>
-									<td>Juan Pablo</td>
-									<td>Carrera 6 sur</td>
-									<td>3124578200</td>
-									<td>Calle 40g sur</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="verInformaciónAdoptante.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="editarAdoptante.html"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarAdoptante.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-							
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- Export Datatable End -->
+
+</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -306,18 +300,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<!-- buttons for Export datatable -->
-	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-	<!-- Datatable Setting js -->
-	<script src="vendors/scripts/datatable-setting.js"></script></body>
+</body>
 </html>
