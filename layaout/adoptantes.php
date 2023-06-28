@@ -191,8 +191,7 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="listaAdopciones.html">Lista de adopciones</a></li>
-							<li><a href="mascota.html">Mascotas</a></li>
-							<li><a href="listaMascotas.html">Lista Mascotas</a></li>
+							<li><a href="mascota.html">Mascota</a></li>
 							<li><a href="historialMedico.html">Historial Medico</a></li>
 							<li><a href="listaSolicitudes.html">Lista de solicitudes</a></li>
 							<li><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
@@ -251,6 +250,12 @@
 
 					</div>
 					
+					<?php  
+						include('conexion.php');
+
+						$consulta = "SELECT * FROM v_listado_adoptante";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap">
 							<thead>
@@ -258,7 +263,6 @@
 									<th class="table-plus datatable-nosort">id</th>
 									<th>Nombres</th>
 									<th>Apellidos</th>
-									<th>Tipo de documento</th>
 									<th>Documento</th>
 									<th>Celular</th>
 									<th>Dirección</th>
@@ -268,15 +272,16 @@
 								</tr>
 							</thead>
 							<tbody>
+								<?php  while ($row = mysqli_fetch_assoc($resultado)) {
+								?>
 								<tr>
-									<td class="table-plus">1</td>
-									<td>Dakota</td>
-									<td>20/5/2022</td>
-									<td>Criollo</td>
-									<td>Juan Pablo</td>
-									<td>Carrera 6 sur</td>
-									<td>3124578200</td>
-									<td>Calle 40g sur</td>
+									<td class="table-plus"><?php echo $row['idAdoptante'];?></td>
+									<td><?php echo $row['nombresAdoptante'];?></td>
+									<td><?php echo $row['apellidosAdoptante'];?></td>
+									<td><?php echo $row['documento'];?></td>
+									<td><?php echo $row['celular'];?></td>
+									<td><?php echo $row['direccion'];?></td>
+									<td><?php echo $row['correo'];?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -290,7 +295,7 @@
 										</div>
 									</td>
 								</tr>
-							
+								<?php } mysqli_close($conexion);?>
 							</tbody>
 						</table>
 					</div>

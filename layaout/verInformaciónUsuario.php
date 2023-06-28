@@ -1,3 +1,13 @@
+<?php  
+	require 'conexion.php';
+
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM usuario WHERE idUsuario = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -192,7 +202,6 @@
 					<ul class="submenu">
 						<li><a href="listaAdopciones.html">Lista de adopciones</a></li>
 						<li><a href="mascota.html">Mascota</a></li>
-						<li><a href="listaMascotas.html">Lista Mascotas</a></li>
 						<li><a href="historialMedico.html">Historial Medico</a></li>
 						<li><a href="listaSolicitudes.html">Lista de solicitudes</a></li>
 						<li><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
@@ -254,66 +263,72 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Pedro">
+								<input disabled class="form-control" type="text" id="nombres" name="nombres" value="<?php echo $row['nombres'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Apellidos</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="sarmiento">
+								<input disabled class="form-control" type="text" id="apellidos" name="apellidos" value="<?php echo $row['apellidos'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Tipo Documento</label>
 							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
+								<select disabled class="custom-select col-12" id="tipoDocumento" name="tipoDocumento">
 									<option selected="">Selecciona</option>
-									<option value="1">CC</option>
-									<option value="2">TI</option>
-									<option value="3">CE</option>
+									<option value="1" <?php if ($row['tipoDocumento']=='1')echo 'selected'; ?>>CC</option>
+									<option value="2" <?php if ($row['tipoDocumento']=='2')echo 'selected'; ?>>TI</option>
+									<option value="3" <?php if ($row['tipoDocumento']=='3')echo 'selected'; ?>>CE</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Documento</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="sarmiento">
+								<input disabled class="form-control" type="text" id="documento" name="documento" value="<?php echo $row['documento'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Usuario</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="sarmiento">
+								<input disabled class="form-control" type="text" id="usuario" name="usuario" value="<?php echo $row['usuario'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Contraseña</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="password" placeholder="sarmiento">
+								<input disabled class="form-control" type="password" id="contraseña" name="contraseña" value="<?php echo $row['contraseña'] ?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Confirmar contraseña</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="password" id="confirmarContraseña" name="confirmarContraseña" value="<?php echo $row['confirmarContraseña'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Celular</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="10 meses">
+								<input disabled class="form-control" type="text" id="celular" name="celular" value="<?php echo $row['celular'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Ciudad</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
+								<input disabled class="form-control" type="text" id="ciudad" name="ciudad" value="<?php echo $row['ciudad'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
+								<input disabled class="form-control" type="text" id="direccion" name="direccion" value="<?php echo $row['direccion'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Correo</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
+								<input disabled class="form-control" type="text" id="correo" name="correo" value="<?php echo $row['correo'] ?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
