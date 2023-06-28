@@ -293,7 +293,7 @@
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 												<a class="dropdown-item" href="verInformaciónUsuario.php? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-eye"></i>Ver</a>
 												<a class="dropdown-item" href="editarUsuarios.php? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarUsuario.html? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-delete-3"></i>Inhabilitar</a>
+												<a class="dropdown-item" href="inhabilitarUsuario.php? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-delete-3"></i>Inhabilitar</a>
 											</div>
 										</div>
 									</td>
