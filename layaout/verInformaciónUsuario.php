@@ -336,8 +336,8 @@
 							<div class="col-sm-12 col-md-10">
 								<select disabled class="custom-select col-12">
 									<option selected="">Selecciona</option>
-									<option value="Administrador"<?php if ($row['rol_idRol']=='1')echo 'selected'; ?>>Administrador</option>
-									<option value="Veterinario"<?php if ($row['rol_idRol']=='2')echo 'selected'; ?>>Veterinario</option>
+									<option value="1"<?php if ($row['rol_idRol']=='1')echo 'selected'; ?>>Administrador</option>
+									<option value="2"<?php if ($row['rol_idRol']=='2')echo 'selected'; ?>>Veterinario</option>
 								</select>
 							</div>
 						</div>

@@ -260,7 +260,8 @@
 						</div>
 						
 					</div>
-					<form>
+					<form action="actualizarUsuario.php" method="post">
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idUsuario']; ?>"/>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
 							<div class="col-sm-12 col-md-10">
@@ -335,25 +336,25 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Rol</label>
 							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
+								<select class="custom-select col-12" name="rol">
 									<option selected="">Selecciona</option>
-									<option value="Administrador"<?php if ($row['rol_idRol']=='1')echo 'selected'; ?>>Administrador</option>
-									<option value="Veterinario"<?php if ($row['rol_idRol']=='2')echo 'selected'; ?>>Veterinario</option>
+									<option value="1"<?php if ($row['rol_idRol']=='1')echo 'selected'; ?>>Administrador</option>
+									<option value="2"<?php if ($row['rol_idRol']=='2')echo 'selected'; ?>>Veterinario</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
 							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
+								<select class="custom-select col-12" name="estadoUsuario">
 									<option selected="">Selecciona</option>
 									<option value="Activo"<?php if ($row['estadoUsuario']=='Activo')echo 'selected'; ?>>Activo</option>
 									<option value="Inactivo"<?php if ($row['estadoUsuario']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
 								</select>
 							</div>
 						</div>   
+						<input type="submit" name="" value="Editar" class="btn btn-primary">
 					</form>
-				<a href="/layaout/usuarios.html"><button class="btn btn-primary">Guardar</button></a>
 				<a href="/layaout/usuarios.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 			</form>
 				<!-- Input Validation End -->
