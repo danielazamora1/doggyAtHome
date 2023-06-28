@@ -340,6 +340,16 @@
 									<option value="Veterinario"<?php if ($row['rol_idRol']=='2')echo 'selected'; ?>>Veterinario</option>
 								</select>
 							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoUsuario']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoUsuario']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
 						</div>   
 					</form>
 <a href="editarUsuarios.html"><button class="btn btn-primary">Editar</button></a>
