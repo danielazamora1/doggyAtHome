@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inventario</title>
+	<title>Inhabilitar Registro</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listadoArticulos.png">
+	<link rel="website icon" href="vendors/images/listaDonaciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,59 +231,30 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h2>Inventario</h2>
+								<h4>Inhabilitar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="consultarInventario.html">Listado inventario</a></li>
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="/layaout/listaArticulos.html">Lista Articulos</a></li>
+
+									<li class="breadcrumb-item active" aria-current="page">Inhabilitar registro</li>
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-							
-							<div class="dropdown">
-								<a class="btn btn-primary" href="entradas.html" role="button" data-toggle="">
-									Entradas Articulos
-								</a>
-								<a class="btn btn-primary" href="/layaout/salidas.html" role="button" data-toggle="">
-									Salidas Articulos
-								</a>
+					</div>
+				</div>
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
+					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
+						<div class="pd-20 card-box text-center height-100-p">
+							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
+							<div class="max-width-200 mx-auto">
+								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
 							</div>
 						</div>
-						
 					</div>
 				</div>
-				<div class="card-box mb-30">
-					<div class="pd-20">
-					</div>
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">Id</th>
-									<th>Articulo</th>
-									<th>Descripcion</th>
-									<th>Referencia</th>
-									<th>Stock</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>Comida</td>
-									<td>Chunky pollo 8 kilos</td>
-									<td>CH01</td>
-									<td>3</td>
-									
-								</tr>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-
+			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
 			</div>
@@ -294,26 +265,7 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
-
-<!-- js -->
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
-<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-<!-- buttons for Export datatable -->
-<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-<!-- Datatable Setting js -->
-<script src="vendors/scripts/datatable-setting.js"></script></body>
->>>>>>> ab6eae3 (se modifico inventario)
 </html>
