@@ -74,7 +74,8 @@
     </div>
     <!-- Navbar End -->
   
-  
+  <form action="validar.php" method="post">
+    
   <div class="login-page">
     
     <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
@@ -92,28 +93,30 @@
                 <div class="select-role">
                   <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn active">
-                      <input type="radio" name="options" id="admin">
+                      <input type="radio" name="admin">
                       <div class="icon"><img src="img/maletin.png" class="svg" alt=""></div>
                       <span>Soy</span>
                       Administrativo
                     </label>
                     <label class="btn">
-                      <input type="radio" name="options" id="user">
+                      <input type="radio" name="adoptante">
                       <div class="icon"><img src="img/usuario.png" class="svg" alt=""></div>
                       <span>Soy</span>
-                      Usuario
+                      Adoptante
                     </label>
                   </div>
                 </div>
                 
                 <div class="input-group custom">
-                  <input type="text" class="form-control form-control-lg" placeholder="Usuario">
+                  <input type="text" placeholder="Usuario" name="usuario" class="form-control form-control-lg">
+                  <!--<input type="text" class="form-control form-control-lg" placeholder="Usuario" name="usuario">-->
                   <div class="input-group-append custom">
                   </div>
                 </div><br>
 
                 <div class="input-group custom">
-                  <input type="password" class="form-control form-control-lg" placeholder="**********">
+                  <input type="password" placeholder="********" name="contraseña" class="form-control form-control-lg">
+                  <!--<input type="password" class="form-control form-control-lg" placeholder="**********" name="contraseña">-->
                   <div class="input-group-append custom">
                   </div>
                 </div>
@@ -133,11 +136,7 @@
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="input-group mb-0">
-                      <!--
-                        use code for form submit
-                        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
-                      -->
-                      <a class="btn btn-primary btn-lg btn-block" href="/layaout/index.html">Ingresar</a>
+                        <input class="btn btn-primary btn-lg btn-block" type="submit" value="ingresar">
                     </div>
                     <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373">Ó</div>
                     <div class="input-group mb-0">
@@ -152,6 +151,7 @@
       </div>
     </div>
   </div>
+  </form>
     <!-- js -->
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>

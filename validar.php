@@ -16,7 +16,7 @@
 
 		if ($filas['rol_idRol']==1) //administrador
 		{
-		header("location:layaout/index.html");
+		header('location:layaout/index.html');
 		mysqli_free_result($resultado);
 		}if ($filas['rol_idRol']==2)//veterinario		
 		{
