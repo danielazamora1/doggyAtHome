@@ -244,7 +244,7 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="usuarios.html">Usuarios</a></li>
+									<li class="breadcrumb-item"><a href="usuarios.php">Usuarios</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Consultar Usuario</li>
 								</ol>
 							</nav>
@@ -263,13 +263,13 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="nombres" name="nombres" value="<?php echo $row['nombres'] ?>" required>
+								<input disabled class="form-control" type="text" id="nombres" name="nombres" placeholder="Nombres" value="<?php echo $row['nombres'];?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Apellidos</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="apellidos" name="apellidos" value="<?php echo $row['apellidos'] ?>" required>
+								<input disabled class="form-control" type="text" id="apellidos" name="apellidos" value="<?php echo $row['apellidos'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -277,58 +277,58 @@
 							<div class="col-sm-12 col-md-10">
 								<select disabled class="custom-select col-12" id="tipoDocumento" name="tipoDocumento">
 									<option selected="">Selecciona</option>
-									<option value="1" <?php if ($row['tipoDocumento']=='1')echo 'selected'; ?>>CC</option>
-									<option value="2" <?php if ($row['tipoDocumento']=='2')echo 'selected'; ?>>TI</option>
-									<option value="3" <?php if ($row['tipoDocumento']=='3')echo 'selected'; ?>>CE</option>
+									<option value="CC" <?php if ($row['tipoDocumento']=='CC')echo 'selected'; ?>>CC</option>
+									<option value="TI" <?php if ($row['tipoDocumento']=='TI')echo 'selected'; ?>>TI</option>
+									<option value="CE" <?php if ($row['tipoDocumento']=='CE')echo 'selected'; ?>>CE</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Documento</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="documento" name="documento" value="<?php echo $row['documento'] ?>" required>
+								<input disabled class="form-control" type="text" id="documento" name="documento" value="<?php echo $row['documento'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Usuario</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="usuario" name="usuario" value="<?php echo $row['usuario'] ?>" required>
+								<input disabled class="form-control" type="text" id="usuario" name="usuario" value="<?php echo $row['usuario']; ?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Contraseña</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="password" id="contraseña" name="contraseña" value="<?php echo $row['contraseña'] ?>" required>
+								<input disabled class="form-control" type="password" id="contraseña" name="contraseña" value="<?php echo $row['contraseña'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Confirmar contraseña</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="password" id="confirmarContraseña" name="confirmarContraseña" value="<?php echo $row['confirmarContraseña'] ?>" required>
+								<input disabled class="form-control" type="password" id="confirmarContraseña" name="confirmarContraseña" value="<?php echo $row['confirmarContraseña'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Celular</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="celular" name="celular" value="<?php echo $row['celular'] ?>" required>
+								<input disabled class="form-control" type="text" id="celular" name="celular" value="<?php echo $row['celular'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Ciudad</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="ciudad" name="ciudad" value="<?php echo $row['ciudad'] ?>" required>
+								<input disabled class="form-control" type="text" id="ciudad" name="ciudad" value="<?php echo $row['ciudad'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="direccion" name="direccion" value="<?php echo $row['direccion'] ?>" required>
+								<input disabled class="form-control" type="text" id="direccion" name="direccion" value="<?php echo $row['direccion'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Correo</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="correo" name="correo" value="<?php echo $row['correo'] ?>" required>
+								<input disabled class="form-control" type="text" id="correo" name="correo" value="<?php echo $row['correo']; ?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -336,12 +336,11 @@
 							<div class="col-sm-12 col-md-10">
 								<select disabled class="custom-select col-12">
 									<option selected="">Selecciona</option>
-									<option value="1">Administrador</option>
-									<option value="2">Veterinario</option>
+									<option value="Administrador"<?php if ($row['rol_idRol']=='1')echo 'selected'; ?>>Administrador</option>
+									<option value="Veterinario"<?php if ($row['rol_idRol']=='2')echo 'selected'; ?>>Veterinario</option>
 								</select>
 							</div>
-						</div>
-                            
+						</div>   
 					</form>
 <a href="editarUsuarios.html"><button class="btn btn-primary">Editar</button></a>
 

@@ -291,8 +291,8 @@
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="verInformaciónUsuario.php ? idUsuario = <?php echo $row['idUsuario'];?>"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="editarUsuarios.html"><i class="dw dw-edit2"></i>Editar</a>
+												<a class="dropdown-item" href="verInformaciónUsuario.php? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="editarUsuarios.php? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-edit2"></i>Editar</a>
 												<a class="dropdown-item" href="inhabilitarUsuario.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
 											</div>
 										</div>
