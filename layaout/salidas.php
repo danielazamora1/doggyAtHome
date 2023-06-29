@@ -236,23 +236,33 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/consultarInventario.html">Inventario</a></li>
-
+									<li class="breadcrumb-item"><a href="consultarInventario.php">Inventario</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Salidas</li>
 								</ol>
 							</nav>
 						</div>
 						<div class="col-md-6 col-sm-12 text-right">
 							
-							<div class="dropdown">
-								<a class="btn btn-primary" href="nuevoArticuloSalidas.html" role="button" data-toggle="">
-									Nuevo
-								</a>
-							</div>
+							
 						</div>
 					</div>
 				</div>
 				<div class="card-box mb-30">
+					<div class="pd-20">
+						<h4 class="text-blue h4">Listado</h4><br>
+						<a href="interfazRegistroSalida.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar una salida </button></a><br>
+						
+					</div>
+					<?php  
+						include('conexion.php');
+
+						$consulta = "SELECT * FROM articulos
+									INNER JOIN salidas_articulos
+									ON salidas_articulos.`articulos_idArticulos`=articulos.`idArticulos`
+									INNER JOIN salidas
+									ON salidas.`idSalidas`= salidas_articulos.`salidas_idSalidas`";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>		
 					<div class="pd-20">
 					</div>
 					<div class="pb-20">
@@ -260,28 +270,33 @@
 							<thead>
 								<tr>
 									<th class="table-plus datatable-nosort">Id</th>
+									<th>Articulo</th>
 									<th>Referencia</th>
-									<th>Cantidad</th>
+									<th>cantidad</th>
 									<th>Fecha</th>
+									<th>Estado</th>
 									<th class="datatable-nosort">Acciones</th>
 								</tr>
 							</thead>
 							<tbody>
+								<?php  while ($row = mysqli_fetch_assoc($resultado)) {
+								?>
 								<tr>
-									<td class="table-plus">Gloria F. Mead</td>
-									<td>25</td>
-									<td>Sagittarius</td>
-									<td>29-03-2018</td>
+									<td class="table-plus"><?php echo $row['idSalidasArticulos'];?></td>
+									<td><?php echo $row['nombreArticulo'];?></td>
+									<td><?php echo $row['referenciaArticulo'];?></td>
+									<td><?php echo $row['cantidadSalidas'];?></td>
+									<td><?php echo $row['fechaSalida'];?></td>
+									<td><?php echo $row['estadoSalida'];?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="/layaout/verSalidasArticulo.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="/layaout/editarSalidaArticulos.html"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="/layaout/eliminarSalidaArticulo.html"><i class="dw dw-delete-3"></i> Eliminar</a>
-												
+												<a class="dropdown-item" href="verSalidas.php? id= <?php echo $row['idSalidasArticulos']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="interfazEditarSalida.php? id= <?php echo $row['idSalidasArticulos']; ?>"><i class="dw dw-edit2"></i> Editar</a>
+												<a class="dropdown-item" href="inhabilitarSalida.php? id= <?php echo $row['idSalidasArticulos']; ?>"><i class="dw dw-delete-3"></i> Eliminar</a>
 												</div>
 												</div>
 											</div>
@@ -291,6 +306,7 @@
 										</div>
 									</td>
 								</tr>
+								<?php } mysqli_close($conexion);?>
 							</tbody>
 						</table>
 					</div>

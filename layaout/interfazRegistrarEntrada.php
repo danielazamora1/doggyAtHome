@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -252,13 +253,7 @@
 						</div>
 						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" name="fechaEntrada" placeholder="08/10/2023">
-							</div>
-						</div>
+					<form action="registrarEntrada.php" method="post">
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
 							<div class="col-sm-12 col-md-10">
@@ -271,27 +266,39 @@
 								<select class="custom-select col-12" name="articulos">
 								<?php  
 
-								require 'conexion.php';
+								include 'conexion.php';
 
-								$consulta="SELECT * FROM articulos";
-								$resultado = mysqli_query($conexion,$consulta);
+								$consulta=$conexion->query("SELECT * FROM articulos");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idArticulos']."'>".$resultado['nombreArticulo']."</option>";
+								}
 
 								?>
-				
-								<?php foreach ($resultado as $opciones): ?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Entradas</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="entradas">
+								<?php  
 
-								<option value="<?php echo $opciones['nombreArticulo'];?>"><?php echo $opciones['nombreArticulo'];?></option>
-					
-								<?php endforeach ?>
-									
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM entradas");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idEntradas']."'>".$resultado['idEntradas']."</option>";
+								}
+
+								?>
 								</select>
 							</div>
 						</div>
 						
-                        
+                        <input type="submit" name="" value="registrar" class="btn btn-primary">
 					</form>
-<a href="/layaout/entradas.html"><button class="btn btn-primary">Agregar</button></a>
-
+					<br>
+					<a href="entradas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
 </form>
 				<!-- Input Validation End -->

@@ -268,36 +268,78 @@
 						
 					</div>
 					<form>
-						
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">id</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="1">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="ch08">
-							</div>
-						</div>
+						<?php 
+							include('conexion.php');
+
+							
+
+							$sql = "SELECT * FROM entradas_articulos WHERE idEntradasArticulos =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="8">
+								<input disabled class="form-control" type="text" id="cantidadEntrada" name="cantidadEntrada" value="<?php echo $row['cantidadEntrada'];?>"required>
 							</div>
 						</div>
-					
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">fecha</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Articulos</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="08/10">
+								<select disabled class="custom-select col-12" name="articulos">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM articulos WHERE idArticulos =".$row['articulos_idArticulos'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idArticulos']."'>".$row1['nombreArticulo']."</option>";
+
+								$sql2 = "SELECT * FROM articulos";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idArticulos']."'>".$fila['nombreArticulo']."</option>";
+								}
+
+								?>
+								</select>
 							</div>
 						</div>
-						
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Entradas</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12" name="entradas">
+								<?php  
+								include('conexion.php');
+
+								$sql3 = "SELECT * FROM entradas WHERE idEntradas =".$row['entradas_idEntradas'];
+								$resultado3 = mysqli_query($conexion,$sql3);
+								$row2 = $resultado3->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row2['idEntradas']."'>".$row2['idEntradas']."</option>";
+
+								$sql4 = "SELECT * FROM entradas";
+								$resultado4 = mysqli_query($conexion,$sql4);
+								while ($fila = $resultado4->fetch_array()) {
+									echo "<option value='".$fila['idEntradas']."'>".$fila['idEntradas']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activa"<?php if ($row['estadoEntrada']=='Activa')echo 'selected'; ?>>Activo</option>
+									<option value="Inactiva"<?php if ($row['estadoEntrada']=='Inactiva')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div> 
                             
 					</form>
-					<a href="entradas.html"><button class="btn btn-primary">Regresar</button></a>
+					<a href="entradas.php"><button class="btn btn-primary">Regresar</button></a>
 
 
 				</form>

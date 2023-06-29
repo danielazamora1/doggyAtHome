@@ -1,13 +1,19 @@
+<?php  
+	include('conexion.php');
+	$id = $_GET['id'];
+	$sql = "UPDATE entradas_articulos SET estadoEntrada = 'Inactiva' WHERE idEntradasArticulos = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Registrar articulo</title>
+	<title>Inhabilitar Registro</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listadoArticulos.png">
+	<link rel="website icon" href="vendors/images/listaDonaciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,52 +237,30 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Agregar un nuevo articulo</h4>
+								<h4>Inhabilitar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="listaArticulos.html">Inventario</a></li>
-									<li class="breadcrumb-item"><a href="salidas.html">Salidas</a></li>
-
-									<li class="breadcrumb-item active" aria-current="page">Nuevo registro</li>
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="consultarInventario.php">Inventario</a></li>
+									<li class="breadcrumb-item"><a href="entradas.php">Entradas</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Inhabilitar entrada</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h3></h3><br>
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
+					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
+						<div class="pd-20 card-box text-center height-100-p">
+							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
+							<div class="max-width-200 mx-auto">
+								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+							</div>
 						</div>
-						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-                        <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-					</form>
-<a href="/layaout/salidas.html"><button class="btn btn-primary">Agregar</button></a>
-
-
-</form>
-				<!-- Input Validation End -->
+				</div>
+				<a href="entradas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</button>
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -288,5 +272,7 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

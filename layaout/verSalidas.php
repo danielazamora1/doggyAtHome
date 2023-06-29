@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -251,8 +252,8 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="consultarInventario.html">Inventario</a></li>
-									<li class="breadcrumb-item"><a href="salidas.html">Salidas</a></li>
+									<li class="breadcrumb-item"><a href="consultarInventario.php">Inventario</a></li>
+									<li class="breadcrumb-item"><a href="salidas.phpl">Salidas</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Consultar Salida</li>
 								</ol>
 							</nav>
@@ -263,41 +264,85 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Consultar registro salida</h4><br>
+							<h4 class="text-blue h4">Consultar salida</h4><br>
 						</div>
 						
 					</div>
 					<form>
-						
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">id</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="1">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="ch08">
-							</div>
-						</div>
+						<?php 
+							include('conexion.php');
+
+							
+
+							$sql = "SELECT * FROM salidas_articulos WHERE idSalidasArticulos =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="8">
+								<input disabled class="form-control" type="text" id="cantidadSalidas" name="cantidadSalidas" value="<?php echo $row['cantidadSalidas'];?>"required>
 							</div>
 						</div>
-					
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">fecha</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Articulos</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="08/10">
+								<select disabled class="custom-select col-12" name="articulos">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM articulos WHERE idArticulos =".$row['articulos_idArticulos'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idArticulos']."'>".$row1['nombreArticulo']."</option>";
+
+								$sql2 = "SELECT * FROM articulos";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idArticulos']."'>".$fila['nombreArticulo']."</option>";
+								}
+
+								?>
+								</select>
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Salidas</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12" name="salidas">
+								<?php  
+								include('conexion.php');
+
+								$sql3 = "SELECT * FROM salidas WHERE idSalidas =".$row['salidas_idSalidas'];
+								$resultado3 = mysqli_query($conexion,$sql3);
+								$row2 = $resultado3->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row2['idSalidas']."'>".$row2['idSalidas']."</option>";
+
+								$sql4 = "SELECT * FROM salidas";
+								$resultado4 = mysqli_query($conexion,$sql4);
+								while ($fila = $resultado4->fetch_array()) {
+									echo "<option value='".$fila['idSalidas']."'>".$fila['idSalidas']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activa"<?php if ($row['estadoSalida']=='Activa')echo 'selected'; ?>>Activo</option>
+									<option value="Inactiva"<?php if ($row['estadoSalida']=='Inactiva')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div> 
 						
                             
 					</form>
-					<a href="entradas.html"><button class="btn btn-primary">Regresar</button></a>
+					<a href="salidas.php"><button class="btn btn-primary">Regresar</button></a>
 
 
 				</form>

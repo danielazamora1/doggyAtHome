@@ -1,10 +1,15 @@
-
+<?php  
+	include('conexion.php');
+	$id = $_GET['id'];
+	$sql = "UPDATE salidas_articulos SET estadoSalida = 'Inactiva' WHERE idSalidasArticulos = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inhabilitar Registro</title>
+	<title>Inhabilitar  Registro Salida</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/listaDonaciones.png">
@@ -231,15 +236,14 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Inhabilitar registro</h4>
+								<h4>Inhabilitar Registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/consultarInventario.html">Inventario</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/entradas.html">Entradas</a></li>
-
-									<li class="breadcrumb-item active" aria-current="page">Inhabilitar entrada</li>
+                                    <li class="breadcrumb-item"><a href="consultarInventario.php">Inventario</a></li>
+									<li class="breadcrumb-item"><a href="salidas.php">Salidas</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Inhabilitar salida</li>
 								</ol>
 							</nav>
 						</div>
@@ -254,7 +258,9 @@
 							</div>
 						</div>
 					</div>
+					<a href="salidas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</
 				</div>
+
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>

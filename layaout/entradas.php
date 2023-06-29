@@ -256,7 +256,11 @@
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM  v_detalles_entrada";
+						$consulta = "SELECT * FROM articulos
+									INNER JOIN entradas_articulos
+									ON entradas_articulos.`articulos_idArticulos`=articulos.`idArticulos`
+									INNER JOIN entradas
+									ON entradas.`idEntradas`=entradas_articulos.`entradas_idEntradas`";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>		
 					<div class="pd-20">
@@ -270,6 +274,7 @@
 									<th>Referencia</th>
 									<th>cantidad</th>
 									<th>Fecha</th>
+									<th>Estado</th>
 									<th class="datatable-nosort">Acciones</th>
 								</tr>
 							</thead>
@@ -282,15 +287,16 @@
 									<td><?php echo $row['referenciaArticulo'];?></td>
 									<td><?php echo $row['cantidadEntrada'];?></td>
 									<td><?php echo $row['fechaEntrada'];?></td>
+									<td><?php echo $row['estadoEntrada'];?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="/layaout/verArticulosEntradas.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="/layaout/editarEntradasArticulos.html"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="/layaout/eliminarEntradaArticulos.html"><i class="dw dw-delete-3"></i> Eliminar</a>
+												<a class="dropdown-item" href="verEntradas.php? id= <?php echo $row['idEntradasArticulos']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="interfazEditarEntrada.php? id= <?php echo $row['idEntradasArticulos']; ?>"><i class="dw dw-edit2"></i> Editar</a>
+												<a class="dropdown-item" href="inhabilitarEntrada.php? id= <?php echo $row['idEntradasArticulos']; ?>"><i class="dw dw-delete-3"></i> Eliminar</a>
 												</div>
 												</div>
 											</div>

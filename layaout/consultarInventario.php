@@ -245,7 +245,7 @@
 								<a class="btn btn-primary" href="entradas.php" role="button" data-toggle="">
 									Entradas Articulos
 								</a>
-								<a class="btn btn-primary" href="/layaout/salidas.html" role="button" data-toggle="">
+								<a class="btn btn-primary" href="salidas.php" role="button" data-toggle="">
 									Salidas Articulos
 								</a>
 							</div>

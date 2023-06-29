@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Editar salida</title>
+	<title>Editar entrada</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/salidas.png">
+	<link rel="website icon" href="vendors/images/editarEntradas.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,14 +231,14 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h3>Editar Salida</h3>
+								<h4>Editar entrada</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="consultarInventario.html">Inventario</a></li>
-									<li class="breadcrumb-item"><a href="salidas.html">Salidas</a></li>
-
-									<li class="breadcrumb-item active" aria-current="page">Editar registro</li>
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="consultarInventario.php">Inventario</a></li>
+									<li class="breadcrumb-item"><a href="entradas.php">Entradas</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Editar entrada</li>
 								</ol>
 							</nav>
 						</div>
@@ -248,33 +248,84 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Salida </h4><br>
+							<h4 class="text-blue h4">Editar entrada </h4><br>
 						</div>
 						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
+					<form action="actualizarEntrada.php" method="post">
+						<?php 
+							include('conexion.php');
+
+							
+							$sql = "SELECT * FROM entradas_articulos WHERE idEntradasArticulos =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idEntradasArticulos']; ?>"/>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
+								<input  class="form-control" type="text" id="cantidadEntrada" name="cantidadEntrada" value="<?php echo $row['cantidadEntrada'];?>"required>
 							</div>
 						</div>
-                        <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Articulos</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
+								<select  class="custom-select col-12" name="articulos">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM articulos WHERE idArticulos =".$row['articulos_idArticulos'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idArticulos']."'>".$row1['nombreArticulo']."</option>";
+
+								$sql2 = "SELECT * FROM articulos";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idArticulos']."'>".$fila['nombreArticulo']."</option>";
+								}
+
+								?>
+								</select>
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Entradas</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="entradas">
+								<?php  
+								include('conexion.php');
+
+								$sql3 = "SELECT * FROM entradas WHERE idEntradas =".$row['entradas_idEntradas'];
+								$resultado3 = mysqli_query($conexion,$sql3);
+								$row2 = $resultado3->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row2['idEntradas']."'>".$row2['idEntradas']."</option>";
+
+								$sql4 = "SELECT * FROM entradas";
+								$resultado4 = mysqli_query($conexion,$sql4);
+								while ($fila = $resultado4->fetch_array()) {
+									echo "<option value='".$fila['idEntradas']."'>".$fila['idEntradas']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activa"<?php if ($row['estadoEntrada']=='Activa')echo 'selected'; ?>>Activo</option>
+									<option value="Inactiva"<?php if ($row['estadoEntrada']=='Inactiva')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div> 
+						<input type="submit" name="" value="Editar" class="btn btn-primary">
                             
 					</form>
-<a href="/layaout/salidas.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="/layaout/salidas.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+					<a href="entradas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
 
 </form>
@@ -292,3 +343,4 @@
 	<script src="vendors/scripts/layout-settings.js"></script>
 </body>
 </html>
+

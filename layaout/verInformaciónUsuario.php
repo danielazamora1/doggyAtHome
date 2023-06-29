@@ -346,8 +346,8 @@
 							<div class="col-sm-12 col-md-10">
 								<select disabled class="custom-select col-12">
 									<option selected="">Selecciona</option>
-									<option value="Activo"<?php if ($row['estadoUsuario']=='Activo')echo 'selected'; ?>>Activo</option>
-									<option value="Inactivo"<?php if ($row['estadoUsuario']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+									<option value="Activo"<?php if ($row['estadoEntrada']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoEntrada']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
 								</select>
 							</div>
 						</div>   
