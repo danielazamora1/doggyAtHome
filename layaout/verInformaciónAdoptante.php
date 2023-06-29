@@ -1,3 +1,12 @@
+<?php  
+	require 'conexion.php';
+
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM adoptante WHERE idAdoptante = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -235,7 +244,7 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="adoptantes.html">Adoptantes</a></li>
+									<li class="breadcrumb-item"><a href="adoptantes.php">Adoptantes</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Consultar adoptante</li>
 								</ol>
 							</nav>
@@ -254,71 +263,87 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Pedro">
+								<input disabled class="form-control" type="text" id="nombresAdoptante" name="nombresAdoptante" placeholder="Nombres" value="<?php echo $row['nombresAdoptante'];?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Apellidos</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="sarmiento">
+								<input disabled class="form-control" type="text" id="apellidosAdoptante" name="apellidosAdoptante" placeholder="Apellidos" value="<?php echo $row['apellidosAdoptante'];?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Tipo Documento</label>
 							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
+								<select disabled class="custom-select col-12" id="tipoDocumento" name="tipoDocumento">
 									<option selected="">Selecciona</option>
-									<option value="1">CC</option>
-									<option value="2">TI</option>
-									<option value="3">CE</option>
+									<option value="CC" <?php if ($row['tipoDocumento']=='CC')echo 'selected'; ?>>CC</option>
+									<option value="TI" <?php if ($row['tipoDocumento']=='TI')echo 'selected'; ?>>TI</option>
+									<option value="CE" <?php if ($row['tipoDocumento']=='CE')echo 'selected'; ?>>CE</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Documento</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="sarmiento">
+								<input disabled class="form-control" type="text" id="documento" name="documento" value="<?php echo $row['documento'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Usuario</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="sarmiento">
+								<input disabled class="form-control" type="text" id="usuario" name="usuario" value="<?php echo $row['usuario']; ?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Contraseña</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="password" placeholder="sarmiento">
+								<input disabled class="form-control" type="password" id="contraseña" name="contraseña" value="<?php echo $row['contraseña'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Confirmar contraseña</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="password" id="confirmarContraseña" name="confirmarContraseña" value="<?php echo $row['confirmarContraseña'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Celular</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="10 meses">
+								<input disabled class="form-control" id="celular" name="celular" value="<?php echo $row['celular'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Ciudad</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
+								<input disabled class="form-control" type="text" id="ciudad" name="ciudad" value="<?php echo $row['ciudad'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
+								<input disabled class="form-control" type="text" id="direccion" name="direccion" value="<?php echo $row['direccion'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Correo</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
+								<input disabled class="form-control" type="text" id="correo" name="correo" value="<?php echo $row['correo']; ?>"required>
 							</div>
 						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoAdoptante']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoAdoptante']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div> 
                             
 					</form>
-<a href="editarAdoptante.html"><button class="btn btn-primary">Editar</button></a>
+<a href="editarAdoptante.php"><button class="btn btn-primary">Editar</button></a>
 
 
 

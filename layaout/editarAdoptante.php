@@ -1,10 +1,18 @@
+<?php  
+	require 'conexion.php';
 
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM adoptante WHERE idAdoptante = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inhabilitar adoptante</title>
+	<title>Editar adoptante</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/usuario.png">
@@ -231,31 +239,116 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Inhabilitar adoptante</h4>
+								<h4>Editar información de adoptante</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="adoptantes.html">Adoptantes</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Inhabilitar adoptante</li>
+									<li class="breadcrumb-item"><a href="adoptantes.php">Adoptantes</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Editar adoptante</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
-					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
-						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar a este adoptante?</h5>
-							<div class="max-width-200 mx-auto">
-								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Editar adoptante</h4><br>
+						</div>
+						
+					</div>
+					<form action="actualizarAdoptante.php" method="post">
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idAdoptante']; ?>"/>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="text" id="nombresAdoptante" name="nombresAdoptante" placeholder="Nombres" value="<?php echo $row['nombresAdoptante'];?>" required>
 							</div>
 						</div>
-					</div>
-				</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Apellidos</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="text" id="apellidosAdoptante" name="apellidosAdoptante" placeholder="Apellidos" value="<?php echo $row['apellidosAdoptante'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Tipo Documento</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12" id="tipoDocumento" name="tipoDocumento">
+									<option selected="">Selecciona</option>
+									<option value="CC" <?php if ($row['tipoDocumento']=='CC')echo 'selected'; ?>>CC</option>
+									<option value="TI" <?php if ($row['tipoDocumento']=='TI')echo 'selected'; ?>>TI</option>
+									<option value="CE" <?php if ($row['tipoDocumento']=='CE')echo 'selected'; ?>>CE</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Documento</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" id="documento" name="documento" value="<?php echo $row['documento'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="text" id="usuario" name="usuario" value="<?php echo $row['usuario']; ?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Contraseña</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="password" id="contraseña" name="contraseña" value="<?php echo $row['contraseña'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Confirmar contraseña</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="password" id="confirmarContraseña" name="confirmarContraseña" value="<?php echo $row['confirmarContraseña'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Celular</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" id="celular" name="celular" value="<?php echo $row['celular'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Ciudad</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="text" id="ciudad" name="ciudad" value="<?php echo $row['ciudad'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="text" id="direccion" name="direccion" value="<?php echo $row['direccion'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Correo</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="text" id="correo" name="correo" value="<?php echo $row['correo']; ?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoAdoptante']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoAdoptante']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div> 
+                    <input type="submit" name="" value="Editar" class="btn btn-primary">
+					</form>
+					<a href="adoptantes.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
-				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
+				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
 			</div>
 		</div>
 	</div>
@@ -264,7 +357,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
-	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

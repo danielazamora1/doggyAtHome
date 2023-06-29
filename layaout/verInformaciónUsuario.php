@@ -352,7 +352,7 @@
 							</div>
 						</div>   
 					</form>
-<a href="editarUsuarios.html"><button class="btn btn-primary">Editar</button></a>
+<a href="editarUsuarios.php"><button class="btn btn-primary">Editar</button></a>
 
 
 

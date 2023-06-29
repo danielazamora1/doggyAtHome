@@ -247,6 +247,7 @@
 					<div class="pd-20">
 						<h4 class="text-blue h4">Listado de adoptantes</h4><br>
 						<a href="registroAdoptante.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo adoptante </button></a><br>
+						
 
 					</div>
 					
@@ -267,6 +268,7 @@
 									<th>Celular</th>
 									<th>Dirección</th>
 									<th>Correo</th>
+									<th>Estado</th>
 									<th class="datatable-nosort">Acción</th>
 			
 								</tr>
@@ -282,15 +284,16 @@
 									<td><?php echo $row['celular'];?></td>
 									<td><?php echo $row['direccion'];?></td>
 									<td><?php echo $row['correo'];?></td>
+									<td><?php echo $row['estadoAdoptante'];?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="verInformaciónAdoptante.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="editarAdoptante.html"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarAdoptante.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
+												<a class="dropdown-item" href="verInformaciónAdoptante.php? id= <?php echo $row['idAdoptante']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="editarAdoptante.php? id= <?php echo $row['idAdoptante']; ?>"><i class="dw dw-edit2"></i>Editar</a>
+												<a class="dropdown-item" href="inhabilitarAdoptante.php? id= <?php echo $row['idAdoptante']; ?>"><i class="dw dw-delete-3"></i>Inhabilitar</a>
 											</div>
 										</div>
 									</td>

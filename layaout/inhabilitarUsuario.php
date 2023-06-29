@@ -4,6 +4,7 @@
 	$sql = "UPDATE usuario SET estadoUsuario = 'Inactivo' WHERE idUsuario = '$id'";
 	$resultado = mysqli_query($conexion,$sql);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -220,7 +221,6 @@
 						<ul class="submenu">
 							<li><a href="consultarInventario.html">Consultar Inventario</a></li>
 							<li><a href="listaArticulos.html">Lista de articulos</a></li>
-							
 						</ul>
 					</li>
 				</ul>

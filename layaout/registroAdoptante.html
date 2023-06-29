@@ -236,7 +236,7 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="adoptantes.html">Usuarios</a></li>
+									<li class="breadcrumb-item"><a href="adoptantes.php">Usuarios</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Registro de nuevo adoptante</li>
 								</ol>
 							</nav>
@@ -251,23 +251,23 @@
 						</div>
 						
 					</div>
-					<form>
+					<form action="registrarAdoptante.php" method="post">
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Pedro">
+								<input class="form-control" type="text" placeholder="Sus nombres" name="nombresAdoptante">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Apellidos</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="sarmiento">
+								<input class="form-control" type="text" placeholder="Sus apellidos" name="apellidosAdoptante">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Tipo Documento</label>
 							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
+								<select class="custom-select col-12" name="tipoDocumento">
 									<option selected="">Selecciona</option>
 									<option value="1">CC</option>
 									<option value="2">TI</option>
@@ -278,65 +278,55 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Documento</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="sarmiento">
+								<input class="form-control" type="text" placeholder="documento" name="documento">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Usuario</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="sarmiento">
+								<input class="form-control" type="text" placeholder="usuario" name="usuario">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Contraseña</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="password" placeholder="sarmiento">
+								<input class="form-control" type="password" placeholder="contraseña" name="contraseña">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Repetir contraseña</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="password" placeholder="sarmiento">
+								<input class="form-control" type="password" placeholder="Repetir contraseña" name="confirmarContraseña">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Celular</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10 meses">
+								<input class="form-control" type="text" placeholder="celular" name="celular">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Ciudad</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
+								<input class="form-control" type="text" placeholder="ciudad" name="ciudad">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
+								<input class="form-control" type="text" placeholder="direccion" name="direccion">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Correo</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
+								<input class="form-control" type="text" placeholder="correo" name="correo">
 							</div>
 						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Rol</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Administrador</option>
-									<option value="2">Veterinario</option>
-								</select>
-							</div>
-						</div>
-                            
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
 					</form>
-<a href="adoptantes.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="adoptantes.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+					<br>
+<a href="adoptantes.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
 
 </form>

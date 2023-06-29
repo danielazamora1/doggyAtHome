@@ -1,10 +1,15 @@
-
+<?php  
+	include('conexion.php');
+	$id = $_GET['id'];
+	$sql = "UPDATE adoptante SET estadoAdoptante = 'Inactivo' WHERE idAdoptante = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Editar adoptante</title>
+	<title>Inhabilitar adoptante</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/usuario.png">
@@ -231,100 +236,32 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Editar información de adoptante</h4>
+								<h4>Inhabilitar adoptante</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="adoptantes.html">Adoptantes</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Editar adoptante</li>
+									<li class="breadcrumb-item"><a href="adoptantes.php">Adoptantes</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Inhabilitar adoptante</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Editar adoptante</h4><br>
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
+					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
+						<div class="pd-20 card-box text-center height-100-p">
+							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar a este adoptante?</h5>
+							<div class="max-width-200 mx-auto">
+								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+							</div>
 						</div>
-						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombres</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Pedro">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Apellidos</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="sarmiento">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tipo Documento</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">CC</option>
-									<option value="2">TI</option>
-									<option value="3">CE</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Documento</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="sarmiento">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Usuario</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="sarmiento">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Contraseña</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="password" placeholder="sarmiento">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Celular</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10 meses">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Ciudad</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Correo</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-					</form>
-				<a href="adoptantes.html"><button class="btn btn-primary">Guardar</button></a>
-				<a href="adoptantes.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
-			</form>
-				<!-- Input Validation End -->
+				</div>
+				<a href="adoptantes.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</button>
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
-				DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
 			</div>
 		</div>
 	</div>
@@ -333,5 +270,7 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

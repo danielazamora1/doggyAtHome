@@ -1,8 +1,8 @@
 <br><?php 
 	include('conexion.php');
 
-	$nombres = $_POST['nombres'];
-	$apellidos = $_POST['apellidos'];
+	$nombresAdoptante = $_POST['nombresAdoptante'];
+	$apellidosAdoptante = $_POST['apellidosAdoptante'];
 	$tipoDocumento = $_POST['tipoDocumento'];
 	$documento = $_POST['documento'];
 	$usuario = $_POST['usuario'];
@@ -12,24 +12,23 @@
 	$ciudad = $_POST['ciudad'];
 	$direccion = $_POST['direccion'];
 	$correo = $_POST['correo'];
-	$rol = $_POST['rol'];
 
-	if ($nombres !=null || $apellidos !=null || $tipoDocumento !=null || $documento !=null || $usuario !=null || 
+	if ($nombresAdoptante !=null || $apellidosAdoptante !=null || $tipoDocumento !=null || $documento !=null || $usuario !=null || 
 		$contraseña !=null || $confirmarContraseña !=null || $celular !=null || 
-		$ciudad !=null || $direccion !=null  || $correo !=null || $rol !=null   ||$contraseña==$confirmarContraseña) {
-		$consulta = "INSERT INTO usuario (nombres, apellidos, tipoDocumento, documento, usuario, 
-		contraseña, confirmarContraseña, celular, ciudad, direccion, correo, rol_idRol) values ('$nombres', '$apellidos', 
+		$ciudad !=null || $direccion !=null  || $correo !=null ||$contraseña==$confirmarContraseña) {
+		$consulta = "INSERT INTO adoptante (nombresAdoptante, apellidosAdoptante, tipoDocumento, documento, usuario, 
+		contraseña, confirmarContraseña, celular, ciudad, direccion, correo) values ('$nombresAdoptante', '$apellidosAdoptante', 
 		'$tipoDocumento', '$documento', '$usuario', '$contraseña', '$confirmarContraseña', '$celular', 
-		'$ciudad', '$direccion', '$correo', '$rol')";
+		'$ciudad', '$direccion', '$correo')";
 
 	$resultado= mysqli_query($conexion,$consulta);
-	header("location:usuarios.php");
+	header("location:adoptantes.php");
 	mysqli_free_result($resultado);
 	?>
 	<h1>Registro guardado</h1>
 	<?php
 	} else{
-		include("registroUsuario.html");
+		include("registroAdoptante.html");
 		?>
 		
 		<?php

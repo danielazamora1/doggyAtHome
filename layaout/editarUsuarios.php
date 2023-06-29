@@ -7,6 +7,7 @@
 	$resultado = mysqli_query($conexion,$sql);
 	$row = $resultado->fetch_array(MYSQLI_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
