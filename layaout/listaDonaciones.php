@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Entradas</title>
+	<title>Donaciones</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/editarEntradas.png">
+	<link rel="website icon" href="vendors/images/listaDonaciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,79 +231,68 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h2>Entradas</h2>
+								<h4>Donaciones</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="consultarInventario.php">Inventario</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Entradas</li>
+									<li class="breadcrumb-item active" aria-current="page">Donaciones</li>
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-							
-							
-						</div>
 					</div>
 				</div>
+				
+				<!-- Export Datatable start -->
 				<div class="card-box mb-30">
 					<div class="pd-20">
-						<h4 class="text-blue h4">Listado</h4><br>
-						<a href="interfazRegistrarEntrada.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar una entrada </button></a><br>
+						<h4 class="text-blue h4">Donaciones</h4><br>
+						<a href="registroDonacion.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva donación </button></a><br>
 						
 					</div>
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM articulos
-									INNER JOIN entradas_articulos
-									ON entradas_articulos.`articulos_idArticulos`=articulos.`idArticulos`
-									INNER JOIN entradas
-									ON entradas.`idEntradas`=entradas_articulos.`entradas_idEntradas`";
+						$consulta = "SELECT * FROM v_donaciones";
 						$resultado = mysqli_query($conexion,$consulta);
-					?>		
-					
-					<div class="pd-20">
-					</div>
+					?>
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap">
 							<thead>
 								<tr>
-									<th class="table-plus datatable-nosort">Id</th>
-									<th>Articulo</th>
+									<th class="table-plus datatable-nosort">id</th>
+									<th>Tipo donación</th>
+									<th>Usuario</th>
 									<th>Referencia</th>
-									<th>cantidad</th>
+									<th>Cantidad</th>
 									<th>Fecha</th>
 									<th>Estado</th>
-									<th class="datatable-nosort">Acciones</th>
+
+									<th class="datatable-nosort">Acción</th>
+			
 								</tr>
 							</thead>
 							<tbody>
 								<?php  while ($row = mysqli_fetch_assoc($resultado)) {
 								?>
 								<tr>
-									<td class="table-plus"><?php echo $row['idEntradasArticulos'];?></td>
-									<td><?php echo $row['nombreArticulo'];?></td>
-									<td><?php echo $row['referenciaArticulo'];?></td>
-									<td><?php echo $row['cantidadEntrada'];?></td>
-									<td><?php echo $row['fechaEntrada'];?></td>
-									<td><?php echo $row['estadoEntrada'];?></td>
+									<td class="table-plus"><?php echo $row['idDonaciones'];?></td>
+									<td><?php echo $row['nombreTipoDonacion'];?></td>
+									<td><?php echo $row['usuario'];?></td>
+									<td><?php echo $row['referencia'];?></td>
+									<td><?php echo $row['cantidadDonacion'];?></td>
+									<td><?php echo $row['fechaDonacion'];?></td>
+									<td><?php echo $row['estadoDonacion'];?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="verEntradas.php? id= <?php echo $row['idEntradasArticulos']; ?>"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="interfazEditarEntrada.php? id= <?php echo $row['idEntradasArticulos']; ?>"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="inhabilitarEntrada.php? id= <?php echo $row['idEntradasArticulos']; ?>"><i class="dw dw-delete-3"></i> Eliminar</a>
-												</div>
-												</div>
+												<a class="dropdown-item" href="? id= <?php echo $row['idEntradasArticulos']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="editarDonacion.html"><i class="dw dw-edit2"></i>Editar</a>
+												<a class="dropdown-item" href="inhabilitarDonacion.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
 											</div>
-										</div>
-									</td>
-								</tr>
 										</div>
 									</td>
 								</tr>
@@ -312,26 +301,30 @@
 						</table>
 					</div>
 				</div>
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
-				</div>
-<!-- js -->
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
-<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-<!-- buttons for Export datatable -->
-<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-<!-- Datatable Setting js -->
-<script src="vendors/scripts/datatable-setting.js"></script></body>
+				<!-- Export Datatable End -->
+			</div>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- buttons for Export datatable -->
+	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="vendors/scripts/datatable-setting.js"></script></body>
 </html>

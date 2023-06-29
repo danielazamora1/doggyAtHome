@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Consulta adopción</title>
+	<title>Editar lista adopciones</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/adopcion.png">
+	<link rel="website icon" href="vendors/images/listaAdopciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -32,6 +32,7 @@
 	</script>
 </head>
 <body>
+
 	<div class="header">
 		<div class="header-left">
 			<div class="menu-icon dw dw-menu"></div>
@@ -230,22 +231,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Ver registro</h4>
+								<h4>Editar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-<<<<<<< HEAD
-									<li class="breadcrumb-item"><a href="/layaout/index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaAdopciones.html">Listado adopciones</a></li>
-
-									<li class="breadcrumb-item active" aria-current="page">Ver</li>
-
-
-=======
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaAdopciones.html">Lista de adopciones</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Ver registro</li>
->>>>>>> 7c301a7 (Se agrega la categoria gestion de adoptantes, se realiza las interfaces de todo el CRUD para gestion de usuarios y de adoptantes, se aplica aside y header a las interfaces que hacian falta por modificar)
+									<li class="breadcrumb-item"><a href="/layaout/listaAdopciones.html">Mascotas</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Editar registro</li>
 								</ol>
 							</nav>
 						</div>
@@ -255,47 +247,82 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Ver registro </h4><br>
+							<h4 class="text-blue h4">Edita un registro </h4><br>
 						</div>
 						
 					</div>
-					<form>
+					<form action="actualizarAdopcion.php" method="post">
+						<?php 
+							include('conexion.php');
+
+							$sql = "SELECT * FROM adopciones WHERE idAdopciones =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idAdopciones']; ?>"/>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombre</label>
+
+							<label class="col-sm-12 col-md-2 col-form-label">fecha</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Lucas">
+								<input  class="form-control" type="datetime-local" id="fecha" name="fecha" value="<?php echo $row['fecha'];?>"required>
 							</div>
 						</div>
-						
-						
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Golden">
+								<select class="custom-select col-12" name="mascota">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM mascota WHERE idMascota =".$row['mascota_idMascota'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idMascota']."'>".$row1['nombre']."</option>";
+
+								$sql2 = "SELECT * FROM mascota";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idMascota']."'>".$fila['nombre']."</option>";
+								}
+
+								?>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Adoptante</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Juan Pablo">
+								<select class="custom-select col-12" name="adoptante">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM adoptante WHERE idAdoptante =".$row['adoptante_idAdoptante'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idAdoptante']."'>".$row1['usuario']."</option>";
+
+								$sql2 = "SELECT * FROM adoptante";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idAdoptante']."'>".$fila['usuario']."</option>";
+								}
+								?>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Dirección</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Estado de la adopción</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Calle 7">
+								<select  class="custom-select col-12" name="estado">
+									<option selected="">Selecciona</option>
+									<option value="Activa"<?php if ($row['estadoAdopcion']=='Activa')echo 'selected'; ?>>Activo</option>
+									<option value="Inactiva"<?php if ($row['estadoAdopcion']=='Inactiva')echo 'selected'; ?>>Inactivo</option>
+								</select>
 							</div>
-						</div>
-                            
+						</div> 
+                           <input type="submit" name="" value="Editar" class="btn btn-primary"> 
 					</form>
-<a href="/layaout/listaAdopciones.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="/layaout/listaAdopciones.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+					<a href="listaAdopciones.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
 
 </form>

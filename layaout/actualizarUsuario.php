@@ -16,6 +16,7 @@
 	$rol = $_POST['rol'];
 	$estadoUsuario = $_POST['estadoUsuario'];
 	
+	
 
 	if ($nombres !=null || $apellidos !=null || $tipoDocumento !=null || $documento !=null || $usuario !=null || 
 		$contraseña !=null || $confirmarContraseña !=null || $celular !=null || 

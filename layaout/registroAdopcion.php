@@ -1,13 +1,14 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Donaciones</title>
+	<title>Registrar adopción</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaDonaciones.png">
+	<link rel="website icon" href="vendors/images/adopcion.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,69 +232,101 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Donaciones</h4>
+								<h4>Nuevo registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Donaciones</li>
+									<li class="breadcrumb-item"><a href="listaAdopciones.php">Lista de adopciones</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Añadir nuevo registro</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				
-				<!-- Export Datatable start -->
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Donaciones</h4><br>
-						<a href="registroDonacion.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva donación </button></a><br>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Registra una nueva adopción</h4><br>
+					</div>
 						
 					</div>
-					
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">id</th>
-									<th>Tipo donación</th>
-									<th>Nombres</th>
-									<th>Articulo</th>
-									<th>Referencia</th>
-									<th>Cantidad</th>
-									<th>Fecha</th>
-									<th class="datatable-nosort">Acción</th>
-			
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>Dakota</td>
-									<td>20/5/2022</td>
-									<td>Carrera 6 sur</td>
-									<td>3124578200</td>
-									<td>Calle 40g sur</td>
-									<td>Administrador</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="verDonacion.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="editarDonacion.html"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarDonacion.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-							
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- Export Datatable End -->
+<<<<<<<< HEAD:layaout/interfazRegistroAdopcion.php
+					<form action="registrarSalida.php" method="post">
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="date" placeholder="" name="fecha">
+========
+					<form action="registrarAdopcion.php" method="post">
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="datetime-local" placeholder="Lucas" name="fecha">
+>>>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional):layaout/registroAdopcion.php
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="mascota">
+<<<<<<<< HEAD:layaout/interfazRegistroAdopcion.php
+
+========
+>>>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional):layaout/registroAdopcion.php
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM mascota");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idMascota']."'>".$resultado['nombre']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Perfil</label>
+							<div class="col-sm-12 col-md-10">
+<<<<<<<< HEAD:layaout/interfazRegistroAdopcion.php
+								<select class="custom-select col-12" name="estadoPerfilMascota">
+									<option selected="">Selecciona</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
+								</select>
+							</div>
+						</div>
+
+						
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
+					</form>
+========
+								<select class="custom-select col-12" name="adoptante">
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM adoptante");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idAdoptante']."'>".$resultado['usuario']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+                            <input type="submit" name="" value="registrar" class="btn btn-primary">
+					</form>
+					<a href="listaAdopciones.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+
+>>>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional):layaout/registroAdopcion.php
+
+
+</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -305,18 +338,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<!-- buttons for Export datatable -->
-	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-	<!-- Datatable Setting js -->
-	<script src="vendors/scripts/datatable-setting.js"></script></body>
+</body>
 </html>

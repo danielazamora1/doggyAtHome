@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
 	<title>Consultar entrada</title>
