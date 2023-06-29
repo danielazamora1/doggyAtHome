@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inventario</title>
+	<title>Articulos</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listadoArticulos.png">
+	<link rel="website icon" href="vendors/images/editarEntradas.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,71 +231,79 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h2>Inventario</h2>
+								<h2>Articulos</h2>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="consultarInventario.html">Listado inventario</a></li>
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+
+									<li class="breadcrumb-item active" aria-current="page">Articulos</li>
 								</ol>
 							</nav>
 						</div>
 						<div class="col-md-6 col-sm-12 text-right">
 							
-							<div class="dropdown">
-								<a class="btn btn-primary" href="entradas.html" role="button" data-toggle="">
-									Entradas Articulos
-								</a>
-								<a class="btn btn-primary" href="/layaout/salidas.html" role="button" data-toggle="">
-									Salidas Articulos
-								</a>
-							</div>
+							
 						</div>
-						
 					</div>
 				</div>
 				<div class="card-box mb-30">
 					<div class="pd-20">
+						<h4 class="text-blue h4">Listado</h4><br>
+						<a href="registrarArticulo.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar un nuevo articulo </button></a>
+
 					</div>
+					<?php  
+						include('conexion.php');
+
+						$consulta = "SELECT * FROM articulos";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>	
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap">
 							<thead>
 								<tr>
 									<th class="table-plus datatable-nosort">Id</th>
-									<th>Articulo</th>
+									<th>Nombre Articulo</th>
 									<th>Descripcion</th>
 									<th>Referencia</th>
-									<th>Stock</th>
+									<th>Estado</th>
+									
+									<th class="datatable-nosort">Acciones</th>
 								</tr>
 							</thead>
 							<tbody>
+								<?php  while ($row = mysqli_fetch_assoc($resultado)) {
+								?>
 								<tr>
-									<td class="table-plus">1</td>
-									<td>Comida</td>
-									<td>Chunky pollo 8 kilos</td>
-									<td>CH01</td>
-									<td>3</td>
-									
-								</tr>
+									<td class="table-plus"><?php echo $row['idArticulos'];?></td>
+									<td><?php echo $row['nombreArticulo'];?></td>
+									<td><?php echo $row['descripcionArticulo'];?></td>
+									<td><?php echo $row['referenciaArticulo'];?></td>
+									<td><?php echo $row['estadoArticulo'];?></td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="verArticulo.php? id= <?php echo $row['idArticulos']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="editarArticulo.php? id= <?php echo $row['idArticulos']; ?>"><i class="dw dw-edit2"></i> Editar</a>
+												<a class="dropdown-item" href="inhabilitarArticulo.php? id= <?php echo $row['idArticulos']; ?>"><i class="dw dw-delete-3"></i> Eliminar</a>
+												</div>
+												</div>
+											</div>
 										</div>
 									</td>
 								</tr>
+								<?php } mysqli_close($conexion);?>
 							</tbody>
 						</table>
 					</div>
 				</div>
-
-			<div class="footer-wrap pd-20 mb-20 card-box">
-				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
-			</div>
-		</div>
-	</div>
-	<!-- js -->
-	<script src="vendors/scripts/core.js"></script>
-	<script src="vendors/scripts/script.min.js"></script>
-	<script src="vendors/scripts/process.js"></script>
-	<script src="vendors/scripts/layout-settings.js"></script>
-</body>
-
+				<div class="footer-wrap pd-20 mb-20 card-box">
+					Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
+				</div>
 <!-- js -->
 <script src="vendors/scripts/core.js"></script>
 <script src="vendors/scripts/script.min.js"></script>
@@ -315,5 +323,4 @@
 <script src="src/plugins/datatables/js/vfs_fonts.js"></script>
 <!-- Datatable Setting js -->
 <script src="vendors/scripts/datatable-setting.js"></script></body>
->>>>>>> ab6eae3 (se modifico inventario)
 </html>

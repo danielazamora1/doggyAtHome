@@ -235,7 +235,9 @@
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="listaArticulos.html">Lista Articulos</a></li>
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="listaArticulos.php">Lista de articulos</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Registrar nuevo articulo</li>
 
 									<li class="breadcrumb-item active" aria-current="page">Nuevo registro</li>
 								</ol>
@@ -251,48 +253,35 @@
 						</div>
 						
 					</div>
-					<form>
+					<form action="registrarArticulo.php" method="post">
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Nombre Articulo</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
+								<input class="form-control" type="text" placeholder="Nombre del articulo" name="nombreArticulo">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Descripción</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
+								<input class="form-control" type="text" placeholder="Descripción" name="descripcionArticulo">
 							</div>
 						</div>
-                        
-                        <div class="form-group row align-items-center">
-                            <label class="col-sm-4 col-form-label">Estado</label>
-                            <div class="col-sm-8">
-                                <div class="custom-control custom-radio custom-control-inline pb-0">
-                                    <input type="radio" id="activo" name="gender" class="custom-control-input">
-                                    <label class="custom-control-label" for="activo">Activo</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline pb-0">
-                                    <input type="radio" id="inactivo" name="gender" class="custom-control-input">
-                                    <label class="custom-control-label" for="inactivo">Inactivo</label>
-                                </div>
-                                
-                            </div>
-                        </div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="Referencia" name="referenciaArticulo">
+							</div>
+						</div>
                         <div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Stock</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
+								<input class="form-control" type="text" placeholder="stock" name="stock">
 							</div>
 						</div>
-                        <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
 					</form>
-<a href="/layaout/listaArticulos.html"><button class="btn btn-primary">Agregar</button></a>
+					<br>
+					<a href="listaArticulos.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
 
 </form>

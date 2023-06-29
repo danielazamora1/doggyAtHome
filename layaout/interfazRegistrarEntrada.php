@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inhabilitar Registro</title>
+	<title>Registrar articulo</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaDonaciones.png">
+	<link rel="website icon" href="vendors/images/listadoArticulos.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,29 +231,70 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Inhabilitar registro</h4>
+								<h4>Agregar un nuevo articulo</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaArticulos.html">Lista Articulos</a></li>
-
-									<li class="breadcrumb-item active" aria-current="page">Inhabilitar registro</li>
+									<li class="breadcrumb-item"><a href="index.html">Inventario</a></li>
+									<li class="breadcrumb-item"><a href="consultarInventario.php">Inventario</a></li>
+									<li class="breadcrumb-item"><a href="entradas.php">Entradas</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Nuevo registro</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
-					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
-						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
-							<div class="max-width-200 mx-auto">
-								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h3></h3><br>
+						</div>
+						
+					</div>
+					<form>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="date" name="fechaEntrada" placeholder="08/10/2023">
 							</div>
 						</div>
-					</div>
-				</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="" name="cantidadEntrada">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Articulos</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="articulos">
+								<?php  
+
+								require 'conexion.php';
+
+								$consulta="SELECT * FROM articulos";
+								$resultado = mysqli_query($conexion,$consulta);
+
+								?>
+				
+								<?php foreach ($resultado as $opciones): ?>
+
+								<option value="<?php echo $opciones['nombreArticulo'];?>"><?php echo $opciones['nombreArticulo'];?></option>
+					
+								<?php endforeach ?>
+									
+								</select>
+							</div>
+						</div>
+						
+                        
+					</form>
+<a href="/layaout/entradas.html"><button class="btn btn-primary">Agregar</button></a>
+
+
+</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -265,7 +306,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
-	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

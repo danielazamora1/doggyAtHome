@@ -1,10 +1,18 @@
+<?php  
+	require 'conexion.php';
 
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM articulos WHERE idArticulos = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Entradas</title>
+	<title>Editar Articulo</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/editarEntradas.png">
@@ -231,90 +239,77 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h2>Entradas</h2>
+								<h4>Editar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/consultarInventario.html">Inventario</a></li>
+									<li class="breadcrumb-item"><a href="listaArticulos.html">Lista articulos</a></li>
 
-									<li class="breadcrumb-item active" aria-current="page">Entradas</li>
+									<li class="breadcrumb-item active" aria-current="page">Editar registro</li>
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-							
-							
+					</div>
+				</div>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Edita registro </h4><br>
 						</div>
+						
 					</div>
-				</div>
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Listado</h4><br>
-						<a href="/layaout/nuevoArticuloEntradas.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar un nuevo articulo </button></a><br>
+					<form action="actualizarArticulo.php" method="post">
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idArticulos']; ?>"/>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Nombre Articulo</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" id="nombreArticulo" name="nombreArticulo" placeholder="Nombre del articulo" value="<?php echo $row['nombreArticulo'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Descripcion</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" id="descripcionArticulo" name="descripcionArticulo" placeholder="Descripcion" value="<?php echo $row['descripcionArticulo'];?>" required>
+							</div>
+						</div>
 
-					</div>
-					<div class="pd-20">
-					</div>
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">Id</th>
-									<th>Referencia</th>
-									<th>Cantidad</th>
-									<th>Fecha</th>
-									<th class="datatable-nosort">Acciones</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>PLA01</td>
-									<td>30</td>
-									<td>29-03-2018</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="/layaout/verArticulosEntradas.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="/layaout/editarEntradasArticulos.html"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="/layaout/eliminarEntradaArticulos.html"><i class="dw dw-delete-3"></i> Eliminar</a>
-												</div>
-												</div>
-											</div>
-										</div>
-									</td>
-								</tr>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
-				</div>
-<!-- js -->
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
-<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-<!-- buttons for Export datatable -->
-<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-<!-- Datatable Setting js -->
-<script src="vendors/scripts/datatable-setting.js"></script></body>
+                        <div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" id="referenciaArticulo" name="referenciaArticulo" placeholder="Referencia" value="<?php echo $row['referenciaArticulo'];?>" required>
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Stock</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" id="stock" name="stock" placeholder="Stock" value="<?php echo $row['stock'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del articulo</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="estadoArticulo">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoArticulo']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoArticulo']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div>
+                    <input type="submit" name="" value="Editar" class="btn btn-primary">
+					</form>
+					<a href="adoptantes.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+				<!-- Input Validation End -->
+			</div>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+</body>
 </html>

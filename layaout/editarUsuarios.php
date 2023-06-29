@@ -353,7 +353,8 @@
 									<option value="Inactivo"<?php if ($row['estadoUsuario']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
 								</select>
 							</div>
-						</div>   
+						</div>
+						   
 						<input type="submit" name="" value="Editar" class="btn btn-primary">
 					</form>
 				<a href="/layaout/usuarios.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>

@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Editar Articulo</title>
+	<title>Inventario</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/editarEntradas.png">
+	<link rel="website icon" href="vendors/images/listadoArticulos.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,75 +231,81 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Editar registro</h4>
+								<h2>Inventario</h2>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="listaArticulos.html">Lista articulos</a></li>
-
-									<li class="breadcrumb-item active" aria-current="page">Editar registro</li>
+									<li class="breadcrumb-item"><a href="consultarInventario.html">Listado inventario</a></li>
 								</ol>
 							</nav>
 						</div>
-					</div>
-				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Edita registro </h4><br>
+						<div class="col-md-6 col-sm-12 text-right">
+							
+							<div class="dropdown">
+								<a class="btn btn-primary" href="entradas.php" role="button" data-toggle="">
+									Entradas Articulos
+								</a>
+								<a class="btn btn-primary" href="/layaout/salidas.html" role="button" data-toggle="">
+									Salidas Articulos
+								</a>
+							</div>
 						</div>
 						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombre Articulo</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Comida chunky">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Descripcion</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Pollo de 8 kilos">
-							</div>
-						</div>
-                        <div class="form-group row align-items-center">
-                            <label class="col-sm-4 col-form-label">Estado</label>
-                            <div class="col-sm-8">
-                                <div class="custom-control custom-radio custom-control-inline pb-0">
-                                    <input type="radio" id="activo" name="gender" class="custom-control-input">
-                                    <label class="custom-control-label" for="activo">Activo</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline pb-0">
-                                    <input type="radio" id="inactivo" name="gender" class="custom-control-input">
-                                    <label class="custom-control-label" for="inactivo">Inactivo</label>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="CH01">
-							</div>
-						</div>
-                        <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Stock</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10">
-							</div>
-						</div>
-						</div>
-                            
-					</form>
-<a href="/layaout/listaArticulos.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="/layaout/listaArticulos.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a><br><br>
+				</div>
+				<div class="card-box mb-30">
+					<div class="pd-20">
+					</div>
+					<?php  
+						include('conexion.php');
 
+						$consulta = "SELECT * FROM articulos";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>	
+					<div class="card-box mb-30">
+					<div class="pd-20">
+						<h4 class="text-blue h4">Inventario</h4><br>
+						
 
-</form>
-				<!-- Input Validation End -->
-			</div>
+					</div>
+					
+					<?php  
+						include('conexion.php');
+
+						$consulta = "SELECT * FROM articulos";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>
+					<div class="pb-20">
+						<table class="table hover multiple-select-row data-table-export nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">Id</th>
+									<th>Nombre Articulo</th>
+									<th>Descripcion</th>
+									<th>Referencia</th>
+									<th >Stock</th>
+									
+									<th class="datatable-nosort">Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php  while ($row = mysqli_fetch_assoc($resultado)) {
+								?>
+								<tr>
+									<td class="table-plus"><?php echo $row['idArticulos'];?></td>
+									<td><?php echo $row['nombreArticulo'];?></td>
+									<td><?php echo $row['descripcionArticulo'];?></td>
+									<td><?php echo $row['referenciaArticulo'];?></td>
+									<td><?php echo $row['stock'];?></td>
+									<td>Sin acciones</td>
+								</tr>
+								<?php } mysqli_close($conexion);?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				</div>
+
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
 			</div>
@@ -311,4 +317,24 @@
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
 </body>
+
+<!-- js -->
+<script src="vendors/scripts/core.js"></script>
+<script src="vendors/scripts/script.min.js"></script>
+<script src="vendors/scripts/process.js"></script>
+<script src="vendors/scripts/layout-settings.js"></script>
+<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<!-- buttons for Export datatable -->
+<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+<!-- Datatable Setting js -->
+<script src="vendors/scripts/datatable-setting.js"></script></body>
 </html>

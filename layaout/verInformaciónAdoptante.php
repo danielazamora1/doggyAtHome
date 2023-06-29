@@ -332,7 +332,7 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del adoptante</label>
 							<div class="col-sm-12 col-md-10">
 								<select disabled class="custom-select col-12">
 									<option selected="">Selecciona</option>
@@ -343,7 +343,7 @@
 						</div> 
                             
 					</form>
-<a href="editarAdoptante.php"><button class="btn btn-primary">Editar</button></a>
+<a href="adoptantes.php"><button class="btn btn-primary">Volver</button></a>
 
 
 

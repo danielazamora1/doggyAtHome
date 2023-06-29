@@ -4,6 +4,7 @@
 	$sql = "UPDATE adoptante SET estadoAdoptante = 'Inactivo' WHERE idAdoptante = '$id'";
 	$resultado = mysqli_query($conexion,$sql);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,10 +1,19 @@
+<?php  
+	require 'conexion.php';
+
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM articulos WHERE idArticulos = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Articulos</title>
+	<title>Consultar Articulo</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/editarEntradas.png">
@@ -231,91 +240,79 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h2>Articulos</h2>
+								<h4>Consultar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-
-									<li class="breadcrumb-item active" aria-current="page">Articulos</li>
+									<li class="breadcrumb-item"><a href="listaArticulos.php">Lista de articulos</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Consultar articulo</li>
 								</ol>
 							</nav>
 						</div>
-						<div class="col-md-6 col-sm-12 text-right">
-							
-							
+					</div>
+				</div>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Consultar registro </h4><br>
 						</div>
+						
 					</div>
-				</div>
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Listado</h4><br>
-						<a href="/layaout/registrarArticulo.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar un nuevo articulo </button></a>
+					<form>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Nombre Articulo</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="nombreArticulo" name="nombreArticulo" placeholder="Nombre del articulo" value="<?php echo $row['nombreArticulo'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Descripcion</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="descripcionArticulo" name="descripcionArticulo" placeholder="Descripcion" value="<?php echo $row['descripcionArticulo'];?>" required>
+							</div>
+						</div>
 
-					</div>
-					
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">Id</th>
-									<th>Nombre Articulo</th>
-									<th>Descripcion</th>
-									<th>Estado</th>
-									<th>Stock</th>
-									
-									<th class="datatable-nosort">Acciones</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>Comida chunky</td>
-									<td>Pollo de 8 kilos</td>
-									<td>CH01</td>
-									<td>10</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="/layaout/verArticulo.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="/layaout/editarArticulo.html"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="/layaout/eliminarArticulo.html"><i class="dw dw-delete-3"></i> Eliminar</a>
-												</div>
-												</div>
-											</div>
-										</div>
-									</td>
-								</tr>
-										</div>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
-				</div>
-<!-- js -->
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
-<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-<!-- buttons for Export datatable -->
-<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-<!-- Datatable Setting js -->
-<script src="vendors/scripts/datatable-setting.js"></script></body>
+                        <div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="referenciaArticulo" name="referenciaArticulo" placeholder="Referencia" value="<?php echo $row['referenciaArticulo'];?>" required>
+							</div>
+						</div>
+                        <div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Stock</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="stock" name="stock" placeholder="Stock" value="<?php echo $row['stock'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del articulo</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoArticulo']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoArticulo']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div>   
+                        
+					</form>
+<a href="listaArticulos.php"><button class="btn btn-primary">Volver</button></a>
+
+
+</form>
+				<!-- Input Validation End -->
+			</div>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+</body>
 </html>
