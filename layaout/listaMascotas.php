@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Historial medico</title>
+	<title>Lista Mascotas</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/historialMedico.png">
+	<link rel="website icon" href="vendors/images/listaAdopciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -192,7 +192,7 @@
 						<ul class="submenu">
 							<li><a href="listaAdopciones.html">Lista de adopciones</a></li>
 							<li><a href="mascota.html">Mascota</a></li>
-							<li><a href="listaMascotas.html">Lista Mascotas</a></li>
+                            <li><a href="listaMascotas.html">Lista Mascotas</a></li>
 							<li><a href="historialMedico.html">Historial Medico</a></li>
 							<li><a href="listaSolicitudes.html">Lista de solicitudes</a></li>
 							<li><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
@@ -231,12 +231,12 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Listado historial medico</h4>
+								<h4>Listado de perritos</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Historiales medicos</li>
+									<li class="breadcrumb-item active" aria-current="page">Listado perritos</li>
 								</ol>
 							</nav>
 						</div>
@@ -245,47 +245,65 @@
 				
 				<!-- Export Datatable start -->
 				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Listado</h4><br>
-						<a href="/layaout/registroHistorialMedico.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar un nuevo historial </button></a><br>
+				<div class="pd-20">
+						<h4 class="text-blue h4">Listado de adoptantes</h4><br>
+						<a href="registroPerrito.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo adoptante </button></a><br>
+						
 
 					</div>
+
+					<?php  
+						include('conexion.php');
+
+						$consulta = "SELECT * FROM mascota";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>	
 					
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap">
 							<thead>
 								<tr>
 									<th class="table-plus datatable-nosort">id</th>
-									<th>Nombre Mascota</th>
-									<th>Fecha</th>
-									<th>Veterinario</th>
-									
+									<th>Nombre</th>
+									<th>Caracteristicas</th>
+									<th>Estado</th>
+									<th>Sexo</th>
+									<th>Ingreso</th>
+									<th>Edad</th>
+									<th>Raza</th>
+									<th>Estado</th>
+
 									<th class="datatable-nosort">Acción</th>
 			
 								</tr>
 							</thead>
 							<tbody>
+								<?php  while ($row = mysqli_fetch_assoc($resultado)) {
+								?>
 								<tr>
-									<td class="table-plus">1</td>
-									<td>Dakota</td>
-									<td>20/5/2022</td>
-									
-									<td>Juan Pablo</td>
-									
-									
+									<td class="table-plus"><?php echo $row['idMascota'];?></td>
+									<td><?php echo $row['nombre'];?></td>
+									<td><?php echo $row['caracteristicas'];?></td>
+									<td><?php echo $row['estadoMascota'];?></td>
+									<td><?php echo $row['sexo'];?></td>
+									<td><?php echo $row['fechaIngreso'];?></td>
+									<td><?php echo $row['edad'];?></td>
+									<td><?php echo $row['raza'];?></td>
+									<td><?php echo $row['estadoPerfilMascota'];?></td>
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="/layaout/verHistorialMedico.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="/layaout/editarHistorialMedico.html"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="/layaout/eliminarHistorialMedico.html"><i class="dw dw-delete-3"></i>Eliminar</a>
+												<a class="dropdown-item" href="verRegistroPerrito.php? id= <?php echo $row['idMascota']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="editarRegistroPerrito.php? id= <?php echo $row['idMascota']; ?>"><i class="dw dw-edit2"></i>Editar</a>
+												<a class="dropdown-item" href="eliminarRegistroPerrito.php? id= <?php echo $row['idMascota']; ?>"><i class="dw dw-delete-3"></i>Inhabilitar</a>
 											</div>
 										</div>
 									</td>
 								</tr>
+								<?php } mysqli_close($conexion);?>
 							
 							</tbody>
 						</table>

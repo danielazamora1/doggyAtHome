@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inicio</title>
+	<title>Registrar adopción</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/logoLigth.png">
+	<link rel="website icon" href="vendors/images/adopcion.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -179,10 +179,10 @@
 							<span class="micon dw dw-library"></span><span class="mtext">Usuarios</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="usuarios.php">Gestión de usuarios</a></li>
+							<li><a href="usuarios.html">Gestión de usuarios</a></li>
 						</ul>
 						<ul class="submenu">
-							<li><a href="adoptantes.php">Gestión de adoptantes</a></li>
+							<li><a href="adoptantes.html">Gestión de adoptantes</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -190,9 +190,9 @@
 							<span class="micon dw dw-edit2"></span><span class="mtext">Adopciones</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="listaAdopciones.php">Lista de adopciones</a></li>
+							<li><a href="listaAdopciones.html">Lista de adopciones</a></li>
 							<li><a href="mascota.html">Mascota</a></li>
-							<li><a href="listaMascotas.html.php">Lista de mascota</a></li>
+							<li><a href="listaMascotas.html">Lista Mascotas</a></li>
 							<li><a href="historialMedico.html">Historial Medico</a></li>
 							<li><a href="listaSolicitudes.html">Lista de solicitudes</a></li>
 							<li><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
@@ -213,8 +213,8 @@
 							<span class="micon dw dw-apartment"></span><span class="mtext"> Inventario </span>
 						</a>
 						<ul class="submenu">
-							<li><a href="consultarInventario.php">Consultar Inventario</a></li>
-							<li><a href="listaArticulos.php">Lista de articulos</a></li>
+							<li><a href="consultarInventario.html">Consultar Inventario</a></li>
+							<li><a href="listaArticulos.html">Lista de articulos</a></li>
 							
 						</ul>
 					</li>
@@ -225,36 +225,76 @@
 	<div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
-		<div class="pd-ltr-20">
-			<div class="card-box pd-20 height-100-p mb-30">
-				<div class="row align-items-center">
-					<div class="col-md-4">
-						<img src="vendors/images/banner-img.png" alt="">
-					</div>
-					<div class="col-md-8">
-						<h4 class="font-20 weight-500 mb-10 text-capitalize">
-							Bienvenido de nuevo <div class="weight-600 font-30 text-blue"></div>
-						</h4>
-						<p class="font-18 max-width-600">Cuentanos que quieres hacer hoy</p>
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-200px">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="title">
+								<h4>Nuevo registro</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="/layaout/listaAdopciones.html">Lista de adopciones</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Añadir nuevo registro</li>
+								</ol>
+							</nav>
+						</div>
 					</div>
 				</div>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Registra una nueva adopción</h4><br>
+					</div>
+						
+					</div>
+					<form action="registrarSalida.php" method="post">
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="date" placeholder="" name="fecha">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="mascota">
+
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM mascota");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idMascota']."'>".$resultado['nombre']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Perfil</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="estadoPerfilMascota">
+									<option selected="">Selecciona</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
+								</select>
+							</div>
+						</div>
+
+						
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
+					</form>
+
+
+</form>
+				<!-- Input Validation End -->
 			</div>
-			
-			<div class="row">
-				<div class="col-xl-8 mb-30">
-					<div class="card-box height-100-p pd-20">
-						<h2 class="h4 mb-20">Historial de actividad</h2>
-						<div id="chart5"></div>
-					</div>
-				</div>
-				<div class="col-xl-4 mb-30">
-					<div class="card-box height-100-p pd-20">
-						<h2 class="h4 mb-20">Objetivo</h2>
-						<div id="chart6"></div>
-					</div>
-				</div>
-			</div>
-			
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
 			</div>
@@ -265,11 +305,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/apexcharts/apexcharts.min.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<script src="vendors/scripts/dashboard.js"></script>
 </body>
 </html>

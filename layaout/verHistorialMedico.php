@@ -1,13 +1,22 @@
+<?php  
+	require 'conexion.php';
+
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM historialmedico WHERE idHistorialMedico = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Registrar historial medico</title>
+	<title>Consultar Articulo</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaDonaciones.png">
+	<link rel="website icon" href="vendors/images/editarEntradas.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,13 +240,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Ver registro</h4>
+								<h4>Consultar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="historialMedico.html">Historial Medico</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Ver registro </li>
+									<li class="breadcrumb-item"><a href="listaArticulos.php">Lista de articulos</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Consultar articulo</li>
 								</ol>
 							</nav>
 						</div>
@@ -247,302 +256,59 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Datos Básicos</h4><br>
+							<h4 class="text-blue h4">Consultar registro </h4><br>
 						</div>
 						
 					</div>
 					<form>
+				
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="junio">
+								<input disabled class="form-control" type="date" id="fecha" name="fecha" placeholder="fecha" value="<?php echo $row['fecha'];?>">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Foto</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Diagnostico</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="file" placeholder="imagen">
+								<input disabled class="form-control" type="text" id="diagnostico" name="diagnostico" placeholder="diagnostico" value="<?php echo $row['diagnostico'];?>">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombre</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Lucas">
+								<input disabled class="form-control" type="text" id="nombre" name="nombre" placeholder="nombre" value="<?php echo $row['nombre'];?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Edad</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Responsable</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="8 meses">
+								<input disabled class="form-control" type="text" id="nombres" name="nombres" placeholder="nombres" value="<?php echo $row['nombres'];?>" required>
 							</div>
-						</div>
+						</div> 
+                        
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Historial</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Peso</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="20kg">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Genero</label>
-							<div  class="col-sm-12 col-md-10">
 								<select disabled class="custom-select col-12">
 									<option selected="">Selecciona</option>
-									<option value="1">Macho</option>
-									<option value="2">Hembra</option>
+									<option value="Activo"<?php if ($row['estadoHistorialMedico']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoHistorialMedico']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
 								</select>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Caracteristicas</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled  class="form-control" type="text" placeholder="Negro con manchas blancas">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha de nacimiento</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="2022">
-							</div>
-						</div>
-						
-                            
+						</div>   
+                        
 					</form>
-				</div>
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							
-							<h4 class="text-blue h4">Anamnesis</h4><br>
-						</div>
-						
-					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">¿Vacunado?</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Sí</option>
-									<option value="2">No</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Cuales</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Parvo</option>
-									<option value="2">Moquillo</option>
-									<option value="3">Rabia</option>
-								</select><br><br>
-								<input disabled class="form-control" type="text" placeholder="Otra">
+<a href="historialMedico.php"><button class="btn btn-primary">Volver</button></a>
 
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Enfermedades</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tratamientos pasados</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Alimentación</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Historia Reproductiva</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Esterilizado</option>
-									<option value="2">Entero</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Ultimo celo</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="Octubre 2022">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Ultimo parto</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="2022">
-							</div>
-						</div>
-										
-                            
-					</form>
-				</div>
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							
-							<h4 class="text-blue h4">Examen clinico</h4><br>
-						</div>
-						
-					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado general</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado de hidratación</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Ojos</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Oidos</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nariz</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sistema digestivo</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sistema respiratorio</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sistema nervioso </label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sistema cardiovascular</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-							
-                            
-					</form>
-				</div>
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Observaciones</h4><br>
-						</div>
-						
-					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Hallazgos</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Recomendaciones</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tratamiento</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						
-                            
-					</form>
-				</div>
-				<a href="historialMedico.html"><button class="btn btn-primary">Guardar</button></a>
-				<a href="historialMedico.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a><br><br>
 
+</form>
 				<!-- Input Validation End -->
-			
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
-				</div>
+			</div>
+			<div class="footer-wrap pd-20 mb-20 card-box">
+				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
 			</div>
 		</div>
-	
 	</div>
 	<!-- js -->
 	<script src="vendors/scripts/core.js"></script>

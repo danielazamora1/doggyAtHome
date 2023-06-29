@@ -247,64 +247,89 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Registra un nuevo perrito</h4><br>
+							<h4 class="text-blue h4">Registra un nuevo adoptante</h4><br>
 						</div>
 						
 					</div>
-					<form>
+					<form action="registroPerrito.php" method="post">
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Nombre</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Lucas">
+								<input class="form-control" type="text" placeholder="" name="nombre">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Caracteristicas</label>
+							<label class="col-sm-12 col-md-2 col-form-label">caracteristicas</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Dorado">
+								<input class="form-control" type="text" placeholder="" name="caracteristicas">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha Ingreso</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Mascota</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
+								<select class="custom-select col-12" name="estadoMascota">
+									<option selected="">Selecciona</option>
+									<option value="1">Para adoptar</option>
+									<option value="2">En tratamiento</option>
+									<option value="3">En revision</option>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Edad</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Sexo</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10 meses">
+								<select class="custom-select col-12" name="sexo">
+									<option selected="">Selecciona</option>
+									<option value="F">F</option>
+									<option value="M">M</option>
+					
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">fechaIngreso</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="date" placeholder="" name="fechaIngreso">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">edad</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="" name="edad">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">fotoMascota</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="file" placeholder="" name="fotoMascota">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-					
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sexo</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
+								<select class="custom-select col-12" name="raza">
 									<option selected="">Selecciona</option>
-									<option value="1">Hembra</option>
-									<option value="2">Macho</option>
-									
+									<option value="Pastor Aleman">Pastor Aleman</option>
+									<option value="Labrado">Labrador</option>
+									<option value="Criollo">Criollo Aleman</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Imagen</label>
+							<label class="col-sm-12 col-md-2 col-form-label">EstadoPerfil</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" accept="image/*" type="file" placeholder="png">
+								<select class="custom-select col-12" name="estadoPerfilMascota">
+									<option selected="">Selecciona</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
+									
+								</select>
 							</div>
 						</div>
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
 					</form>
-<a href="/layaout/listaMascotas.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="/layaout/listaMascotas.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
-
-
+					<br>
+<a href="listaMascotas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 </form>
 				<!-- Input Validation End -->
 			</div>

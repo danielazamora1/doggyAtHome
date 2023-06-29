@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Consulta perrito</title>
+	<title>Historial medico</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/mascota.png">
+	<link rel="website icon" href="vendors/images/historialMedico.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -193,7 +193,6 @@
 							<li><a href="listaAdopciones.html">Lista de adopciones</a></li>
 							<li><a href="mascota.html">Mascota</a></li>
 							<li><a href="listaMascotas.html">Lista Mascotas</a></li>
-
 							<li><a href="historialMedico.html">Historial Medico</a></li>
 							<li><a href="listaSolicitudes.html">Lista de solicitudes</a></li>
 							<li><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
@@ -232,83 +231,84 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Registro existente</h4>
+								<h4>Listado historial medico</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaMascotas.html">Listado</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Ver mascota</li>
+									<li class="breadcrumb-item active" aria-current="page">Historiales medicos</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Registro</h4><br>
-						</div>
-						
+				
+				<!-- Export Datatable start -->
+				<div class="card-box mb-30">
+					<div class="pd-20">
+						<h4 class="text-blue h4">Listado</h4><br>
+						<a href="/layaout/registroHistorialMedico.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar un nuevo historial </button></a><br>
+
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombre</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Lucas">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Caracteristicas</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Dorado">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha Ingreso</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Edad</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="10 meses">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-					
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sexo</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Hembra</option>
-									<option value="2">Macho</option>
-									
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Imagen</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="file" placeholder="">
-							</div>
-						</div>
-                            
-					</form>
-<a href="/layaout/listaMascotas.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="/layaout/listaMascotas.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+					<?php  
+						include('conexion.php');
 
+						$consulta = "SELECT * FROM mascota
+									INNER JOIN historialmedico
+									ON historialmedico.`mascota_idMascota`=mascota.`idMascota`
+		
+									INNER JOIN usuario
+									ON usuario.`idUsuario`= historialmedico.`usuario_idUsuario`";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>		
+					<div class="pd-20">
+					</div>
+					<div class="pb-20">
+						<table class="table hover multiple-select-row data-table-export nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">Id</th>
+									<th>Fecha</th>
+									<th>Diagnostico</th>
+									<th>Mascota</th>
+									<th>Responsable</th>
+									<th>Estado</th>
+									<th class="datatable-nosort">Acciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php  while ($row = mysqli_fetch_assoc($resultado)) {
+								?>
+								<tr>
+									<td class="table-plus"><?php echo $row['idHistorialMedico'];?></td>
+									<td><?php echo $row['fecha'];?></td>
+									<td><?php echo $row['diagnostico'];?></td>
+									<td><?php echo $row['nombre'];?></td>
+									<td><?php echo $row['nombres'];?></td>
+									<td><?php echo $row['estadoHistorialMedico'];?></td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="verHistorialMedico.php? id= <?php echo $row['idHistorialMedico']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="eliminarHistorialMedico.php? id= <?php echo $row['idHistorialMedico']; ?>"><i class="dw dw-edit2"></i> Editar</a>
+												<a class="dropdown-item" href="eliminarHistorialMedico.php? id= <?php echo $row['idHistorialMedico']; ?>"><i class="dw dw-edit2"></i>Editar</a>												</div>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+										</div>
+									</td>
+								</tr>
+								<?php } mysqli_close($conexion);?>
 
-</form>
-				<!-- Input Validation End -->
+						</table>
+					</div>
+				</div>
+				<!-- Export Datatable End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -320,5 +320,18 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-</body>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- buttons for Export datatable -->
+	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="vendors/scripts/datatable-setting.js"></script></body>
 </html>

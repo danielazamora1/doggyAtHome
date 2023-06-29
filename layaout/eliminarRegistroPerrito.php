@@ -1,16 +1,18 @@
-
+<?php  
+	include('conexion.php');
+	$id = $_GET['id'];
+	$sql = "UPDATE mascota SET estadoPerfilMascota = 'Inactivo' WHERE idMascota = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-
-	<title>Editar</title>
-
-	<title>Editar registro perrito</title>
+	<title>Inhabilitar Registro</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/mascota.png">
+	<link rel="website icon" href="vendors/images/listaDonaciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -196,7 +198,6 @@
 							<li><a href="listaAdopciones.html">Lista de adopciones</a></li>
 							<li><a href="mascota.html">Mascota</a></li>
 							<li><a href="listaMascotas.html">Lista Mascotas</a></li>
-
 							<li><a href="historialMedico.html">Historial Medico</a></li>
 							<li><a href="listaSolicitudes.html">Lista de solicitudes</a></li>
 							<li><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
@@ -235,79 +236,30 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Editar registro</h4>
+								<h4>Inhabilitar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaMascotas.html">Listado</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Editar mascota</li>
+									<li class="breadcrumb-item"><a href="/layaout/listaArticulos.html">Lista Articulos</a></li>
+
+									<li class="breadcrumb-item active" aria-current="page">Inhabilitar registro</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Editar Registro</h4><br>
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
+					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
+						<div class="pd-20 card-box text-center height-100-p">
+							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
+							<div class="max-width-200 mx-auto">
+								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+							</div>
 						</div>
-						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombre Mascota</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Lucas">
-							</div>
-						</div>
-						
-						
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha Ingreso</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Edad</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="8 meses">
-							</div>
-						</div>
-						
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sexo</label>
-							<div class="col-sm-12 col-md-10">
-								<select  class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Hembra</option>
-									<option value="2">Macho</option>
-									
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Imagen</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="file" placeholder="">
-							</div>
-						</div>
-                            
-					</form>
-<a href="/layaout/listaMascotas.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="/layaout/listaMascotas.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
-
-
-</form>
-				<!-- Input Validation End -->
+				</div>
+				<a href="listaMascotas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</button>
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -319,5 +271,7 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

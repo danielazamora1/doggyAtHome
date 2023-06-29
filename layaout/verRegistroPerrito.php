@@ -1,13 +1,22 @@
+<?php  
+	require 'conexion.php';
+
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM mascota WHERE idMascota = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Lista adopciones</title>
+	<title>Consultar Articulo</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaAdopciones.png">
+	<link rel="website icon" href="vendors/images/editarEntradas.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,68 +240,97 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Historial de adopciones</h4>
+								<h4>Consultar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Listado adopciones</li>
+									<li class="breadcrumb-item"><a href="listaArticulos.php">Lista de articulos</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Consultar articulo</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				
-				<!-- Export Datatable start -->
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Listado de adopciones</h4><br>
-						<a href="/layaout/registroAdopcion.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva adopcion </button></a><br>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Consultar registro </h4><br>
+						</div>
+						
+					</div>
+					<form>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Nombre Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="nombre" name="nombre" placeholder="Nombre de la mascota" value="<?php echo $row['nombre'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Caracteristicas</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="caracteristicas" name="caracteristicas" placeholder="caracteristicas" value="<?php echo $row['caracteristicas'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="En revision"<?php if ($row['estadoMascota']=='En revision')echo 'selected'; ?>>En revision</option>
+									<option value="En tratamiento"<?php if ($row['estadoMascota']=='En tratamiento')echo 'selected'; ?>>En tratamiento</option>
+									<option value="Para Adoptar"<?php if ($row['estadoMascota']=='Para Adoptar')echo 'selected'; ?>>Para Adoptar</option>
 
-					</div>
-					
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">id</th>
-									<th>Nombre Mascota</th>
-									<th>Fecha</th>
-									<th>Raza</th>
-									<th>Adoptante</th>
-									<th>Direccion</th>
-									<th class="datatable-nosort">Acción</th>
-			
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>Dakota</td>
-									<td>20/5/2022</td>
-									<td>Criollo</td>
-									<td>Juan Pablo</td>
-									<td>Carrera 6 sur</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="/layaout/verListaAdopciones.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="/layaout/editarListaAdopciones.html"><i class="dw dw-edit2"></i>Editar</a>
-												
-												<a class="dropdown-item" href="/layaout/eliminarListaAdopciones.html"><i class="dw dw-delete-3"></i>Eliminar</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-							
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- Export Datatable End -->
+								</select>
+							</div>
+						</div>  
+
+                        <div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Sexo de la Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="M"<?php if ($row['sexo']=='M')echo 'selected'; ?>>M</option>
+									<option value="F"<?php if ($row['sexo']=='F')echo 'selected'; ?>>F</option>
+								</select>
+							</div>
+						</div>  
+                        <div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha de ingreso</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="date" id="fechaIngreso" name="fechaIngreso" placeholder="fecha" value="<?php echo $row['fechaIngreso'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Edad</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="edad" name="edad" placeholder="fecha" value="<?php echo $row['edad'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="raza" name="raza" placeholder="raza" value="<?php echo $row['raza'];?>" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del perfil Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoPerfilMascota']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoPerfilMascota']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div>   
+                        
+					</form>
+<a href="listaMascotas.php"><button class="btn btn-primary">Volver</button></a>
+
+
+</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -304,18 +342,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<!-- buttons for Export datatable -->
-	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-	<!-- Datatable Setting js -->
-	<script src="vendors/scripts/datatable-setting.js"></script></body>
+</body>
 </html>

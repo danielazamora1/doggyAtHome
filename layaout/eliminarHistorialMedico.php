@@ -1,10 +1,15 @@
-
+<?php  
+	include('conexion.php');
+	$id = $_GET['id'];
+	$sql = "UPDATE historialmedico SET estadoHistorialMedico = 'Inactivo' WHERE idHistorialMedico = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inhabilitar historial</title>
+	<title>Inhabilitar Registro</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/listaDonaciones.png">
@@ -236,8 +241,9 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="historialMedico.html">Historial Medico</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Inhabilitar historial</li>
+									<li class="breadcrumb-item"><a href="/layaout/listaArticulos.html">Lista Articulos</a></li>
+
+									<li class="breadcrumb-item active" aria-current="page">Inhabilitar registro</li>
 								</ol>
 							</nav>
 						</div>
@@ -246,13 +252,14 @@
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
 					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
 						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar esta historial medico?</h5>
+							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
 							<div class="max-width-200 mx-auto">
 								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
 							</div>
 						</div>
 					</div>
 				</div>
+				<a href="historialMedico.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</button>
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
