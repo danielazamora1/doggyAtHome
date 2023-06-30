@@ -4,7 +4,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inhabilitar donación</title>
+	<title>Consultar donación</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/listaDonaciones.png">
@@ -231,28 +231,104 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Inhabilitar donación</h4>
+								<h4>Consultar donación</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="listaDonaciones.html">Donaciones</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Inhabilitar donación</li>
+									<li class="breadcrumb-item"><a href="listaDonaciones.php">Donaciones</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Consultar donación</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
-					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
-						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar esta donación?</h5>
-							<div class="max-width-200 mx-auto">
-								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Consulta una donación</h4><br>
+						</div>
+						
+					</div>
+					<form>
+						<?php 
+							include('conexion.php');
+
+							
+
+							$sql = "SELECT * FROM donaciones WHERE idDonaciones =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Tipo donación</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="1"<?php if ($row['tipoDonacion_idTipoDonacion']=='1')echo 'selected'; ?>>Insumos</option>
+									<option value="2"<?php if ($row['tipoDonacion_idTipoDonacion']=='2')echo 'selected'; ?>>Recaudo</option>
+								</select>
 							</div>
 						</div>
-					</div>
-				</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Adoptante</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12" name="adoptante">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM adoptante WHERE idAdoptante =".$row['adoptante_idAdoptante'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idAdoptante']."'>".$row1['usuario']."</option>";
+
+								$sql2 = "SELECT * FROM adoptante";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idAdoptante']."'>".$fila['usuario']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Referncia</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="referencia" name="referencia" value="<?php echo $row['referencia'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="text" id="cantidadDonacion" name="cantidadDonacion" value="<?php echo $row['cantidadDonacion'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="datetime-local" id="fechaDonacion" name="fechaDonacion" value="<?php echo $row['fechaDonacion'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado de la donación</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activa"<?php if ($row['estadoDonacion']=='Activa')echo 'selected'; ?>>Activo</option>
+									<option value="Inactiva"<?php if ($row['estadoDonacion']=='Inactiva')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div>
+                            
+					</form>
+					<a href="listaDonaciones.php"><button class="btn btn-primary">Regresar</button></a>
+
+
+				</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -264,7 +340,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
-	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

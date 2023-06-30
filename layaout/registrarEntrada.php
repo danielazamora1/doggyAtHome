@@ -16,4 +16,5 @@
 		include('interfazRegistrarEntrada.php');
 	}
 	
+	
 ?>

@@ -247,7 +247,7 @@
 				<div class="card-box mb-30">
 					<div class="pd-20">
 						<h4 class="text-blue h4">Donaciones</h4><br>
-						<a href="registroDonacion.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva donación </button></a><br>
+						<a href="registroDonacion.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva donación </button></a><br>
 						
 					</div>
 					<?php  
@@ -289,9 +289,9 @@
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="? id= <?php echo $row['idEntradasArticulos']; ?>"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="editarDonacion.html"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarDonacion.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
+												<a class="dropdown-item" href="verDonacion.php? id= <?php echo $row['idDonaciones']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="editarDonacion.php? id= <?php echo $row['idDonaciones']; ?>"><i class="dw dw-edit2"></i>Editar</a>
+												<a class="dropdown-item" href="inhabilitarDonacion.php? id= <?php echo $row['idDonaciones']; ?>"><i class="dw dw-delete-3"></i>Inhabilitar</a>
 											</div>
 										</div>
 									</td>

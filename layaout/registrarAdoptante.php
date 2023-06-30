@@ -16,11 +16,9 @@
 	if ($nombresAdoptante !=null || $apellidosAdoptante !=null || $tipoDocumento !=null || $documento !=null || $usuario !=null || 
 		$contraseña !=null || $confirmarContraseña !=null || $celular !=null || 
 		$ciudad !=null || $direccion !=null  || $correo !=null ||$contraseña==$confirmarContraseña) {
-		$consulta = "INSERT INTO adoptante (nombresAdoptante, apellidosAdoptante, tipoDocumento, documento, usuario, 
-		contraseña, confirmarContraseña, celular, ciudad, direccion, correo) values ('$nombresAdoptante', '$apellidosAdoptante', 
+		$consulta = "CALL pa_registrar_adoptante('$nombresAdoptante', '$apellidosAdoptante', 
 		'$tipoDocumento', '$documento', '$usuario', '$contraseña', '$confirmarContraseña', '$celular', 
 		'$ciudad', '$direccion', '$correo')";
-
 	$resultado= mysqli_query($conexion,$consulta);
 	header("location:adoptantes.php");
 	mysqli_free_result($resultado);

@@ -251,52 +251,56 @@
 						</div>
 						
 					</div>
-					<form>
+					<form action="registrarDonacion.php" method="post">
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tipo donación</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Tipo de donación</label>
 							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
+								<select class="custom-select col-12" name="tipoDonacion">
 									<option selected="">Selecciona</option>
 									<option value="1">Insumos</option>
-									<option value="2">Dinero</option>
+									<option value="2">Recaudo</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Donante</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Adoptante</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Dorado">
+								<select class="custom-select col-12" name="adoptante">
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM adoptante");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idAdoptante']."'>".$resultado['usuario']."</option>";
+								}
+								?>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Articulo</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Referncia</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10 meses">
+								<input class="form-control" type="text" placeholder="referencia" name="referencia">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
+								<input class="form-control" type="text" placeholder="cantidad" name="cantidadDonacion">
 							</div>
 						</div>
-					
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">cantidad</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="img" placeholder="png">
-							</div>
-						</div>
+						
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
+								<input class="form-control" type="datetime-local" placeholder="fecha" name="fechaDonacion">
 							</div>
 						</div>
-                            
+                        <input type="submit" name="" value="registrar" class="btn btn-primary">    
 					</form>
-<a href="listaDonaciones.html"><button class="btn btn-primary">Guardar</button></a>
-<a href="listaDonaciones.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+					<br>
+					<a href="listaDonaciones.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
 
 </form>

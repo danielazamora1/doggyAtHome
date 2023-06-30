@@ -4,7 +4,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Seguimiento de proceso</title>
+	<title>Consultar seguimiento proceso</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/seguimientoProceso.png">
@@ -231,67 +231,105 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Seguimiento de proceso</h4>
+								<h4>Nuevo seguimiento de proceso</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Seguimiento de proceso</li>
+									<li class="breadcrumb-item"><a href="seguimientoProceso.php">Seguimiento de proceso</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Consultar seguimiento de proceso</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				
-				<!-- Export Datatable start -->
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Nuevo seguimiento de proceso</h4><br>
-						<a href="registroSeguimiento.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo seguimiento </button></a><br>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Registra un seguimiento de proceso</h4><br>
+						</div>
+						
+					</div>
+					<form>
+						<?php 
+							include('conexion.php');
 
-					</div>
-					
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">id</th>
-									<th>Fase</th>
-									<th>Estado</th>
-									<th>Fecha</th>
-									<th>Documentos de seguimiento</th>
-									<th>Solicitud de adopción</th>
-									<th class="datatable-nosort">Acción</th>
-			
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>2</td>
-									<td>En proceso</td>
-									<td>20/07/2022</td>
-									<td>No existentes</td>
-									<td>Solicitud no. 6</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="verSeguimiento.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="editarSeguimiento.html"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarSeguimiento.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
-											</div>
-										</div>
-									</td>
-								</tr>
 							
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- Export Datatable End -->
+							$sql = "SELECT * FROM seguimientoproceso WHERE idSeguimientoProceso =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fase del seguimiento</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12" name="faseDelSeguimiento">
+									<option selected="">Selecciona</option>
+									<option value="Fase 1"<?php if ($row['faseDelSeguimiento']=='Fase 1')echo 'selected'; ?>>Fase 1</option>
+									<option value="Fase 2"<?php if ($row['faseDelSeguimiento']=='Fase 2')echo 'selected'; ?>>Fase 2</option>
+									<option value="Fase 3"<?php if ($row['faseDelSeguimiento']=='Fase 3')echo 'selected'; ?>>Fase 3</option>
+									<option value="Fase 4"<?php if ($row['faseDelSeguimiento']=='Fase 4')echo 'selected'; ?>>Fase 4</option>
+									<option value="Fase 5"<?php if ($row['faseDelSeguimiento']=='Fase 5')echo 'selected'; ?>>Fase 5</option>
+									<option value="Fase 6"<?php if ($row['faseDelSeguimiento']=='Fase 6')echo 'selected'; ?>>Fase 6</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12" name="estado">
+									<option selected="">Selecciona</option>
+									<option value="En proceso"<?php if ($row['estado']=='En proceso')echo 'selected'; ?>>En proceso</option>
+									<option value="Terminado"<?php if ($row['estado']=='Terminado')echo 'selected'; ?>>Terminado</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled class="form-control" type="datetime-local" id="fecha" name="fecha" value="<?php echo $row['fecha'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Número de solicitud</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12" name="numeroSolicitud">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM solicitudadopcion WHERE idSolicitudAdopcion =".$row['solicitudAdopcion_idSolicitudAdopcion'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idSolicitudAdopcion']."'>".$row1['idSolicitudAdopcion']."</option>";
+
+								$sql2 = "SELECT * FROM solicitudadopcion";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idSolicitudAdopcion']."'>".$fila['idSolicitudAdopcion']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoSeguimiento']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoSeguimiento']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div> 	
+						
+                            
+					</form>
+					<a href="seguimientoProceso.php"><button class="btn btn-primary">Regresar</button></a>
+
+
+</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -303,18 +341,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<!-- buttons for Export datatable -->
-	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-	<!-- Datatable Setting js -->
-	<script src="vendors/scripts/datatable-setting.js"></script></body>
+</body>
 </html>

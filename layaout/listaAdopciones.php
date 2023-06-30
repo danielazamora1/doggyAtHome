@@ -247,6 +247,7 @@
 				<!-- Export Datatable start -->
 				<div class="card-box mb-30">
 					<div class="pd-20">
+<<<<<<< HEAD
 
 						<h4 class="text-blue h4">Listado de adopciones</h4><br>
 						<a href="registroAdopcion.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva adopcion </button></a><br>
@@ -255,6 +256,19 @@
 					<?php  
 						include('conexion.php');
 
+=======
+						<h4 class="text-blue h4">Listado de adopciones</h4><br>
+						<a href="registroAdopcion.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva adopcion </button></a><br>
+					</div>
+					<?php  
+						include('conexion.php');
+						$consulta = "SELECT * FROM v_mascota_y_quien_la_adopto";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>		
+					<div class="pd-20">
+					</div>
+					<?php  
+>>>>>>> fb09331 (Se agrega el crud de donaciones y seguimiento de proceso)
 						$consulta = "SELECT * FROM mascota
 									INNER JOIN adopciones
 									ON mascota.`idMascota`=adopciones.`mascota_idMascota`
@@ -274,7 +288,10 @@
 									<th>Usuario</th>
 									<th>Estado</th>
 									<th class="datatable-nosort">Acción</th>
+<<<<<<< HEAD
 			
+=======
+>>>>>>> fb09331 (Se agrega el crud de donaciones y seguimiento de proceso)
 								</tr>
 							</thead>
 							
@@ -296,7 +313,12 @@
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 												<a class="dropdown-item" href="verAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-eye"></i>Ver</a>
 												<a class="dropdown-item" href="editarAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-edit2"></i>Editar</a>
+<<<<<<< HEAD
 												<a class="dropdown-item" href="eliminarListaAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-delete-3"></i> Eliminar</a>
+=======
+												
+												<a class="dropdown-item" href="/layaout/eliminarListaAdopciones.html"><i class="dw dw-delete-3"></i>Eliminar</a>
+>>>>>>> fb09331 (Se agrega el crud de donaciones y seguimiento de proceso)
 											</div>
 										</div>
 									</td>

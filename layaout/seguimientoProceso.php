@@ -4,10 +4,11 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Consultar seguimiento proceso</title>
+	<title>Seguimiento de proceso</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/seguimientoProceso.png">
+
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,77 +232,74 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Nuevo seguimiento de proceso</h4>
+								<h4>Seguimiento de proceso</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Consultar seguimiento de proceso</li>
+									<li class="breadcrumb-item active" aria-current="page">Seguimiento de proceso</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Registra un seguimiento de proceso</h4><br>
-						</div>
-						
+				
+				<!-- Export Datatable start -->
+				<div class="card-box mb-30">
+					<div class="pd-20">
+						<h4 class="text-blue h4">Nuevo seguimiento de proceso</h4><br>
+						<a href="registroSeguimiento.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo seguimiento </button></a><br>
+
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fase</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Fase 1</option>
-									<option value="2">Fase 2</option>
-									<option value="3">Fase 3</option>
-									<option value="4">Fase 4</option>
-									<option value="5">Fase 5</option>
-									<option value="6">Fase 6</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled name="inputname" value="datos a enviar" readonly class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">En tramite</option>
-									<option value="2">Terminado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Documentos</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="file" placeholder="Dorado">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Solicitud de adopción</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="10 meses">
-							</div>
-						</div>
-						
-                            
-					</form>
-					<a href="editarSeguimiento.html"><button class="btn btn-primary">Editar</button></a>
+					<?php  
+						include('conexion.php');
 
-
-</form>
-				<!-- Input Validation End -->
+						$consulta = "SELECT * FROM seguimientoproceso";
+						$resultado = mysqli_query($conexion,$consulta);
+					?>
+					<div class="pb-20">
+						<table class="table hover multiple-select-row data-table-export nowrap">
+							<thead>
+								<tr>
+									<th class="table-plus datatable-nosort">id</th>
+									<th>Fase</th>
+									<th>Estado</th>
+									<th>Fecha</th>
+									<th>Número de solicitud</th>
+									<th>Estado del proceso</th>
+									<th class="datatable-nosort">Acción</th>
+			
+								</tr>
+							</thead>
+							<tbody>
+								<?php  while ($row = mysqli_fetch_assoc($resultado)) {
+								?>
+								<tr>
+									<td class="table-plus"><?php echo $row['idSeguimientoProceso'];?></td>
+									<td><?php echo $row['faseDelSeguimiento'];?></td>
+									<td><?php echo $row['estado'];?></td>
+									<td><?php echo $row['fecha'];?></td>
+									<td><?php echo $row['solicitudAdopcion_idSolicitudAdopcion'];?></td>
+									<td><?php echo $row['estadoSeguimiento'];?></td>
+									<td>
+										<div class="dropdown">
+											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+												<i class="dw dw-more"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+												<a class="dropdown-item" href="verSeguimiento.php? id= <?php echo $row['idSeguimientoProceso']; ?>"><i class="dw dw-eye"></i>Ver</a>
+												<a class="dropdown-item" href="editarSeguimiento.php? id= <?php echo $row['idSeguimientoProceso']; ?>"><i class="dw dw-edit2"></i>Editar</a>
+												<a class="dropdown-item" href="inhabilitarSeguimiento.php? id= <?php echo $row['idSeguimientoProceso']; ?>"><i class="dw dw-delete-3"></i>Inhabilitar</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							<?php } mysqli_close($conexion);?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- Export Datatable End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -313,5 +311,18 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-</body>
+	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- buttons for Export datatable -->
+	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="vendors/scripts/datatable-setting.js"></script></body>
 </html>

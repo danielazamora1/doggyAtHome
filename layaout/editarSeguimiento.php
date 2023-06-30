@@ -1,10 +1,11 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inhabilitar seguimiento</title>
+	<title>Editar seguimiento proceso</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/seguimientoProceso.png">
@@ -231,28 +232,106 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Inhabilitar seguimiento</h4>
+								<h4>Editar seguimiento de proceso</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Inhabilitar seguimiento de proceso</li>
+									<li class="breadcrumb-item"><a href="seguimientoProceso.php">Seguimiento de proceso</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Editar seguimiento de proceso</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
-					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
-						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este seguimiento?</h5>
-							<div class="max-width-200 mx-auto">
-								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Editar seguimiento de proceso</h4><br>
+						</div>
+						
+					</div>
+					<form action="actualizarSeguimiento.php" method="post">
+						<?php 
+							include('conexion.php');
+
+							
+							$sql = "SELECT * FROM seguimientoproceso WHERE idSeguimientoProceso =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idSeguimientoProceso']; ?>"/>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fase del seguimiento</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12" name="faseDelSeguimiento">
+									<option selected="">Selecciona</option>
+									<option value="Fase 1"<?php if ($row['faseDelSeguimiento']=='Fase 1')echo 'selected'; ?>>Fase 1</option>
+									<option value="Fase 2"<?php if ($row['faseDelSeguimiento']=='Fase 2')echo 'selected'; ?>>Fase 2</option>
+									<option value="Fase 3"<?php if ($row['faseDelSeguimiento']=='Fase 3')echo 'selected'; ?>>Fase 3</option>
+									<option value="Fase 4"<?php if ($row['faseDelSeguimiento']=='Fase 4')echo 'selected'; ?>>Fase 4</option>
+									<option value="Fase 5"<?php if ($row['faseDelSeguimiento']=='Fase 5')echo 'selected'; ?>>Fase 5</option>
+									<option value="Fase 6"<?php if ($row['faseDelSeguimiento']=='Fase 6')echo 'selected'; ?>>Fase 6</option>
+								</select>
 							</div>
 						</div>
-					</div>
-				</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12" name="estado">
+									<option selected="">Selecciona</option>
+									<option value="En proceso"<?php if ($row['estado']=='En proceso')echo 'selected'; ?>>En proceso</option>
+									<option value="Terminado"<?php if ($row['estado']=='Terminado')echo 'selected'; ?>>Terminado</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
+							<div class="col-sm-12 col-md-10">
+								<input  class="form-control" type="datetime-local" id="fecha" name="fecha" value="<?php echo $row['fecha'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Número de solicitud</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12" name="numeroSolicitud">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM solicitudadopcion WHERE idSolicitudAdopcion =".$row['solicitudAdopcion_idSolicitudAdopcion'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idSolicitudAdopcion']."'>".$row1['idSolicitudAdopcion']."</option>";
+
+								$sql2 = "SELECT * FROM solicitudadopcion";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idSolicitudAdopcion']."'>".$fila['idSolicitudAdopcion']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12" name="estadoSeguimiento">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoSeguimiento']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoSeguimiento']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div> 	
+						<input type="submit" name="" value="Editar" class="btn btn-primary">
+                            
+					</form>
+					<a href="entradas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+
+
+</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -264,7 +343,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
-	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

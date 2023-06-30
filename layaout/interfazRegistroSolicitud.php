@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -236,7 +235,7 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
+									<li class="breadcrumb-item"><a href="seguimientoProceso.php">Seguimiento de proceso</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Nuevo seguimiento de proceso</li>
 								</ol>
 							</nav>
@@ -251,12 +250,29 @@
 						</div>
 						
 					</div>
+<<<<<<<< HEAD:layaout/interfazRegistroSolicitud.php
 					<form action="registroSolicitud.php" method="post">
 						<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Fecha Solicitud</label>
 								<div class="col-sm-12 col-md-10">
 									<input class="form-control" type="datetime-local" placeholder="" name="fechaSolicitud">
 								</div>
+========
+					<form action="registrarSeguimientoProceso.php" method="post">
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fase del seguimiento</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="faseDelSeguimiento">
+									<option selected="">Selecciona</option>
+									<option value="1">Fase 1</option>
+									<option value="2">Fase 2</option>
+									<option value="3">Fase 3</option>
+									<option value="4">Fase 4</option>
+									<option value="5">Fase 5</option>
+									<option value="6">Fase 6</option>
+								</select>
+							</div>
+>>>>>>>> fb09331 (Se agrega el crud de donaciones y seguimiento de proceso):layaout/registroSeguimiento.php
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
@@ -279,6 +295,7 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
+<<<<<<<< HEAD:layaout/interfazRegistroSolicitud.php
 								<select class="custom-select col-12" name="mascota">
 
 								<?php  
@@ -309,6 +326,31 @@
 
 					</form><br><br>
 					<a href="listaSolicitudes.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+========
+								<input class="form-control" type="datetime-local" placeholder="08/10/2023" name="fecha">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Número de solicitud</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="numeroSolicitud">
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM solicitudadopcion");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idSolicitudAdopcion']."'>".$resultado['idSolicitudAdopcion']."</option>";
+								}
+								?>
+								</select>
+							</div>
+						</div>						
+                        <input type="submit" name="" value="registrar" class="btn btn-primary">
+					</form>
+					
+					<a href="seguimientoProceso.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+>>>>>>>> fb09331 (Se agrega el crud de donaciones y seguimiento de proceso):layaout/registroSeguimiento.php
 
 
 </form>

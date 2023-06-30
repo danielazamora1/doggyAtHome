@@ -251,52 +251,81 @@
 						</div>
 						
 					</div>
-					<form>
+					<form action="actualizarDonacion.php" method="post">
+						<?php 
+							include('conexion.php');
+
+							
+
+							$sql = "SELECT * FROM donaciones WHERE idDonaciones =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idDonaciones']; ?>"/>
+
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Tipo donación</label>
 							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
+								<select  class="custom-select col-12" name="tipoDonacion">
 									<option selected="">Selecciona</option>
-									<option value="1">Insumos</option>
-									<option value="2">Dinero</option>
+									<option value="1"<?php if ($row['tipoDonacion_idTipoDonacion']=='1')echo 'selected'; ?>>Insumos</option>
+									<option value="2"<?php if ($row['tipoDonacion_idTipoDonacion']=='2')echo 'selected'; ?>>Recaudo</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Donante</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Adoptante</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Dorado">
+								<select  class="custom-select col-12" name="adoptante" name="adoptante">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM adoptante WHERE idAdoptante =".$row['adoptante_idAdoptante'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idAdoptante']."'>".$row1['usuario']."</option>";
+
+								$sql2 = "SELECT * FROM adoptante";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idAdoptante']."'>".$fila['usuario']."</option>";
+								}
+
+								?>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Articulo</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Referncia</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10 meses">
+								<input  class="form-control" type="text" id="referencia" name="referencia" value="<?php echo $row['referencia'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Cantidad</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-					
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">cantidad</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="img" placeholder="png">
+								<input  class="form-control" type="text" id="cantidadDonacion" name="cantidadDonacion" value="<?php echo $row['cantidadDonacion'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
+								<input  class="form-control" type="datetime-local" id="fechaDonacion" name="fechaDonacion" value="<?php echo $row['fechaDonacion'];?>"required>
 							</div>
 						</div>
-                            
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado de la donación</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12" name="estado">
+									<option selected="">Selecciona</option>
+									<option value="Activa"<?php if ($row['estadoDonacion']=='Activa')echo 'selected'; ?>>Activo</option>
+									<option value="Inactiva"<?php if ($row['estadoDonacion']=='Inactiva')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div>
+                        <input type="submit" name="" value="Editar" class="btn btn-primary"> 
 					</form>
-					<a href="listaDonaciones.html"><button class="btn btn-primary">Guardar</button></a>
-					<a href="listaDonaciones.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+					<a href="listaDonaciones.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 				</form>
 				<!-- Input Validation End -->
 			</div>

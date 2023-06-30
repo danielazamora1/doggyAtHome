@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Consultar donación</title>
+	<title>Registrar seguimiento proceso</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaDonaciones.png">
+	<link rel="website icon" href="vendors/images/seguimientoProceso.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,13 +230,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Consultar donación</h4>
+								<h4>Nuevo seguimiento de proceso</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="listaDonaciones.php">Donaciones</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Consultar donación</li>
+									<li class="breadcrumb-item"><a href="seguimientoProceso.php">Seguimiento de proceso</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Nuevo seguimiento de proceso</li>
 								</ol>
 							</nav>
 						</div>
@@ -247,59 +246,114 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Consulta una donación</h4><br>
+							<h4 class="text-blue h4">Registra un seguimiento de proceso</h4><br>
 						</div>
 						
 					</div>
-					<form>
-						
+<<<<<<<< HEAD:layaout/interfazRegistroSolicitud.php
+					<form action="registroSolicitud.php" method="post">
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tipo donación</label>
+								<label class="col-sm-12 col-md-2 col-form-label">Fecha Solicitud</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" type="datetime-local" placeholder="" name="fechaSolicitud">
+								</div>
+========
+					<form action="registrarSeguimientoProceso.php" method="post">
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fase del seguimiento</label>
 							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
+								<select class="custom-select col-12" name="faseDelSeguimiento">
 									<option selected="">Selecciona</option>
-									<option value="1">Insumos</option>
-									<option value="2">Dinero</option>
+									<option value="1">Fase 1</option>
+									<option value="2">Fase 2</option>
+									<option value="3">Fase 3</option>
+									<option value="4">Fase 4</option>
+									<option value="5">Fase 5</option>
+									<option value="6">Fase 6</option>
+								</select>
+							</div>
+>>>>>>>> fb09331 (Se agrega el crud de donaciones y seguimiento de proceso):layaout/registroSeguimiento.php
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="estado">
+									<option selected="">Selecciona</option>
+									<option value="Aceptada">Aceptada</option>
+									<option value="Rechazada">Rechazada</option>
+									<option value="En tramite">En tramite</option>
+
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Donante</label>
+								<label class="col-sm-12 col-md-2 col-form-label">Documentos Cargados</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" type="file" placeholder="" name="documentoSolicitudAdopcion">
+								</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Dorado">
+<<<<<<<< HEAD:layaout/interfazRegistroSolicitud.php
+								<select class="custom-select col-12" name="mascota">
+
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM mascota");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idMascota']."'>".$resultado['nombre']."</option>";
+								}
+
+								?>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Articulo</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Solicitud</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="10 meses">
+								<select class="custom-select col-12" name="estadoSolicitud">
+									<option selected="">Selecciona</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
+						
+								</select>
+							</div>
+						</div>
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
+
+					</form><br><br>
+					<a href="listaSolicitudes.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+========
+								<input class="form-control" type="datetime-local" placeholder="08/10/2023" name="fecha">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Referencia</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Número de solicitud</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="Criollo">
+								<select class="custom-select col-12" name="numeroSolicitud">
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM solicitudadopcion");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idSolicitudAdopcion']."'>".$resultado['idSolicitudAdopcion']."</option>";
+								}
+								?>
+								</select>
 							</div>
-						</div>
-					
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">cantidad</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="img" placeholder="png">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-                            
+						</div>						
+                        <input type="submit" name="" value="registrar" class="btn btn-primary">
 					</form>
-					<a href="editarDonacion.html"><button class="btn btn-primary">Editar</button></a>
+					
+					<a href="seguimientoProceso.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+>>>>>>>> fb09331 (Se agrega el crud de donaciones y seguimiento de proceso):layaout/registroSeguimiento.php
 
 
-				</form>
+</form>
 				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">

@@ -324,7 +324,6 @@
 								while ($fila = $resultado4->fetch_array()) {
 									echo "<option value='".$fila['idEntradas']."'>".$fila['idEntradas']."</option>";
 								}
-
 								?>
 								</select>
 							</div>
