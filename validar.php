@@ -20,7 +20,7 @@
 		mysqli_free_result($resultado);
 		}if ($filas['rol_idRol']==2)//veterinario		
 		{
-		header("location:prueba.php");
+		header("location:layaoutVeterinario/index.html");
 		mysqli_free_result($resultado);
 		}
 		else {
@@ -37,19 +37,13 @@
 	$filas=mysqli_fetch_array($resultado);
 	if ($filas) //adoptante
 		{
-		header("location:prueba2.php");
+		header("location:layaoutAdoptante/index.html");
 		}else {
 		include("login.html");
 		?>
 		<?php
 		}
 		mysqli_free_result($resultado);
-		}
-
-	else{
-		include("login.html");
-		?>
-		<?php
 		}
 		mysqli_close($conexion);
 	?>	
