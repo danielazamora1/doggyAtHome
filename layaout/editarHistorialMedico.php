@@ -12,10 +12,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Editar historial medico</title>
+	<title>Editar Registro</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaDonaciones.png">
+	<link rel="website icon" href="vendors/images/logoLigth.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -86,7 +86,7 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 						<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Perfil</a>					
-						<a class="dropdown-item" href="/index.html"><i class="dw dw-logout"></i> Cerrar Sesion</a>
+						<a class="dropdown-item" href="../index.html"><i class="dw dw-logout"></i>Cerrar Sesion</a>
 					</div>
 				</div>
 			</div>
@@ -187,10 +187,10 @@
 							<span class="micon dw dw-library"></span><span class="mtext">Usuarios</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="usuarios.html">Gestión de usuarios</a></li>
+							<li><a href="usuarios.php">Gestión de usuarios</a></li>
 						</ul>
 						<ul class="submenu">
-							<li><a href="adoptantes.html">Gestión de adoptantes</a></li>
+							<li><a href="adoptantes.php">Gestión de adoptantes</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -198,12 +198,12 @@
 							<span class="micon dw dw-edit2"></span><span class="mtext">Adopciones</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="listaAdopciones.html">Lista de adopciones</a></li>
+							<li><a href="listaAdopciones.php">Lista de adopciones</a></li>
 							<li><a href="mascota.html">Mascota</a></li>
-							<li><a href="listaMascotas.html">Lista Mascotas</a></li>
-							<li><a href="historialMedico.html">Historial Medico</a></li>
-							<li><a href="listaSolicitudes.html">Lista de solicitudes</a></li>
-							<li><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
+							<li><a href="listaMascotas.php">Lista de mascota</a></li>
+							<li><a href="historialMedico.php">Historial Medico</a></li>
+							<li><a href="listaSolicitudes.php">Lista de solicitudes</a></li>
+							<li><a href="seguimientoProceso.php">Seguimiento de proceso</a></li>
 	
 						</ul>
 					</li>
@@ -212,7 +212,7 @@
 							<span class="micon dw dw-library"></span><span class="mtext">Donaciones</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="listaDonaciones.html">Lista de donaciones</a></li>
+							<li><a href="listaDonaciones.php">Lista de donaciones</a></li>
 						</ul>
 					</li>
 				
@@ -221,8 +221,8 @@
 							<span class="micon dw dw-apartment"></span><span class="mtext"> Inventario </span>
 						</a>
 						<ul class="submenu">
-							<li><a href="consultarInventario.html">Consultar Inventario</a></li>
-							<li><a href="listaArticulos.html">Lista de articulos</a></li>
+							<li><a href="consultarInventario.php">Consultar Inventario</a></li>
+							<li><a href="listaArticulos.php">Lista de articulos</a></li>
 							
 						</ul>
 					</li>
@@ -239,12 +239,12 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Editar registro</h4>
+								<h4>Editar Historial Medico</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="historialMedico.html">Historial Medico</a></li>
+									<li class="breadcrumb-item"><a href="historialMedico.php">Historial Medico</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Editar registro </li>
 								</ol>
 							</nav>
@@ -255,7 +255,7 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Datos Básicos</h4><br>
+							<h4 class="text-blue h4">Editar</h4><br>
 						</div>
 						
 					</div>
@@ -336,7 +336,8 @@
 						</div>  
 						<input type="submit" name="" value="Editar" class="btn btn-primary">                         
 
-					</form><br><br>
+					</form>
+					<br>
 					<a href="historialMedico.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a><br><br>
 
 				</div>

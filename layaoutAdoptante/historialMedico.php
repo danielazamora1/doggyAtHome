@@ -1,13 +1,14 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Historial medico</title>
+	<title>Historial Medico</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/historialMedico.png">
+	<link rel="website icon" href="vendors/images/logoLigth.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
