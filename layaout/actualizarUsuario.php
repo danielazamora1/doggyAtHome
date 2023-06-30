@@ -16,14 +16,12 @@
 	$rol = $_POST['rol'];
 	$estadoUsuario = $_POST['estadoUsuario'];
 	
-	
 
 	if ($nombres !=null || $apellidos !=null || $tipoDocumento !=null || $documento !=null || $usuario !=null || 
 		$contraseña !=null || $confirmarContraseña !=null || $celular !=null || 
 		$ciudad !=null || $direccion !=null  || $correo !=null || $rol !=null || $estadoUsuario !=null   ||$contraseña==$confirmarContraseña) {
-		$consulta = "UPDATE usuario SET nombres='$nombres', apellidos='$apellidos', tipoDocumento='$tipoDocumento', 
-		documento='$documento', usuario='$usuario', contraseña='$contraseña', confirmarContraseña='$confirmarContraseña', 
-		celular='$celular', ciudad='$ciudad', direccion='$direccion', correo='$correo', rol_idRol='$rol', estadoUsuario='$estadoUsuario' WHERE idUsuario = '$id'";
+		$consulta = "CALL pa_actualizar_usuario('$nombres','$apellidos','$tipoDocumento','$documento', '$usuario', 
+		'$contraseña', '$confirmarContraseña', '$celular','$ciudad', '$direccion','$correo','$rol','$estadoUsuario','$id')";
 
 	$resultado= mysqli_query($conexion,$consulta);
 	header("location:usuarios.php");

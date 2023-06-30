@@ -13,14 +13,12 @@
 	$direccion = $_POST['direccion'];
 	$ciudad = $_POST['ciudad'];
 
-	if ($correo !=null || $usuario !=null || $contraseña !=null || $confirmarContraseña !=null || $nombres !=null || 
-		$apellidos !=null || $tipoDocumento !=null || $documento !=null || $celular !=null || $direccion !=null ||
-		$ciudad !=null ||$contraseña==$confirmarContraseña) {
-		$consulta = "INSERT INTO adoptante (correo, usuario, contraseña, confirmarContraseña,nombresAdoptante, 
-	apellidosAdoptante, tipoDocumento, documento, celular, direccion, ciudad) values ('$correo', '$usuario', 
-	'$contraseña', '$confirmarContraseña', '$nombres', '$apellidos', '$tipoDocumento', '$documento', 
-	'$celular', '$direccion', '$ciudad')";
-
+	if ($nombres !=null || $apellidos !=null || $tipoDocumento !=null || $documento !=null || $usuario !=null || 
+		$contraseña !=null || $confirmarContraseña !=null || $celular !=null || 
+		$ciudad !=null || $direccion !=null  || $correo !=null ||$contraseña==$confirmarContraseña) {
+		$consulta = "CALL pa_registrar_adoptante('$nombres', '$apellidos', 
+		'$tipoDocumento', '$documento', '$usuario', '$contraseña', '$confirmarContraseña', '$celular', 
+		'$ciudad', '$direccion', '$correo')";
 	$resultado= mysqli_query($conexion,$consulta);
 	header("location:login.html");
 	mysqli_free_result($resultado);

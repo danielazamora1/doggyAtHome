@@ -26,7 +26,6 @@
 	header("location:usuarios.php");
 	mysqli_free_result($resultado);
 	?>
-	<h1>Registro guardado</h1>
 	<?php
 	} else{
 		include("registroUsuario.html");

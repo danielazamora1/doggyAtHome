@@ -254,7 +254,7 @@
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM adoptante";
+						$consulta = "CALL pa_mostrar_adoptantes";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>
 					<div class="pb-20">

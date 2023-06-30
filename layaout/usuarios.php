@@ -253,7 +253,7 @@
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM v_listado_usuarios WHERE estadoUsuario = 'Activo'";
+						$consulta = "CALL pa_mostar_usuarios";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>				
 					<div class="pb-20">

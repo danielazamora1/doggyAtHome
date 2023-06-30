@@ -28,7 +28,6 @@
 	} else{
 		include("registroAdoptante.html");
 		?>
-		
 		<?php
 	}
 	mysqli_close($conexion);

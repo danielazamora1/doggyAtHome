@@ -7,7 +7,7 @@
 	$stock = $_POST['stock'];
 
 	if ($nombreArticulo !=null || $descripcionArticulo !=null || $referenciaArticulo !=null || $stock !=null) {
-		$consulta = "INSERT INTO articulos (nombreArticulo, descripcionArticulo, referenciaArticulo, stock) values ('$nombreArticulo', 
+		$consulta = "CALL pa_registrar_articulo ('$nombreArticulo', 
 		'$descripcionArticulo', '$referenciaArticulo', '$stock')";
 
 	$resultado= mysqli_query($conexion,$consulta);

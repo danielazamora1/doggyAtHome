@@ -335,7 +335,7 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
 							<div class="col-sm-12 col-md-10">
-								<select  class="custom-select col-12">
+								<select  class="custom-select col-12" name="estadoAdoptante">
 									<option selected="">Selecciona</option>
 									<option value="Activo"<?php if ($row['estadoAdoptante']=='Activo')echo 'selected'; ?>>Activo</option>
 									<option value="Inactivo"<?php if ($row['estadoAdoptante']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
