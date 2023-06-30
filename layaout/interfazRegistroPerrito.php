@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Inhabilitar Registro</title>
+	<title>Registrar perrito</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaDonaciones.png">
+	<link rel="website icon" href="vendors/images/mascota.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,30 +231,107 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Inhabilitar registro</h4>
+								<h4>Nuevo registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaMascotas.html">Listado</a></li>
-									
-
-									<li class="breadcrumb-item active" aria-current="page">Inhabilitar registro</li>
+									<li class="breadcrumb-item"><a href="/layaout/mascota.html">Mascotas</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Nuevo registro mascota</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
-					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
-						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
-							<div class="max-width-200 mx-auto">
-								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Registra un nuevo adoptante</h4><br>
+						</div>
+						
+					</div>
+					<form action="registroPerrito.php" method="post">
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Nombre</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="" name="nombre">
 							</div>
 						</div>
-					</div>
-				</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">caracteristicas</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="" name="caracteristicas">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="estadoMascota">
+									<option selected="">Selecciona</option>
+									<option value="1">Para adoptar</option>
+									<option value="2">En tratamiento</option>
+									<option value="3">En revision</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Sexo</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="sexo">
+									<option selected="">Selecciona</option>
+									<option value="F">F</option>
+									<option value="M">M</option>
+					
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">fecha Ingreso</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="datetime-local" placeholder="" name="fechaIngreso">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Edad</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="" name="edad">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">foto Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="file" placeholder="" name="fotoMascota">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="raza">
+									<option selected="">Selecciona</option>
+									<option value="Pastor Aleman">Pastor Aleman</option>
+									<option value="Labrado">Labrador</option>
+									<option value="Criollo">Criollo Aleman</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">EstadoPerfil</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="estadoPerfilMascota">
+									<option selected="">Selecciona</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
+									
+								</select>
+							</div>
+						</div>
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
+					</form>
+					<br>
+<a href="listaMascotas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -266,7 +343,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
-	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 </body>
 </html>

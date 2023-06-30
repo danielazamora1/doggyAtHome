@@ -247,46 +247,27 @@
 				<!-- Export Datatable start -->
 				<div class="card-box mb-30">
 					<div class="pd-20">
-<<<<<<< HEAD
-						<h4 class="text-blue h4">Listado</h4><br>
-						<a href="/layaout/registroHistorialMedico.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar un nuevo historial </button></a><br>
-=======
+
 						<h4 class="text-blue h4">Listado de adopciones</h4><br>
 						<a href="registroAdopcion.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva adopcion </button></a><br>
->>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional)
 
 					</div>
 					<?php  
 						include('conexion.php');
 
-<<<<<<< HEAD
-						$consulta = "SELECT * FROM v_mascota_y_quien_la_adopto";
-						$resultado = mysqli_query($conexion,$consulta);
-					?>		
-					<div class="pd-20">
-					</div>
-=======
 						$consulta = "SELECT * FROM mascota
 									INNER JOIN adopciones
 									ON mascota.`idMascota`=adopciones.`mascota_idMascota`
 									INNER JOIN adoptante
 									ON adoptante.`idAdoptante`=adopciones.`adoptante_idAdoptante`";
+
+									
 						$resultado = mysqli_query($conexion,$consulta);
 					?>	
->>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional)
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap">
 							<thead>
 								<tr>
-<<<<<<< HEAD
-									<th class="table-plus datatable-nosort">IdAdopciones</th>
-									<th>Fecha</th>
-									<th>Mascota</th>
-									<th>Raza</th>
-									<th>Adoptante</th>
-									<th>Direccion</th>
-									<th class="datatable-nosort">Acciones</th>
-=======
 									<th class="table-plus datatable-nosort">id</th>
 									<th>Fecha</th>
 									<th>Mascota</th>
@@ -294,7 +275,6 @@
 									<th>Estado</th>
 									<th class="datatable-nosort">Acción</th>
 			
->>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional)
 								</tr>
 							</thead>
 							
@@ -305,39 +285,25 @@
 									<td class="table-plus"><?php echo $row['idAdopciones'];?></td>
 									<td><?php echo $row['fecha'];?></td>
 									<td><?php echo $row['nombre'];?></td>
-<<<<<<< HEAD
-									<td><?php echo $row['raza'];?></td>
-									<td><?php echo $row['nombresAdoptante'];?></td>
-									<td><?php echo $row['direccion'];?></td>
-									
-=======
 									<td><?php echo $row['usuario'];?></td>
 									<td><?php echo $row['estadoAdopcion'];?></td>
 
->>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional)
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 												<i class="dw dw-more"></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-<<<<<<< HEAD
-												<a class="dropdown-item" href="verInformaciónUsuario.php? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="editarUsuarios.php? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarUsuario.php? id= <?php echo $row['idUsuario']; ?>"><i class="dw dw-delete-3"></i>Inhabilitar</a>
-=======
 												<a class="dropdown-item" href="verAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-eye"></i>Ver</a>
 												<a class="dropdown-item" href="editarAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-edit2"></i>Editar</a>
-												
-												<a class="dropdown-item" href="/layaout/eliminarListaAdopciones.html"><i class="dw dw-delete-3"></i>Eliminar</a>
->>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional)
+												<a class="dropdown-item" href="eliminarListaAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-delete-3"></i> Eliminar</a>
 											</div>
 										</div>
 									</td>
 								</tr>
 								<?php } mysqli_close($conexion);?>
 							</tbody>
-
+										
 						</table>
 					</div>
 				</div>

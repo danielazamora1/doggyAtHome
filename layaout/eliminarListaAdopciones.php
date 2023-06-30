@@ -1,13 +1,19 @@
-
+<?php  
+	include('conexion.php');
+	$id = $_GET['id'];
+	$sql = "UPDATE adopciones SET estadoAdopcion = 'Inactiva' WHERE idAdopciones = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Consultar solicitud</title>
+	<title>Eliminar registro</title>
+	
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaSolicitud.png">
+	<link rel="website icon" href="vendors/images/listaAdopciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -222,6 +228,68 @@
 			</div>
 		</div>
 	</div>
+	<div class="left-side-bar">
+		<div class="brand-logo">
+			<a href="index.html">
+				<img src="vendors/images/logoLigth.png" style="height: 50px; width: 50px; margin-right: 1rem;" alt="" class="dark-logo">
+				<img src="vendors/images/logoDark.png" style="height: 50px; width: 50px; margin-right: 1rem;"alt="" class="light-logo" >
+				<h3 style="font-size: 20px; color: #17a2b8;">Doggy At Home</h3>
+			</a>
+			<div class="close-sidebar" data-toggle="left-sidebar-close">
+				<i class="ion-close-round"></i>
+			</div>
+		</div>
+		<div class="menu-block customscroll">
+			<div class="sidebar-menu">
+				<ul id="accordion-menu">
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-library"></span><span class="mtext">Usuarios</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="usuarios.html">Gestión de usuarios</a></li>
+						</ul>
+						<ul class="submenu">
+							<li><a href="adoptantes.html">Gestión de adoptantes</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-edit2"></span><span class="mtext">Adopciones</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="listaAdopciones.html">Lista de adopciones</a></li>
+							<li><a href="mascota.html">Mascota</a></li>
+							<li><a href="listaMascotas.html">Lista Mascotas</a></li>
+							<li><a href="historialMedico.html">Historial Medico</a></li>
+							<li><a href="listaSolicitudes.html">Lista de solicitudes</a></li>
+							<li><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
+	
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-library"></span><span class="mtext">Donaciones</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="listaDonaciones.html">Lista de donaciones</a></li>
+						</ul>
+					</li>
+				
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-apartment"></span><span class="mtext"> Inventario </span>
+						</a>
+						<ul class="submenu">
+							<li><a href="consultarInventario.html">Consultar Inventario</a></li>
+							<li><a href="listaArticulos.html">Lista de articulos</a></li>
+							
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="mobile-menu-overlay"></div>
 
 	<div class="main-container">
@@ -231,74 +299,48 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Consultar solicitud de adopción</h4>
+								<h4>Inhabilitar Registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="listaSolicitudes.html">Solicitud de adopción</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Consultar solicitud de adopción</li>
+									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
+                                    <li class="breadcrumb-item"><a href="listaSolicitudes.php">Lista Solicitudes</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Inhabilitar registro</li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				<!-- Default Basic Forms Start -->
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Consultaruna solicitud de adopción</h4><br>
+				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
+					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
+						<div class="pd-20 card-box text-center height-100-p">
+							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
+							<div class="max-width-200 mx-auto">
+								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+							</div>
 						</div>
-						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">En tramite</option>
-									<option value="2">Aceptada</option>
-									<option value="3">Rechazada</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" placeholder="08/10/2023">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Documentos</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="file" placeholder="Dorado">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
-							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" placeholder="10 meses">
-							</div>
-						</div>
-						
-                            
-					</form>
-					<a href="editarSolicitud.html"><button class="btn btn-primary">Editar</button></a>
+					<a href="listaAdopciones.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</
+				</div>
 
-
-</form>
-				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
 			</div>
 		</div>
 	</div>
+			
+		
+	
 	<!-- js -->
 	<script src="vendors/scripts/core.js"></script>
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
+
+	<!-- add sweet alert js & css in footer -->
+	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
+
 </body>
 </html>

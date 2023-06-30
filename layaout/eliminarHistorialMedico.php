@@ -241,7 +241,7 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaArticulos.html">Lista Articulos</a></li>
+									<li class="breadcrumb-item"><a href="historialMedico.php">Historial Medico</a></li>
 
 									<li class="breadcrumb-item active" aria-current="page">Inhabilitar registro</li>
 								</ol>

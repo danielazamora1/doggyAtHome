@@ -245,8 +245,8 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="listaArticulos.php">Lista de articulos</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Consultar articulo</li>
+									<li class="breadcrumb-item"><a href="listaSolicitudes.php">Lista de solicitudes</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Consultar registro</li>
 								</ol>
 							</nav>
 						</div>

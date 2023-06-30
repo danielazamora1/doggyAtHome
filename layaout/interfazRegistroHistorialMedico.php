@@ -4,10 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Editar solicitud</title>
+	<title>Registrar historial medico</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaSolicitud.png">
+	<link rel="website icon" href="vendors/images/listaDonaciones.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,13 +231,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Editar solicitud de adopción</h4>
+								<h4>Nuevo registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="listaSolicitudes.html">Solicitud de adopción</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Editar solicitud de adopción</li>
+									<li class="breadcrumb-item"><a href="historialMedico.php">Historial Medico</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Nuevo registro </li>
 								</ol>
 							</nav>
 						</div>
@@ -247,54 +247,85 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Editar solicitud de adopción</h4><br>
+							<h4 class="text-blue h4">Registro</h4><br>
 						</div>
 						
 					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">En tramite</option>
-									<option value="2">Aceptada</option>
-									<option value="3">Rechazada</option>
-								</select>
-							</div>
-						</div>
+					<form action="registroHistorialMedico.php" method="post">
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
+								<input class="form-control" type="datetime-local" placeholder="" name="fecha">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Documentos</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Diagnostico</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="file" placeholder="Dorado">
+								<input class="form-control" type="text" placeholder="" name="diagnostico">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10 meses">
+								<select class="custom-select col-12" name="nombre">
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM mascota");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idMascota']."'>".$resultado['nombre']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Veterinario</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="usuario">
+
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM usuario");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idUsuario']."'>".$resultado['nombres']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Historial</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="estadoHistorialMedico">
+									<option selected="">Selecciona</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
+								</select>
 							</div>
 						</div>
 						
-                            
+						
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
+
 					</form>
-					<a href="listaSolicitudes.html"><button class="btn btn-primary">Guardar</button></a>
-					<a href="listaSolicitudes.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+				</div>
+			
+				<a href="historialMedico.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a><br><br>
 
-
-</form>
 				<!-- Input Validation End -->
-			</div>
-			<div class="footer-wrap pd-20 mb-20 card-box">
-				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
+			
+				<div class="footer-wrap pd-20 mb-20 card-box">
+					Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
+				</div>
 			</div>
 		</div>
+	
 	</div>
 	<!-- js -->
 	<script src="vendors/scripts/core.js"></script>

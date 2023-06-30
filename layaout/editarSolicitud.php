@@ -1,13 +1,22 @@
+<?php  
+	require 'conexion.php';
+
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM solicitudadopcion WHERE idSolicitudAdopcion = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Registrar seguimiento proceso</title>
+	<title>Editar solicitud</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/seguimientoProceso.png">
+	<link rel="website icon" href="vendors/images/listaSolicitud.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -231,13 +240,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Nuevo seguimiento de proceso</h4>
+								<h4>Editar solicitud de adopción</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Nuevo seguimiento de proceso</li>
+									<li class="breadcrumb-item"><a href="listaSolicitudes.html">Solicitud de adopción</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Editar solicitud de adopción</li>
 								</ol>
 							</nav>
 						</div>
@@ -247,58 +256,81 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Registra un seguimiento de proceso</h4><br>
+							<h4 class="text-blue h4">Editar solicitud de adopción</h4><br>
 						</div>
 						
 					</div>
-					<form>
+					<form action="actualizarSolicitud.php" method="post">
+						<?php 
+							include('conexion.php');
+
+							$sql = "SELECT * FROM solicitudadopcion WHERE idSolicitudAdopcion =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idSolicitudAdopcion']; ?>"/>
+
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fase</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Estado </label>
 							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
+								<select  class="custom-select col-12" name="estado">
 									<option selected="">Selecciona</option>
-									<option value="1">Fase 1</option>
-									<option value="2">Fase 2</option>
-									<option value="3">Fase 3</option>
-									<option value="4">Fase 4</option>
-									<option value="5">Fase 5</option>
-									<option value="6">Fase 6</option>
+									<option value="Aceptada"<?php if ($row['estado']=='Aceptada')echo 'selected'; ?>>Aceptada</option>
+									<option value="Rechazada"<?php if ($row['estado']=='Rechazada')echo 'selected'; ?>>Rechazada</option>
+									<option value="En tramite"<?php if ($row['estado']=='En tramite')echo 'selected'; ?>>En tramite</option>
+
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha Solicitud</label>
 							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">En tramite</option>
-									<option value="2">Terminado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="08/10/2023">
+								<input  class="form-control" type="datetime-local" id="fechaSolicitud" name="fechaSolicitud" value="<?php echo $row['fechaSolicitud'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Documentos</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="file" placeholder="Dorado">
+								<input  class="form-control" type="file" id="documentoSolicitudAdopcion" name="documentoSolicitudAdopcion" value="<?php echo $row['documentoSolicitudAdopcion'];?>">
 							</div>
 						</div>
+
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Solicitud de adopción</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="10 meses">
+								<select class="custom-select col-12" name="mascota">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM mascota WHERE idMascota =".$row['mascota_idMascota'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idMascota']."'>".$row1['nombre']."</option>";
+
+								$sql2 = "SELECT * FROM mascota";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idMascota']."'>".$fila['nombre']."</option>";
+								}
+
+								?>
+								</select>
 							</div>
 						</div>
-						
+					<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Solicitud</label>
+							<div class="col-sm-12 col-md-10">
+								<select  class="custom-select col-12" name="estadoSolicitud">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoSolicitud']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoSolicitud']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div>
+						<input type="submit" name="" value="Editar" class="btn btn-primary"> 
                             
-					</form>
-					<a href="seguimientoProceso.html"><button class="btn btn-primary">Guardar</button></a>
-					<a href="seguimientoProceso.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+					</form><br><br>
+					<a href="listaSolicitudes.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
 
 </form>

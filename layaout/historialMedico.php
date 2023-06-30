@@ -247,7 +247,7 @@
 				<div class="card-box mb-30">
 					<div class="pd-20">
 						<h4 class="text-blue h4">Listado</h4><br>
-						<a href="/layaout/registroHistorialMedico.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar un nuevo historial </button></a><br>
+						<a href="interfazRegistroHistorialMedico.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar un nuevo historial </button></a><br>
 
 					</div>
 					<?php  
@@ -271,8 +271,8 @@
 									<th>Fecha</th>
 									<th>Diagnostico</th>
 									<th>Mascota</th>
-									<th>Responsable</th>
-									<th>Estado</th>
+									<th>Veterinario</th>
+									<th>Estado Historial</th>
 									<th class="datatable-nosort">Acciones</th>
 								</tr>
 							</thead>
@@ -293,8 +293,8 @@
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 												<a class="dropdown-item" href="verHistorialMedico.php? id= <?php echo $row['idHistorialMedico']; ?>"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="eliminarHistorialMedico.php? id= <?php echo $row['idHistorialMedico']; ?>"><i class="dw dw-edit2"></i> Editar</a>
-												<a class="dropdown-item" href="eliminarHistorialMedico.php? id= <?php echo $row['idHistorialMedico']; ?>"><i class="dw dw-edit2"></i>Editar</a>												</div>
+												<a class="dropdown-item" href="editarHistorialMedico.php? id= <?php echo $row['idHistorialMedico']; ?>"><i class="dw dw-edit2"></i> Editar</a>
+												<a class="dropdown-item" href="eliminarHistorialMedico.php? id= <?php echo $row['idHistorialMedico']; ?>"><i class="dw dw-edit2"></i>Eliminar</a>												</div>
 												</div>
 											</div>
 										</div>

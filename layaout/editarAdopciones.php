@@ -1,4 +1,12 @@
+<?php  
+	require 'conexion.php';
 
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM adopciones WHERE idAdopciones = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -236,7 +244,7 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaAdopciones.html">Mascotas</a></li>
+									<li class="breadcrumb-item"><a href="listaAdopciones.php">Mascotas</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Editar registro</li>
 								</ol>
 							</nav>
@@ -321,7 +329,7 @@
 							</div>
 						</div> 
                            <input type="submit" name="" value="Editar" class="btn btn-primary"> 
-					</form>
+					</form><br><br>
 					<a href="listaAdopciones.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
 

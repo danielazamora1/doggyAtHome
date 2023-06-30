@@ -240,8 +240,8 @@
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaArticulos.html">Lista Articulos</a></li>
+									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="listaSolicitudes.php">Lista Solicitudes</a></li>
 
 									<li class="breadcrumb-item active" aria-current="page">Inhabilitar registro</li>
 								</ol>
@@ -260,6 +260,7 @@
 					</div>
 				</div>
 				<a href="listaMascotas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</button>
+
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>

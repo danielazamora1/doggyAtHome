@@ -11,25 +11,15 @@
 	$raza = $_POST['raza'];
 	$estadoPerfilMascota = $_POST['estadoPerfilMascota'];
 
-	if ($nombre !=null || $caracteristicas !=null || $estadoMascota !=null || $sexo !=null || 
-		$fechaIngreso !=null || $edad !=null || $raza !=null || $estadoPerfilMascota !=null) {
-		$consulta = "INSERT INTO mascota (nombre, caracteristicas, estadoMascota, sexo, fechaIngreso, 
-		edad, fotoMascota, raza, estadoPerfilMascota) values ('$nombre', '$caracteristicas', 
-		'$estadoMascota', '$sexo', '$fechaIngreso', '$edad', '$fotoMascota', '$raza' '$estadoPerfilMascota')";
+	$consulta = "INSERT INTO mascota(nombre, caracteristicas, estadoMascota, sexo, fechaIngreso, edad, fotoMascota, raza, estadoPerfilMascota) 
+	VALUES ('$nombre','$caracteristicas','$estadoMascota', '$sexo', '$fechaIngreso', '$edad', '$fotoMascota', '$raza', '$estadoPerfilMascota')";
 
-$resultado= mysqli_query($conexion,$consulta);
-header("location:listaMascotas.php");
-mysqli_free_result($resultado);
-?>
-<h1>Registro guardado</h1>
-<?php
-} else{
-	include("registroPerrito.html");
-	?>
-	
-	<?php
-}
-	mysqli_close($conexion);
+	$resultado = mysqli_query($conexion,$consulta);
+
+	if ($resultado) {
+		header("location: listaMascotas.php");
+	} else{
+		include('interfazRegistroPerrito.php');
+	}
 	
 ?>
-

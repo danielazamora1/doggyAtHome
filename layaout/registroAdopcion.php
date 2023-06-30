@@ -252,29 +252,20 @@
 					</div>
 						
 					</div>
-<<<<<<<< HEAD:layaout/interfazRegistroAdopcion.php
-					<form action="registrarSalida.php" method="post">
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="" name="fecha">
-========
+
 					<form action="registrarAdopcion.php" method="post">
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
 							<div class="col-sm-12 col-md-10">
 								<input class="form-control" type="datetime-local" placeholder="Lucas" name="fecha">
->>>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional):layaout/registroAdopcion.php
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
 								<select class="custom-select col-12" name="mascota">
-<<<<<<<< HEAD:layaout/interfazRegistroAdopcion.php
 
-========
->>>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional):layaout/registroAdopcion.php
+
 								<?php  
 
 								include 'conexion.php';
@@ -291,7 +282,6 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Estado Perfil</label>
 							<div class="col-sm-12 col-md-10">
-<<<<<<<< HEAD:layaout/interfazRegistroAdopcion.php
 								<select class="custom-select col-12" name="estadoPerfilMascota">
 									<option selected="">Selecciona</option>
 									<option value="Activo">Activo</option>
@@ -299,12 +289,10 @@
 								</select>
 							</div>
 						</div>
-
-						
-						<input type="submit" name="" value="registrar" class="btn btn-primary">
-					</form>
-========
-								<select class="custom-select col-12" name="adoptante">
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Adoptante</label>
+							<div class="col-sm-12 col-md-10">
+							<select class="custom-select col-12" name="adoptante">
 								<?php  
 
 								include 'conexion.php';
@@ -318,11 +306,12 @@
 								</select>
 							</div>
 						</div>
-                            <input type="submit" name="" value="registrar" class="btn btn-primary">
-					</form>
-					<a href="listaAdopciones.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 
->>>>>>>> 4c56775 (Se agrega el CRUD de lista de adopciones funcional):layaout/registroAdopcion.php
+						
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
+					</form>
+								
+
 
 
 </form>

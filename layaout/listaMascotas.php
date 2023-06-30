@@ -247,7 +247,7 @@
 				<div class="card-box mb-30">
 				<div class="pd-20">
 						<h4 class="text-blue h4">Listado de adoptantes</h4><br>
-						<a href="registroPerrito.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo adoptante </button></a><br>
+						<a href="interfazRegistroPerrito.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo adoptante </button></a><br>
 						
 
 					</div>
@@ -269,8 +269,6 @@
 									<th>Estado</th>
 									<th>Sexo</th>
 									<th>Ingreso</th>
-									<th>Edad</th>
-									<th>Raza</th>
 									<th>Estado</th>
 
 									<th class="datatable-nosort">Acción</th>
@@ -287,8 +285,6 @@
 									<td><?php echo $row['estadoMascota'];?></td>
 									<td><?php echo $row['sexo'];?></td>
 									<td><?php echo $row['fechaIngreso'];?></td>
-									<td><?php echo $row['edad'];?></td>
-									<td><?php echo $row['raza'];?></td>
 									<td><?php echo $row['estadoPerfilMascota'];?></td>
 									<td>
 										<div class="dropdown">

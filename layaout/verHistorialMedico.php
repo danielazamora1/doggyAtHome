@@ -245,8 +245,8 @@
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="listaArticulos.php">Lista de articulos</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Consultar articulo</li>
+									<li class="breadcrumb-item"><a href="historialMedico.php">Historial Medico</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Consultar registro</li>
 								</ol>
 							</nav>
 						</div>
@@ -261,11 +261,18 @@
 						
 					</div>
 					<form>
-				
+					<?php 
+							include('conexion.php');
+
+							$sql = "SELECT * FROM historialmedico WHERE idHistorialMedico =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="date" id="fecha" name="fecha" placeholder="fecha" value="<?php echo $row['fecha'];?>">
+								<input disabled class="form-control" type="datetime-local" id="fecha" name="fecha" value="<?php echo $row['fecha'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -277,26 +284,47 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="nombre" name="nombre" placeholder="nombre" value="<?php echo $row['nombre'];?>" required>
+								<select disabled class="custom-select col-12" name="mascota">
+								<?php  
+
+								include('conexion.php');
+
+								$sql = "SELECT * FROM mascota WHERE idMascota =".$row['mascota_idMascota'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idMascota']."'>".$row1['nombre']."</option>";
+
+								$sql2 = "SELECT * FROM mascota";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idMascota']."'>".$fila['nombre']."</option>";
+								}
+
+								?>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Responsable</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Veterinario</label>
 							<div class="col-sm-12 col-md-10">
-								<input disabled class="form-control" type="text" id="nombres" name="nombres" placeholder="nombres" value="<?php echo $row['nombres'];?>" required>
-							</div>
-						</div> 
-                        
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado Historial</label>
-							<div class="col-sm-12 col-md-10">
-								<select disabled class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="Activo"<?php if ($row['estadoHistorialMedico']=='Activo')echo 'selected'; ?>>Activo</option>
-									<option value="Inactivo"<?php if ($row['estadoHistorialMedico']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								<select disabled class="custom-select col-12" name="usuario">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM usuario WHERE idUsuario =".$row['usuario_idUsuario'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idUsuario']."'>".$row1['nombres']."</option>";
+
+								$sql2 = "SELECT * FROM usuario";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idUsuario']."'>".$fila['nombres']."</option>";
+								}
+								?>
 								</select>
 							</div>
-						</div>   
+						</div> 
                         
 					</form>
 <a href="historialMedico.php"><button class="btn btn-primary">Volver</button></a>

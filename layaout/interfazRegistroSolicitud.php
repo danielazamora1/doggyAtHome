@@ -4,11 +4,10 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Eliminar</title>
-	<title>Eliminar lista adopciones</title>
+	<title>Registrar seguimiento proceso</title>
 
 	<!-- Site favicon -->
-	<link rel="website icon" href="vendors/images/listaAdopciones.png">
+	<link rel="website icon" href="vendors/images/seguimientoProceso.png">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -225,23 +224,20 @@
 	</div>
 	<div class="mobile-menu-overlay"></div>
 
-    <div class="main-container">
+	<div class="main-container">
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Eliminar</h4>
+								<h4>Nuevo seguimiento de proceso</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-
-									<li class="breadcrumb-item"><a href="/layaout/index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="/layaout/listaAdopciones.html">Listado de adopciones</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Eliminar registro</li>
+									<li class="breadcrumb-item"><a href="seguimientoProceso.html">Seguimiento de proceso</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Nuevo seguimiento de proceso</li>
 								</ol>
 							</nav>
 						</div>
@@ -249,23 +245,73 @@
 				</div>
 				<!-- Default Basic Forms Start -->
 				<div class="pd-20 card-box mb-30">
-					
-					<form>
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Registra un seguimiento de proceso</h4><br>
+						</div>
 						
-                            
-					</form>
-                    <div class="row clearfix">
-                    <d iv class="col-lg-4 col-md-6 col-sm-12 mb-30">
-						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">A warning message, with a function attached to the "Confirm"-button...</h5>
-							<div class="max-width-200 mx-auto">
-								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-params">Click me</button>
+					</div>
+					<form action="registroSolicitud.php" method="post">
+						<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Fecha Solicitud</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" type="datetime-local" placeholder="" name="fechaSolicitud">
+								</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="estado">
+									<option selected="">Selecciona</option>
+									<option value="Aceptada">Aceptada</option>
+									<option value="Rechazada">Rechazada</option>
+									<option value="En tramite">En tramite</option>
+
+								</select>
 							</div>
 						</div>
-					</div>
-                </div>
-                    
-			</form>
+						<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Documentos Cargados</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" type="file" placeholder="" name="documentoSolicitudAdopcion">
+								</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="mascota">
+
+								<?php  
+
+								include 'conexion.php';
+
+								$consulta=$conexion->query("SELECT * FROM mascota");
+								while ($resultado = $consulta->fetch_assoc()) {
+								echo "<option value='".$resultado['idMascota']."'>".$resultado['nombre']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Solicitud</label>
+							<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="estadoSolicitud">
+									<option selected="">Selecciona</option>
+									<option value="Activo">Activo</option>
+									<option value="Inactivo">Inactivo</option>
+						
+								</select>
+							</div>
+						</div>
+						<input type="submit" name="" value="registrar" class="btn btn-primary">
+
+					</form><br><br>
+					<a href="listaSolicitudes.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+
+
+</form>
 				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
@@ -278,10 +324,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-
-	<!-- add sweet alert js & css in footer -->
-	<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
-	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
-
 </body>
 </html>

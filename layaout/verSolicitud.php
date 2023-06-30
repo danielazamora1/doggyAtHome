@@ -1,10 +1,18 @@
+<?php  
+	require 'conexion.php';
 
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM solicitudadopcion WHERE idSolicitudAdopcion = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Solicitud de adopción</title>
+	<title>Consultar solicitud</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/listaSolicitud.png">
@@ -231,65 +239,100 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>solicitudes de adopción</h4>
+								<h4>Consultar solicitud de adopción</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Solicitud de adopción</li>
+									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
+									<li class="breadcrumb-item"><a href="listaSolicitudes.php">Solicitud de adopción</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Consultar </li>
 								</ol>
 							</nav>
 						</div>
 					</div>
 				</div>
-				
-				<!-- Export Datatable start -->
-				<div class="card-box mb-30">
-					<div class="pd-20">
-						<h4 class="text-blue h4">Listado de solicitudes de adopción</h4><br>
-						<a href="registroSolicitud.html"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva solicitud </button></a><br>
+				<!-- Default Basic Forms Start -->
+				<div class="pd-20 card-box mb-30">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h4 class="text-blue h4">Consultar registro de solicitud</h4><br>
+						</div>
+						
+					</div>
+					<form action="actualizarSolicitud.php" method="post">
+						<?php 
+							include('conexion.php');
 
-					</div>
-					
-					<div class="pb-20">
-						<table class="table hover multiple-select-row data-table-export nowrap">
-							<thead>
-								<tr>
-									<th class="table-plus datatable-nosort">id</th>
-									<th>Estado</th>
-									<th>Fecha Solicitud</th>
-									<th>Documento</th>
-									<th>mascota</th>
-									<th class="datatable-nosort">Acción</th>
-			
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="table-plus">1</td>
-									<td>Terminado</td>
-									<td>20/5/2022</td>
-									<td>898977</td>
-									<td>Dakota</td>
-									<td>
-										<div class="dropdown">
-											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-												<i class="dw dw-more"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-												<a class="dropdown-item" href="verSolicitud.html"><i class="dw dw-eye"></i>Ver</a>
-												<a class="dropdown-item" href="editarSolicitud.html"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarSolicitud.html"><i class="dw dw-delete-3"></i>Inhabilitar</a>
-											</div>
-										</div>
-									</td>
-								</tr>
-							
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<!-- Export Datatable End -->
+							$sql = "SELECT * FROM solicitudadopcion WHERE idSolicitudAdopcion =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idSolicitudAdopcion']; ?>"/>
+
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado </label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12" name="estado">
+									<option selected="">Selecciona</option>
+									<option value="Aceptada"<?php if ($row['estado']=='Aceptada')echo 'selected'; ?>>Aceptada</option>
+									<option value="Rechazada"<?php if ($row['estado']=='Rechazada')echo 'selected'; ?>>Rechazada</option>
+									<option value="En tramite"<?php if ($row['estado']=='En tramite')echo 'selected'; ?>>En tramite</option>
+
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Fecha Solicitud</label>
+							<div class="col-sm-12 col-md-10">
+								<input disabled  class="form-control" type="datetime-local" id="fechaSolicitud" name="fechaSolicitud" value="<?php echo $row['fechaSolicitud'];?>"required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Documentos</label>
+							<div class="col-sm-12 col-md-10">
+								<input  disabled class="form-control" type="file" id="documentoSolicitudAdopcion" name="documentoSolicitudAdopcion" value="<?php echo $row['documentoSolicitudAdopcion'];?>">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
+							<div class="col-sm-12 col-md-10">
+								<select disabled class="custom-select col-12" name="mascota">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM mascota WHERE idMascota =".$row['mascota_idMascota'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idMascota']."'>".$row1['nombre']."</option>";
+
+								$sql2 = "SELECT * FROM mascota";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idMascota']."'>".$fila['nombre']."</option>";
+								}
+
+								?>
+								</select>
+							</div>
+						</div>
+					<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Solicitud</label>
+							<div class="col-sm-12 col-md-10">
+								<select  disabled class="custom-select col-12" name="estadoSolicitud">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoSolicitud']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoSolicitud']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
+							</div>
+						</div>
+                            
+					</form><br><br>
+					<a href="listaSolicitudes.php"><button class="btn btn-primary">Regresar</button></a>
+
+
+</form>
+				<!-- Input Validation End -->
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>
@@ -301,18 +344,5 @@
 	<script src="vendors/scripts/script.min.js"></script>
 	<script src="vendors/scripts/process.js"></script>
 	<script src="vendors/scripts/layout-settings.js"></script>
-	<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-	<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-	<!-- buttons for Export datatable -->
-	<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
-	<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
-	<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
-	<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
-	<!-- Datatable Setting js -->
-	<script src="vendors/scripts/datatable-setting.js"></script></body>
+</body>
 </html>

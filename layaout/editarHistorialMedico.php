@@ -1,10 +1,18 @@
+<?php  
+	require 'conexion.php';
 
+	$id = $_GET['id'];
+
+	$sql = "SELECT * FROM historialmedico WHERE idHistorialMedico = '$id'";
+	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Registrar historial medico</title>
+	<title>Editar historial medico</title>
 
 	<!-- Site favicon -->
 	<link rel="website icon" href="vendors/images/listaDonaciones.png">
@@ -231,13 +239,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Nuevo registro</h4>
+								<h4>Editar registro</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
 									<li class="breadcrumb-item"><a href="historialMedico.html">Historial Medico</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Nuevo registro </li>
+									<li class="breadcrumb-item active" aria-current="page">Editar registro </li>
 								</ol>
 							</nav>
 						</div>
@@ -251,289 +259,87 @@
 						</div>
 						
 					</div>
-					<form>
+					<form action="actualizarHistorialMedico.php" method="post">
+						<?php 
+							include('conexion.php');
+
+							$sql = "SELECT * FROM historialmedico WHERE idHistorialMedico =".$_GET['id'];
+							$resultado = $conexion->query($sql);
+							$row = $resultado->fetch_assoc();
+						?>
+						<input type="hidden" id="id" name="id" value="<?php echo $row['idHistorialMedico']; ?>"/>
+
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="junio">
+								<input  class="form-control" type="datetime-local" id="fecha" name="fecha" value="<?php echo $row['fecha'];?>"required>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Foto</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Diagnostico</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="file" placeholder="imagen">
+								<input  class="form-control" type="text" id="diagnostico" name="diagnostico" placeholder="diagnostico" value="<?php echo $row['diagnostico'];?>">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nombre</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Mascota</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Lucas">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Edad</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="8 meses">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Raza</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Criollo">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Peso</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="20kg">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Genero</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Macho</option>
-									<option value="2">Hembra</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Caracteristicas</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Negro con manchas blancas">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Fecha de nacimiento</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="2022">
-							</div>
-						</div>
-						
-                            
-					</form>
-				</div>
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							
-							<h4 class="text-blue h4">Anamnesis</h4><br>
-						</div>
-						
-					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">¿Vacunado?</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Sí</option>
-									<option value="2">No</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Cuales</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Parvo</option>
-									<option value="2">Moquillo</option>
-									<option value="3">Rabia</option>
-								</select><br><br>
-								<input class="form-control" type="text" placeholder="Otra">
+								<select class="custom-select col-12" name="mascota">
+								<?php  
+								include('conexion.php');
 
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Enfermedades</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tratamientos pasados</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Alimentación</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Historia Reproductiva</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Esterilizado</option>
-									<option value="2">Entero</option>
+								$sql = "SELECT * FROM mascota WHERE idMascota =".$row['mascota_idMascota'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idMascota']."'>".$row1['nombre']."</option>";
+
+								$sql2 = "SELECT * FROM mascota";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idMascota']."'>".$fila['nombre']."</option>";
+								}
+
+								?>
 								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Ultimo celo</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Veterinario</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="Octubre 2022">
+								<select class="custom-select col-12" name="usuario">
+								<?php  
+								include('conexion.php');
+
+								$sql = "SELECT * FROM usuario WHERE idUsuario =".$row['usuario_idUsuario'];
+								$resultado1 = mysqli_query($conexion,$sql);
+								$row1 = $resultado1->fetch_array(MYSQLI_ASSOC);
+								echo "<option value='".$row1['idUsuario']."'>".$row1['nombres']."</option>";
+
+								$sql2 = "SELECT * FROM usuario";
+								$resultado2 = mysqli_query($conexion,$sql2);
+								while ($fila = $resultado2->fetch_array()) {
+									echo "<option value='".$fila['idUsuario']."'>".$fila['nombres']."</option>";
+								}
+								?>
+								</select>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Ultimo parto</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Estado Historial</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="date" placeholder="2022">
+								<select  class="custom-select col-12" name="estadoHistorialMedico">
+									<option selected="">Selecciona</option>
+									<option value="Activo"<?php if ($row['estadoHistorialMedico']=='Activo')echo 'selected'; ?>>Activo</option>
+									<option value="Inactivo"<?php if ($row['estadoHistorialMedico']=='Inactivo')echo 'selected'; ?>>Inactivo</option>
+								</select>
 							</div>
-						</div>
-										
-                            
-					</form>
+						</div>  
+						<input type="submit" name="" value="Editar" class="btn btn-primary">                         
+
+					</form><br><br>
+					<a href="historialMedico.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a><br><br>
+
 				</div>
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							
-							<h4 class="text-blue h4">Examen clinico</h4><br>
-						</div>
-						
-					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado general</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado de hidratación</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Ojos</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Oidos</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Nariz</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sistema digestivo</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sistema respiratorio</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sistema nervioso </label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Sistema cardiovascular</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12">
-									<option selected="">Selecciona</option>
-									<option value="1">Normal</option>
-									<option value="2">Anormal</option>
-									<option value="2">No Examinado</option>
-								</select>
-							</div>
-						</div>
-							
-                            
-					</form>
-				</div>
-				<div class="pd-20 card-box mb-30">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4 class="text-blue h4">Observaciones</h4><br>
-						</div>
-						
-					</div>
-					<form>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Hallazgos</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Recomendaciones</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tratamiento</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="">
-							</div>
-						</div>
-						
-                            
-					</form>
-				</div>
-				<a href="historialMedico.html"><button class="btn btn-primary">Guardar</button></a>
-				<a href="historialMedico.html"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a><br><br>
 
 				<!-- Input Validation End -->
 			

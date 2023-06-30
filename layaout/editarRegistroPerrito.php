@@ -303,7 +303,7 @@
                         <div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Fecha de ingreso</label>
 							<div class="col-sm-12 col-md-10">
-								<input  class="form-control" type="date" id="fechaIngreso" name="fechaIngreso" placeholder="fecha" value="<?php echo $row['fechaIngreso'];?>" required>
+								<input  class="form-control" type="datetime-local" id="fechaIngreso" name="fechaIngreso" placeholder="fecha" value="<?php echo $row['fechaIngreso'];?>" required>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -331,7 +331,7 @@
 						<input type="submit" name="" value="Editar" class="btn btn-primary">
 
 					</form>
-				<a href="/layaout/mascotas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
+				<a href="listaMascotas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Cancelar</button></a>
 			</form>
 				<!-- Input Validation End -->
 			</div>
