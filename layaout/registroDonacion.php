@@ -78,7 +78,7 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 						<a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Perfil</a>					
-						<a class="dropdown-item" href="/index.html"><i class="dw dw-logout"></i> Cerrar Sesion</a>
+						<a class="dropdown-item" href="../index.html"><i class="dw dw-logout"></i> Cerrar Sesion</a>
 					</div>
 				</div>
 			</div>
