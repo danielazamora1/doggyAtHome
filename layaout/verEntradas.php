@@ -268,8 +268,9 @@
 								<input class="form-control" type="date" placeholder="08/10/2023">
 							</div>
 						</div>
-                            
+                        
 					</form>
+					<a href="entradas.php"><button class="btn btn-primary">Regresar</button></a>
 </form>
 				<!-- Input Validation End -->
 			</div>

@@ -252,7 +252,7 @@
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
 					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
 						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
+							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar esta solicitud?</h5>
 							<div class="max-width-200 mx-auto">
 								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
 							</div>

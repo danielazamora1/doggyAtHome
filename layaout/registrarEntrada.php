@@ -1,6 +1,7 @@
 <br><?php 
 	include('conexion.php');
 
+	
 	$cantidadEntrada = $_POST['cantidadEntrada'];
 	$articulos = $_POST['articulos'];
 	$entradas = $_POST['entradas'];
@@ -11,6 +12,7 @@
 
 	if ($resultado) {
 		header("location: entradas.php");
+		$consulta2 = "Actualizar_Stock_Entradas('$id')";
 	} else{
 		include('interfazRegistrarEntrada.php');
 	}
