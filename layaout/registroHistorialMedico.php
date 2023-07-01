@@ -5,10 +5,8 @@
 	$diagnostico = $_POST['diagnostico'];
 	$nombre = $_POST['nombre'];
     $usuario = $_POST['usuario'];
-    $estadoHistorialMedico = $_POST['estadoHistorialMedico'];
 
-	$consulta = "INSERT INTO historialmedico(fecha, diagnostico, mascota_idMascota, usuario_idUsuario, estadoHistorialMedico) 
-	VALUES ('$fecha','$diagnostico','$nombre', '$usuario', '$estadoHistorialMedico')";
+	$consulta = "CALL pa_registrar_historialMedico('$fecha','$diagnostico','$nombre', '$usuario')";
 
 	$resultado = mysqli_query($conexion,$consulta);
 

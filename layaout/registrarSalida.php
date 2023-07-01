@@ -5,8 +5,7 @@
 	$articulos = $_POST['articulos'];
 	$salidas = $_POST['salidas'];
 
-	$consulta = "INSERT INTO salidas_articulos(cantidadSalidas, articulos_idArticulos, salidas_idSalidas) 
-	VALUES ('$cantidadSalidas','$articulos','$salidas')";
+	$consulta = "CALL pa_registrar_salida ('$cantidadSalidas','$articulos','$salidas')";
 
 	$resultado = mysqli_query($conexion,$consulta);
 

@@ -5,10 +5,10 @@
 	$cantidadSalidas = $_POST['cantidadSalidas'];
 	$articulos = $_POST['articulos'];
 	$salidas = $_POST['salidas'];
+	$estadoSalida = $_POST['estadoSalida'];
 
-
-	$consulta = "UPDATE salidas_articulos SET cantidadSalidas='$cantidadSalidas', 
-	articulos_idArticulos='$articulos', salidas_idSalidas='$salidas' WHERE idSalidasArticulos= '$id'";
+	$consulta = "CALL pa_actualizar_salidas('$cantidadSalidas', 
+	'$articulos', '$salidas', '$estadoSalida','$id')";
 	$resultado= mysqli_query($conexion,$consulta);
 
 	if ($resultado) {

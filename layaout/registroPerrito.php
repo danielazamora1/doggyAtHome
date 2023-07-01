@@ -9,11 +9,8 @@
 	$edad = $_POST['edad'];
 	$fotoMascota = $_POST['fotoMascota'];
 	$raza = $_POST['raza'];
-	$estadoPerfilMascota = $_POST['estadoPerfilMascota'];
 
-	$consulta = "INSERT INTO mascota(nombre, caracteristicas, estadoMascota, sexo, fechaIngreso, edad, fotoMascota, raza, estadoPerfilMascota) 
-	VALUES ('$nombre','$caracteristicas','$estadoMascota', '$sexo', '$fechaIngreso', '$edad', '$fotoMascota', '$raza', '$estadoPerfilMascota')";
-
+	$consulta = "CALL pa_registrar_mascota ('$nombre','$caracteristicas','$estadoMascota', '$sexo', '$fechaIngreso', '$edad', '$fotoMascota','$raza')";
 	$resultado = mysqli_query($conexion,$consulta);
 
 	if ($resultado) {

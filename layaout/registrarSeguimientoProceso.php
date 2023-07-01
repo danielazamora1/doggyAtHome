@@ -6,8 +6,7 @@
 	$fecha = $_POST['fecha'];
 	$numeroSolicitud = $_POST['numeroSolicitud'];
 
-	$consulta = "INSERT INTO seguimientoproceso(faseDelSeguimiento, estado, fecha, solicitudAdopcion_idSolicitudAdopcion) 
-	VALUES ('$faseDelSeguimiento','$estado','$fecha', '$numeroSolicitud')";
+	$consulta = "CALL pa_registrar_seguimientoProceso ('$faseDelSeguimiento','$estado','$fecha', '$numeroSolicitud')";
 
 	$resultado = mysqli_query($conexion,$consulta);
 
@@ -16,6 +15,5 @@
 	} else{
 		include('registroSeguimiento.php');
 	}
-	
 	
 ?>

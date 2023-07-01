@@ -9,8 +9,8 @@
 	$estadoArticulo = $_POST['estadoArticulo'];
 
 	if ($nombreArticulo !=null || $descripcionArticulo !=null || $referenciaArticulo !=null || $stock !=null || $estadoArticulo !=null) {
-		$consulta = "UPDATE articulos SET nombreArticulo = '$nombreArticulo', descripcionArticulo = '$descripcionArticulo', 
-		referenciaArticulo = '$referenciaArticulo', stock = '$stock', estadoArticulo = '$estadoArticulo' WHERE idArticulos = '$id'";
+		$consulta = "CALL pa_actualizar_articulos('$nombreArticulo', '$descripcionArticulo', 
+		 '$referenciaArticulo','$stock', '$estadoArticulo','$id')";
 
 	$resultado= mysqli_query($conexion,$consulta);
 	header("location:listaArticulos.php");

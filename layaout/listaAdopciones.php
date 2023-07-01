@@ -256,11 +256,7 @@
 					<div class="pd-20">
 					</div>
 					<?php  
-						$consulta = "SELECT * FROM mascota
-									INNER JOIN adopciones
-									ON mascota.`idMascota`=adopciones.`mascota_idMascota`
-									INNER JOIN adoptante
-									ON adoptante.`idAdoptante`=adopciones.`adoptante_idAdoptante`";
+						$consulta = "CALL pa_mostrar_adopciones";
 
 									
 						$resultado = mysqli_query($conexion,$consulta);
@@ -297,7 +293,7 @@
 												<a class="dropdown-item" href="verAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-eye"></i>Ver</a>
 												<a class="dropdown-item" href="editarAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-edit2"></i>Editar</a>
 												
-												<a class="dropdown-item" href="/layaout/eliminarListaAdopciones.html"><i class="dw dw-delete-3"></i>Eliminar</a>
+												<a class="dropdown-item" href="eliminarListaAdopciones.php? id= <?php echo $row['idAdopciones']; ?>"><i class="dw dw-delete-3"></i>Eliminar</a>
 											</div>
 										</div>
 									</td>

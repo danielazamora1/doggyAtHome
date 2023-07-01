@@ -255,11 +255,7 @@
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM articulos
-									INNER JOIN salidas_articulos
-									ON salidas_articulos.`articulos_idArticulos`=articulos.`idArticulos`
-									INNER JOIN salidas
-									ON salidas.`idSalidas`= salidas_articulos.`salidas_idSalidas`";
+						$consulta = "CALL pa_mostrar_salidas";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>		
 					<div class="pd-20">

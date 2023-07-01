@@ -252,7 +252,7 @@
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM v_donaciones";
+						$consulta = "CALL pa_mostrar_donaciones";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>
 					<div class="pb-20">

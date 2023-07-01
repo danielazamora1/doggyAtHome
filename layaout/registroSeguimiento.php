@@ -310,17 +310,6 @@
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado Solicitud</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12" name="estadoSolicitud">
-									<option selected="">Selecciona</option>
-									<option value="Activo">Activo</option>
-									<option value="Inactivo">Inactivo</option>
-						
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Número de solicitud</label>
 							<div class="col-sm-12 col-md-10">
 								<select class="custom-select col-12" name="numeroSolicitud">

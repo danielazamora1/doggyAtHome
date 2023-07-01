@@ -5,11 +5,9 @@
 	$estado = $_POST['estado'];
 	$documentoSolicitudAdopcion = $_POST['documentoSolicitudAdopcion'];
     $mascota = $_POST['mascota'];
-    $estadoSolicitud = $_POST['estadoSolicitud'];
     
-		$consulta = "INSERT INTO solicitudadopcion (estado, fechaSolicitud, documentoSolicitudAdopcion, 
-        mascota_idMascota, estadoSolicitud) values ('$estado', '$fechaSolicitud', 
-		'$documentoSolicitudAdopcion', '$mascota', '$estadoSolicitud')";
+		$consulta = "CALL pa_registrar_solicitudAdopcion ('$estado', '$fechaSolicitud', 
+		'$documentoSolicitudAdopcion', '$mascota')";
 
 
 	$resultado = mysqli_query($conexion,$consulta);

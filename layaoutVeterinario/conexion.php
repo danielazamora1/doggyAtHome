@@ -1,6 +1,6 @@
 <?php  
 	// crear conexion
-	$conexion = mysqli_connect("localhost", "Daniela","Logan123.","doggyathome");
+	$conexion = mysqli_connect("localhost", "root","Juan0912*","doggyathome");
 
 	// comprobar conexion
 	if (!$conexion) {

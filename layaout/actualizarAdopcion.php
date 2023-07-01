@@ -7,9 +7,7 @@
 	$adoptante = $_POST['adoptante'];
 	$estado = $_POST['estado'];
 
-	$consulta = "UPDATE adopciones SET fecha='$fecha', 
-	mascota_idMascota='$mascota', adoptante_idAdoptante='$adoptante', estadoAdopcion='$estado' 
-	WHERE idAdopciones= '$id'";
+	$consulta = "CALL pa_actualizar_adopcion('$fecha','$mascota','$adoptante','$estado','$id')";
 	$resultado= mysqli_query($conexion,$consulta);
 
 	if ($resultado) {

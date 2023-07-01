@@ -9,9 +9,8 @@
 	$fechaDonacion = $_POST['fechaDonacion'];
 	$estado = $_POST['estado'];
 
-	$consulta = "UPDATE donaciones SET tipoDonacion_idTipoDonacion='$tipoDonacion', 
-	adoptante_idAdoptante='$adoptante', referencia='$referencia', cantidadDonacion='$cantidadDonacion', 
-	fechaDonacion='$fechaDonacion', estadoDonacion='$estado' WHERE idDonaciones= '$id'";
+	$consulta = "CALL pa_actualizar_donacion('$tipoDonacion','$adoptante','$referencia', 
+	'$cantidadDonacion', '$fechaDonacion', '$estado','$id')";
 	$resultado= mysqli_query($conexion,$consulta);
 
 	if ($resultado) {

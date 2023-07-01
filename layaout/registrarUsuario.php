@@ -17,8 +17,7 @@
 	if ($nombres !=null || $apellidos !=null || $tipoDocumento !=null || $documento !=null || $usuario !=null || 
 		$contraseña !=null || $confirmarContraseña !=null || $celular !=null || 
 		$ciudad !=null || $direccion !=null  || $correo !=null || $rol !=null   ||$contraseña==$confirmarContraseña) {
-		$consulta = "INSERT INTO usuario (nombres, apellidos, tipoDocumento, documento, usuario, 
-		contraseña, confirmarContraseña, celular, ciudad, direccion, correo, rol_idRol) values ('$nombres', '$apellidos', 
+		$consulta = "CALL pa_registrar_usuario ('$nombres', '$apellidos', 
 		'$tipoDocumento', '$documento', '$usuario', '$contraseña', '$confirmarContraseña', '$celular', 
 		'$ciudad', '$direccion', '$correo', '$rol')";
 

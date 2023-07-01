@@ -5,8 +5,7 @@
 	$mascota = $_POST['mascota'];
 	$adoptante = $_POST['adoptante'];
 
-	$consulta = "INSERT INTO adopciones(fecha, mascota_idMascota, adoptante_idAdoptante) 
-	VALUES ('$fecha','$mascota','$adoptante')";
+	$consulta = "CALL pa_registrar_adopcion('$fecha','$mascota','$adoptante')";
 
 	$resultado = mysqli_query($conexion,$consulta);
 

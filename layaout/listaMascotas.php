@@ -245,8 +245,8 @@
 				<!-- Export Datatable start -->
 				<div class="card-box mb-30">
 				<div class="pd-20">
-						<h4 class="text-blue h4">Listado de adoptantes</h4><br>
-						<a href="interfazRegistroPerrito.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nuevo adoptante </button></a><br>
+						<h4 class="text-blue h4">Listado de mascotas</h4><br>
+						<a href="interfazRegistroPerrito.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva mascota </button></a><br>
 						
 
 					</div>
@@ -254,7 +254,7 @@
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM mascota";
+						$consulta = "CALL pa_mostrar_mascotas";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>	
 					
@@ -264,9 +264,9 @@
 								<tr>
 									<th class="table-plus datatable-nosort">id</th>
 									<th>Nombre</th>
-									<th>Caracteristicas</th>
 									<th>Estado</th>
 									<th>Sexo</th>
+									<th>Raza</th>
 									<th>Ingreso</th>
 									<th>Estado</th>
 
@@ -280,9 +280,9 @@
 								<tr>
 									<td class="table-plus"><?php echo $row['idMascota'];?></td>
 									<td><?php echo $row['nombre'];?></td>
-									<td><?php echo $row['caracteristicas'];?></td>
 									<td><?php echo $row['estadoMascota'];?></td>
 									<td><?php echo $row['sexo'];?></td>
+									<td><?php echo $row['raza'];?></td>
 									<td><?php echo $row['fechaIngreso'];?></td>
 									<td><?php echo $row['estadoPerfilMascota'];?></td>
 									<td>

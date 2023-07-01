@@ -310,18 +310,7 @@
 									<option selected="">Selecciona</option>
 									<option value="Pastor Aleman">Pastor Aleman</option>
 									<option value="Labrado">Labrador</option>
-									<option value="Criollo">Criollo Aleman</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">EstadoPerfil</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12" name="estadoPerfilMascota">
-									<option selected="">Selecciona</option>
-									<option value="Activo">Activo</option>
-									<option value="Inactivo">Inactivo</option>
-									
+									<option value="Criollo">Criollo</option>
 								</select>
 							</div>
 						</div>

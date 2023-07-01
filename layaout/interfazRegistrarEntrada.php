@@ -231,11 +231,11 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Agregar un nuevo articulo</h4>
+								<h4>Agregar una entrada</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Inventario</a></li>
+									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
 									<li class="breadcrumb-item"><a href="consultarInventario.php">Inventario</a></li>
 									<li class="breadcrumb-item"><a href="entradas.php">Entradas</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Nuevo registro</li>

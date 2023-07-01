@@ -7,8 +7,7 @@
 	$cantidadDonacion = $_POST['cantidadDonacion'];
 	$fechaDonacion = $_POST['fechaDonacion'];
 
-	$consulta = "INSERT INTO donaciones(tipoDonacion_idTipoDonacion, adoptante_idAdoptante, referencia, cantidadDonacion, fechaDonacion) 
-	VALUES ('$tipoDonacion','$adoptante','$referencia', '$cantidadDonacion', '$fechaDonacion')";
+	$consulta = "CALL pa_registrar_donacion('$tipoDonacion','$adoptante','$referencia', '$cantidadDonacion', '$fechaDonacion')";
 
 	$resultado = mysqli_query($conexion,$consulta);
 

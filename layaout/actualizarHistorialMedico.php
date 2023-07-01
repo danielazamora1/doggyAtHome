@@ -8,8 +8,8 @@
     $usuario = $_POST['usuario'];
     $estadoHistorialMedico = $_POST['estadoHistorialMedico'];
 
-	$consulta = "UPDATE historialmedico SET fecha='$fecha', 
-	diagnostico='$diagnostico', mascota_idMascota='$mascota', usuario_idUsuario='$usuario', estadoHistorialMedico='$estadoHistorialMedico' WHERE idHistorialMedico= '$id'";
+	$consulta = "CALL pa_actualizar_historialMedico('$fecha', 
+	'$diagnostico', '$mascota','$usuario', '$estadoHistorialMedico', '$id')";
 	$resultado= mysqli_query($conexion,$consulta);
 
 	if ($resultado) {

@@ -255,7 +255,7 @@
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM articulos";
+						$consulta = "CALL pa_mostrar_articulos";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>	
 					<div class="pb-20">

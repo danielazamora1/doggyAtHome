@@ -230,13 +230,13 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-12">
 							<div class="title">
-								<h4>Nuevo seguimiento de proceso</h4>
+								<h4>Nueva solicitud de adopción</h4>
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-									<li class="breadcrumb-item"><a href="seguimientoProceso.php">Seguimiento de proceso</a></li>
-									<li class="breadcrumb-item active" aria-current="page">Nuevo seguimiento de proceso</li>
+									<li class="breadcrumb-item"><a href="listaSolicitudes.php">Solicitud de adopción</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Nueva solicitud de adopción</li>
 								</ol>
 							</nav>
 						</div>
@@ -246,7 +246,7 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Registra un seguimiento de proceso</h4><br>
+							<h4 class="text-blue h4">Registra una solicitud de adopción</h4><br>
 						</div>
 						
 					</div>
@@ -293,19 +293,7 @@
 								?>
 								</select>
 							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Estado Solicitud</label>
-							<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12" name="estadoSolicitud">
-									<option selected="">Selecciona</option>
-									<option value="Activo">Activo</option>
-									<option value="Inactivo">Inactivo</option>
-						
-								</select>
-							</div>
-						</div>
-						
+						</div>		
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Número de solicitud</label>
 							<div class="col-sm-12 col-md-10">
@@ -314,9 +302,9 @@
 
 								include 'conexion.php';
 
-								$consulta=$conexion->query("SELECT * FROM solicitudadopcion");
+								$consulta=$conexion->query("SELECT * FROM usuario");
 								while ($resultado = $consulta->fetch_assoc()) {
-								echo "<option value='".$resultado['idSolicitudAdopcion']."'>".$resultado['idSolicitudAdopcion']."</option>";
+								echo "<option value='".$resultado['idUsuario']."'>".$resultado['usuario']."</option>";
 								}
 								?>
 								</select>

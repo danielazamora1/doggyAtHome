@@ -252,7 +252,7 @@
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT * FROM seguimientoproceso";
+						$consulta = "CALL pa_mostrar_seguimientoProceso";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>
 					<div class="pb-20">

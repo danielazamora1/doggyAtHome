@@ -1,8 +1,9 @@
 <?php  
 	include('conexion.php');
 	$id = $_GET['id'];
-	$sql = "UPDATE salidas_articulos SET estadoSalida = 'Inactiva' WHERE idSalidasArticulos = '$id'";
+	$sql = "SELECT * FROM salidas_articulos WHERE idSalidasArticulos = '$id'";
 	$resultado = mysqli_query($conexion,$sql);
+	$row = $resultado->fetch_array(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html>
@@ -249,19 +250,21 @@
 						</div>
 					</div>
 				</div>
+				<form action="inhabilitarSalida2.php" method="post">
+				<input type="hidden" id="id" name="id" value="<?php echo $row['idSalidasArticulos']; ?>"/>
 				<div class="pd-20 bg-white border-radius-4 box-shadow mb-30" >
 					<div class="col-lg-12 col-md-6 col-sm-12 mb-30">
 						<div class="pd-20 card-box text-center height-100-p">
-							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar este registro?</h5>
+							<h5 class="pt-20 h5 mb-30">¿Estás seguro de inhabilitar a este usuario?</h5>
 							<div class="max-width-200 mx-auto">
-								<button type="button" class="btn mb-20 btn-primary btn-block" id="sa-warning">Inhabilitar</button>
+								<input type="submit" name="Inhabilitar" value="Inhabilitar" class="btn mb-20 btn-primary btn-block">
 							</div>
 						</div>
 					</div>
-					<a href="salidas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</
 				</div>
+				</form>				
 				<br>
-
+				<a href="salidas.php"><button style="border-color: brown; background-color: brown;" class="btn btn-primary">Volver</button></a>
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				Doggy At Home <a href="#" target="_blank">All Rights Reserved.</a>

@@ -9,9 +9,8 @@
 	$estadoSeguimiento = $_POST['estadoSeguimiento'];
 
 
-	$consulta = "UPDATE seguimientoproceso SET faseDelSeguimiento='$faseDelSeguimiento', 
-	estado='$estado', fecha='$fecha',  solicitudAdopcion_idSolicitudAdopcion='$numeroSolicitud', estadoSeguimiento='$estadoSeguimiento' 
-	WHERE idSeguimientoProceso= '$id'";
+	$consulta = "CALL pa_actualizar_seguimientoProceso('$faseDelSeguimiento', '$estado','$fecha',
+	'$numeroSolicitud','$estadoSeguimiento','$id')";
 	$resultado= mysqli_query($conexion,$consulta);
 
 	if ($resultado) {

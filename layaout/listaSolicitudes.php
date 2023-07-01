@@ -245,37 +245,27 @@
 				<!-- Export Datatable start -->
 				<div class="card-box mb-30">
 					<div class="pd-20">
-						<h4 class="text-blue h4">Listado de solicitudes de adopción</h4><br>
+						<h4 class="text-blue h4">Nueva solicitud</h4><br>
 						<a href="interfazRegistroSolicitud.php"><button style="background-color: #1b00ff;"  class="btn btn-success ">Registrar nueva solicitud </button></a><br>
 
 					</div>
-
 					<?php  
 						include('conexion.php');
 
-						$consulta = "SELECT *FROM mascota
-						INNER JOIN solicitudadopcion
-						ON mascota.`idMascota`=solicitudadopcion.`mascota_idMascota`
-						
-						INNER JOIN solicitudadopcion_por_adoptante
-						ON solicitudadopcion_por_adoptante.`idSolicitudAdopcionPorAdoptante`= solicitudadopcion.`idSolicitudAdopcion`
-						
-						INNER JOIN adoptante
-						ON adoptante.`idAdoptante`= solicitudadopcion_por_adoptante.`adoptante_idAdoptante`";
+						$consulta = "CALL pa_mostrar_solicitudesAdopcion";
 						
 						$resultado = mysqli_query($conexion,$consulta);
 					?>
-
 					<div class="pb-20">
 						<table class="table hover multiple-select-row data-table-export nowrap">
 							<thead>
 								<tr>
-									<th class="table-plus datatable-nosort">idSolicitud</th>
-									<th>Fecha Solicitud</th>
-									<th>Estado </th>
+									<th class="table-plus datatable-nosort">id</th>
+									<th>Fecha solicitud</th>
+									<th>Estado</th>
 									<th>Mascota</th>
-									<th>Usuario </th>
-									<th>Estado Solicitud </th>
+									<th>Usuario</th>
+									<th>Estado Solicitud</th>
 									<th class="datatable-nosort">Acción</th>
 			
 								</tr>
@@ -290,8 +280,6 @@
 									<td><?php echo $row['nombre'];?></td>
 									<td><?php echo $row['usuario'];?></td>
 									<td><?php echo $row['estadoSolicitud'];?></td>
-									
-
 									<td>
 										<div class="dropdown">
 											<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -300,14 +288,13 @@
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 												<a class="dropdown-item" href="verSolicitud.php? id= <?php echo $row['idSolicitudAdopcion']; ?>"><i class="dw dw-eye"></i>Ver</a>
 												<a class="dropdown-item" href="editarSolicitud.php? id= <?php echo $row['idSolicitudAdopcion']; ?>"><i class="dw dw-edit2"></i>Editar</a>
-												<a class="dropdown-item" href="inhabilitarSolicitud.php? id= <?php echo $row['idSolicitudAdopcion']; ?>"><i class="dw dw-delete-3"></i> Eliminar</a>
+												<a class="dropdown-item" href="inhabilitarSolicitud.php? id= <?php echo $row['idSolicitudAdopcion']; ?>"><i class="dw dw-delete-3"></i>Inhabilitar</a>
 											</div>
 										</div>
 									</td>
 								</tr>
-								<?php } mysqli_close($conexion);?>
+							<?php } mysqli_close($conexion);?>
 							</tbody>
-							
 						</table>
 					</div>
 				</div>

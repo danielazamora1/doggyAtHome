@@ -252,11 +252,8 @@
 					<?php  
 						include('conexion.php');
 
-<<<<<<< HEAD
-						$consulta = "CALL pa_mostar_usuarios";
-=======
-						$consulta = "SELECT * FROM v_listado_usuarios";
->>>>>>> 8e77cfb957859d421006cad0b41ad6b2832fa0f8
+
+						$consulta = "CALL pa_mostrar_usuarios";
 						$resultado = mysqli_query($conexion,$consulta);
 					?>				
 					<div class="pb-20">

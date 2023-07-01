@@ -255,8 +255,6 @@
 						<?php 
 							include('conexion.php');
 
-							
-
 							$sql = "SELECT * FROM salidas_articulos WHERE idSalidasArticulos =".$_GET['id'];
 							$resultado = $conexion->query($sql);
 							$row = $resultado->fetch_assoc();
@@ -315,7 +313,7 @@
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Estado del usuario</label>
 							<div class="col-sm-12 col-md-10">
-								<select  class="custom-select col-12">
+								<select  class="custom-select col-12" name="estadoSalida">
 									<option selected="">Selecciona</option>
 									<option value="Activa"<?php if ($row['estadoSalida']=='Activa')echo 'selected'; ?>>Activo</option>
 									<option value="Inactiva"<?php if ($row['estadoSalida']=='Inactiva')echo 'selected'; ?>>Inactivo</option>

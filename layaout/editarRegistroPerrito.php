@@ -281,7 +281,6 @@
 									<option value="En revision"<?php if ($row['estadoMascota']=='En revision')echo 'selected'; ?>>En revision</option>
 									<option value="En tratamiento"<?php if ($row['estadoMascota']=='En tratamiento')echo 'selected'; ?>>En tratamiento</option>
 									<option value="Para Adoptar"<?php if ($row['estadoMascota']=='Para Adoptar')echo 'selected'; ?>>Para Adoptar</option>
-
 								</select>
 							</div>
 						</div>  

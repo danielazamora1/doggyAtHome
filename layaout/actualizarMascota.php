@@ -8,15 +8,14 @@
 	$sexo = $_POST['sexo'];
 	$fechaIngreso = $_POST['fechaIngreso'];
 	$edad = $_POST['edad'];
-	$fotoMascota = $_POST['fotoMascota'];
 	$raza = $_POST['raza'];
 	$estadoPerfilMascota = $_POST['estadoPerfilMascota'];
 	
 
 	if ($nombre !=null || $caracteristicas !=null || $estadoMascota !=null || $sexo !=null || $fechaIngreso !=null || $edad !=null || $raza !=null || $estadoPerfilMascota !=null) {
-		$consulta = "UPDATE mascota SET nombre='$nombre', caracteristicas='$caracteristicas', estadoMascota='$estadoMascota', 
-		sexo='$sexo', fechaIngreso='$fechaIngreso', edad='$edad', raza='$raza', 
-		estadoPerfilMascota='$estadoPerfilMascota' WHERE idMascota = '$id'";
+		$consulta = "CALL pa_actualizar_mascota('$nombre', '$caracteristicas','$estadoMascota', 
+		'$sexo', '$fechaIngreso','$edad', '$raza', 
+		'$estadoPerfilMascota','$id')";
 
 	$resultado= mysqli_query($conexion,$consulta);
 	header("location:listaMascotas.php");
